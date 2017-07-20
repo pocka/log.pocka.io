@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pocka/log.pocka.io/issues"
   },
-  "homepage": "https://github.com/pocka/log.pocka.io#readme"
+  "homepage": "https://github.com/pocka/log.pocka.io#readme",
+  "dependencies": {
+    "vue": "^2.4.1"
+  }
 }
