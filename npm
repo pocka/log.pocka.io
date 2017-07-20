@@ -1,0 +1,9 @@
+#!/bin/sh
+
+docker run \
+	--rm \
+	-it \
+	-u `id -u`:`id -g` \
+	-v `pwd`:`pwd` \
+	-w `pwd` \
+	node:8.1-alpine npm $@
