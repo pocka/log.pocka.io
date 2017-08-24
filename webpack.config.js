@@ -2,7 +2,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'bundle.js',
-    path: `${__dirname}/public`
+    path: `${__dirname}/public`,
   },
   module: {
     rules: [
@@ -33,6 +33,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
+    contentBase: 'public',
   },
   performance: {
     hints: false,
