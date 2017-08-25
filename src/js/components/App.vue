@@ -1,23 +1,26 @@
 <template>
   <div id="app">
     <blog-menu />
-    <blog-body />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 
-import Menu from './Menu'
-import Body from './Body'
+import BlogMenu from './BlogMenu'
 
-Vue.component('blog-menu', Menu)
-Vue.component('blog-body', Body)
+import {LoadPosts} from '../store/modules/post'
 
-// ---
 
 export default {
   name: 'app',
+  components: {
+    BlogMenu,
+  },
+  created() {
+    this.$store.dispatch(LoadPosts)
+  },
 }
 </script>
 

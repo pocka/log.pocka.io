@@ -2,7 +2,7 @@
   <nav class="menu">
     <ul>
       <li><a>HOME</a></li>
-      <li><a>ARTICLE</a></li>
+      <li><router-link to="/posts">Posts</router-link></li>
       <li><a>ABOUT</a></li>
     </ul>
   </nav>
