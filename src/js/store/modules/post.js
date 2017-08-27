@@ -15,8 +15,18 @@ export default {
     },
     actions: {
       [LoadPosts]({commit}) {
-        commit(SettingPosts, {
-          posts: ['/posts/test1', '/posts/test2', '/posts/test3'],
+        fetch('/posts.json').then(res => {
+          if (res.status !== 200) {
+            return Promise.reject(new Error(`Status code error: ${res.status} ${res.statusText}`))
+          }
+
+          return res.json()
+        }).then(({posts, tags}) => {
+          commit(SettingPosts, {
+            posts
+          })
+        }).catch(err => {
+          console.error(err)
         })
       }
     }
