@@ -1,0 +1,53 @@
+{
+  "name": "log.pocka.io",
+  "version": "1.0.0",
+  "description": "Repositry for log.pocka.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create:directories": "find posts -type d|xargs -I{} sh -c 'mkdir -p public/{}'",
+    "compile:markdown": "find posts -name \"*.md\" -type f|xargs -I{} sh -c 'echo {}|node scripts/md2json.js > public/$(echo {}|sed -e \"s/\\.md$/.json/\")'",
+    "compile:pug": "pug < src/pug/index.pug > public/index.html",
+    "compile:js": "webpack",
+    "build:app": "npm run compile:pug && npm run compile:js",
+    "build:posts": "npm run create:directories && npm run compile:markdown && npm run build:list",
+    "build:list": "find posts -name \"*.md\" -type f|node scripts/make-posts-list.js > public/posts.json",
+    "build": "npm run build:posts && npm run build:app",
+    "watch": "npm run compile:pug && webpack-dev-server --hot --host 0.0.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pocka/log.pocka.io.git"
+  },
+  "author": "pocka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pocka/log.pocka.io/issues"
+  },
+  "homepage": "https://github.com/pocka/log.pocka.io#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.25.0",
+    "babel-preset-es2015": "^6.24.1",
+    "buefy": "^0.5.1",
+    "vue": "^2.4.1",
+    "vue-router": "^2.7.0",
+    "vuex": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.1",
+    "css-loader": "^0.28.4",
+    "highlight.js": "^9.12.0",
+    "marked": "^0.3.6",
+    "node-sass": "^4.5.3",
+    "pug-cli": "^1.0.0-alpha6",
+    "remove-markdown": "^0.2.2",
+    "sass-loader": "^6.0.6",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^12.2.2",
+    "vue-template-compiler": "^2.4.1",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.5.1",
+    "yaml-front-matter": "^3.4.0"
+  }
+}
