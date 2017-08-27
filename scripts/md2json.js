@@ -1,41 +1,36 @@
+const readline = require('readline')
 const marked = require('marked')
 const {loadFront} = require('yaml-front-matter')
-const {highlight} = require('highlight.js')
+const {highlight, highlightAuto} = require('highlight.js')
+
+const getMeta = require('./get-meta')
+
 
 const {stdin, stdout} = process
 
-
-/**
- * Custom error (Just overriding toString).
- */
-class CmdError extends Error {
-  toString() {
-    return `[md2json.js] ${this.message}`
-  }
-}
-
 // Markdown parsing configuration
-marked.setOptions({
+const mdOpts = {
   gfm: true,
   table: true,
   breaks: true,
   highlight(code, lang) {
-    return highlight(lang, code).value
+    return lang ? highlight(lang, code).value : highlightAuto(code).value
   },
+}
+
+const rl = readline.createInterface({
+  input: stdin,
+  output: stdout,
 })
 
-let input = ''
+rl.on('line', file => {
+  const meta = getMeta(file)
 
-stdin.on('data', chunk => {
-  input += chunk
-})
-
-stdin.on('end', () => {
-  const frontMatter = loadFront(input)
-
-  const result = Object.assign({}, frontMatter, {
-    __content: marked(frontMatter.__content),
+  const postData = Object.assign({}, meta, {
+    __content: marked(meta.__content, mdOpts),
   })
 
-  stdout.write(JSON.stringify(result))
+  stdout.write(JSON.stringify(postData))
+
+  rl.close()
 })
