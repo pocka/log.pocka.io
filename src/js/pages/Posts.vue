@@ -42,16 +42,13 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapGetters} from 'vuex'
 
 
 export default {
-  computed: mapState({
-    posts: state => state.post.list.map(post => Object.assign({}, post, {
-      createdAt: new Date(post.createdAt),
-      updatedAt: new Date(post.updatedAt),
-    })),
-  }),
+  computed: mapGetters([
+    'posts',
+  ]),
 }
 </script>
 
