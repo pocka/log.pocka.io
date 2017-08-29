@@ -19,6 +19,16 @@
           </p>
         </div>
         <div class="box">
+          <h2 class="title">誤表記や誤字脱字の修正依頼等について</h2>
+          <p>
+            誤字や脱字、内容の修正等の要望がある場合は、GitHubの
+            <a href="https://github.com/pocka/log.pocka.io/pulls">PullRequest</a>
+            又は
+            <a href="https://github.com/pocka/log.pocka.io/issues">Issue</a>
+            を使ってください。
+          </p>
+        </div>
+        <div class="box">
           <h2 class="title">方針</h2>
           <p>
             記事は大きく2つに大別し、それぞれ以下の運用方針をとる。
