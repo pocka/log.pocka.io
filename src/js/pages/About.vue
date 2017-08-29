@@ -11,7 +11,7 @@
     <section class="section">
       <div class="container">
         <div class="box">
-        <h2 class="title">目的</h2>
+          <h2 class="title">目的</h2>
           <p>
             このサイトは自分の得た知識や経験をアウトプットすることを目的とした"ログ"である。
             <br/>
