@@ -5,11 +5,19 @@
         <div class="container">
           <h1 class="title is-2">{{post.title}}</h1>
           <p class="subtitle is-4" v-if="!!post.subtitle">{{post.subtitle}}</p>
+          <div class="tags">
+            <router-link v-for="tag in post.tags" :key="tag" :to="`/tags/${tag}`" :title="`${tag}タグのついた記事を探す`" class="tag is-light">{{tag}}</router-link>
+          </div>
+          <p class="is-size-7 has-text-white-ter">
+            作成日: {{createdAt}}, 更新日: <time>{{updatedAt}}</time>
+          </p>
         </div>
       </div>
     </section>
     <section class="section">
-      <div class="container content" v-html="post.__content"></div>
+      <div class="box">
+        <div class="container content" v-html="post.__content"></div>
+      </div>
     </section>
   </div>
   <not-found v-else/>
@@ -26,11 +34,17 @@ export default {
     NotFound,
   },
   metaInfo() {
+    if (!this.post.__content) {
+      return {}
+    }
+
     return {
       title: this.post.title,
-      description: this.post.subtitle,
-      keywords: this.post.tags.join(','),
-      author: this.post.author,
+      meta: [
+        {name: 'description', content: this.post.subtitle},
+        {name: 'keywords', content: this.post.tags.join(',')},
+        {name: 'author', content: this.post.author},
+      ],
     }
   },
   data: () => ({
@@ -43,6 +57,26 @@ export default {
   },
   watch: {
     $route: 'fetchData',
+  },
+  computed:{
+    createdAt() {
+      const {createdAt} = this.post
+
+      if (!createdAt) {
+        return ''
+      }
+
+      return `${createdAt.getFullYear()}/${createdAt.getMonth() + 1}/${createdAt.getDate()}`
+    },
+    updatedAt() {
+      const {updatedAt} = this.post
+
+      if (!updatedAt) {
+        return ''
+      }
+
+      return `${updatedAt.getFullYear()}/${updatedAt.getMonth() + 1}/${updatedAt.getDate()}`
+    },
   },
   methods: {
     fetchData() {
@@ -78,6 +112,10 @@ export default {
     & code {
       background-color: #333;
       color: #fefefe;
+    }
+
+    .tags > .tag.is-light {
+      color: #0a0a0a;
     }
   }
 </style>
