@@ -27,6 +27,9 @@ export default {
   components: {
     PostList,
   },
+  metaInfo: {
+    title: 'Tags',
+  },
   computed: {
     posts() {
       const posts = this.$store.getters.posts

@@ -26,6 +26,9 @@ export default {
   components: {
     PostList,
   },
+  metaInfo: {
+    title: 'Posts',
+  },
   computed: mapGetters([
     'posts',
   ]),

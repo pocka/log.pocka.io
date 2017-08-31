@@ -23,6 +23,9 @@ export default {
   created() {
     this.$store.dispatch(LoadPosts)
   },
+  metaInfo: {
+    titleTemplate: '%s | log.pocka.io',
+  },
 }
 </script>
 

@@ -22,6 +22,9 @@ import {mapState} from 'vuex'
 export default {
     components: {
     },
+    metaInfo: {
+      title: 'Top',
+    },
     computed: mapState({
         articles: state => state.article.list,
     }),

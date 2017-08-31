@@ -25,6 +25,14 @@ export default {
   components: {
     NotFound,
   },
+  metaInfo() {
+    return {
+      title: this.post.title,
+      description: this.post.subtitle,
+      keywords: this.post.tags.join(','),
+      author: this.post.author,
+    }
+  },
   data: () => ({
     isLoading: false,
     post: {},
