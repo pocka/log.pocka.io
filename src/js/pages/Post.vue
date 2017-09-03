@@ -1,5 +1,8 @@
 <template>
-  <div class="post-container" v-if="!notFound">
+  <div class="spinner-container" v-if="isLoading">
+    <spinner/>
+  </div>
+  <div class="post-container" v-else-if="!notFound">
     <section class="hero is-dark">
       <div class="hero-body">
         <div class="container">
@@ -26,16 +29,20 @@
 <script>
 import {mapState} from 'vuex'
 import NotFound from './NotFound'
+import Spinner from '../components/Spinner'
 
 
 export default {
   props: ['name'],
   components: {
     NotFound,
+    Spinner,
   },
   metaInfo() {
     if (!this.post.__content) {
-      return {}
+      return {
+        title: 'loading...',
+      }
     }
 
     return {
@@ -94,7 +101,7 @@ export default {
         this.post = Object.assign({}, post, {
           updatedAt: new Date(post.updatedAt),
           createdAt: new Date(post.createdAt),
-        }),
+        })
         this.notFound = false
       }).catch(err => {
         this.notFound = true
@@ -119,7 +126,6 @@ export default {
     }
   }
 </style>
-
 
 <style lang="scss" scoped>
 </style>
