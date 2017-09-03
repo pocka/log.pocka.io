@@ -64,6 +64,7 @@ export default {
     margin: 0;
     z-index: 100;
     background-color: #fff;
+    border-bottom: 1px solid #ddd;
 
     &.is-transparent {
       background-color: rgba(255, 255, 255, 0.92);
