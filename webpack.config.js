@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   entry: './src/js/index.js',
   output: {
@@ -9,10 +11,14 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        options: {
+          postLoaders: {
+            js: 'babel-loader?presets=es2015',
+          }
+        },
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
         loader: 'babel-loader?presets=es2015',
       },
       {
@@ -21,6 +27,7 @@ module.exports = {
       },
     ]
   },
+  plugins: [],
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
@@ -35,5 +42,5 @@ module.exports = {
   performance: {
     hints: false,
   },
-  devtool: '#eval-source-map'
+  devtool: process.NODE_ENV === 'development' ? '#eval-source-map' : false,
 }
