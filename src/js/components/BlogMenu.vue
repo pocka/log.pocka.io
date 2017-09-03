@@ -1,40 +1,44 @@
 <template>
-  <nav :class="['navbar', 'level', {'is-transparent': !showMobileMenu}]">
-    <div class="level-item has-text-centered is-hidden-mobile">
-      <router-link class="navbar-item" to="/">Home</router-link>
-    </div>
-    <div class="level-item has-text-centered is-hidden-mobile">
-      <router-link class="navbar-item" to="/posts">Posts</router-link>
-    </div>
-    <div class="level-item has-text-centered is-hidden-mobile">
-      <router-link class="navbar-item brand" to="/">log.pocka.io</router-link>
-    </div>
-    <div class="level-item has-text-centered is-hidden-mobile">
-      <router-link class="navbar-item" to="/about">About</router-link>
-    </div>
-    <div class="level-item has-text-centered is-hidden-mobile">
-      <router-link class="navbar-item" to="/contact">Contact</router-link>
-    </div>
-    <div class="navbar-brand is-hidden-tablet">
-      <router-link class="navbar-item brand" to="/">log.pocka.io</router-link>
-      <div class="navbar-burger" @click="toggleMobileMenu">
-        <span></span>
-        <span></span>
-        <span></span>
+  <nav :class="['navbar', {'is-transparent': !showMobileMenu}]">
+    <div class="container level is-hidden-mobile">
+      <div class="level-item has-text-centered">
+        <router-link class="navbar-item" to="/">Home</router-link>
+      </div>
+      <div class="level-item has-text-centered">
+        <router-link class="navbar-item" to="/posts">Posts</router-link>
+      </div>
+      <div class="level-item has-text-centered">
+        <router-link class="navbar-item brand" to="/">log.pocka.io</router-link>
+      </div>
+      <div class="level-item has-text-centered">
+        <router-link class="navbar-item" to="/about">About</router-link>
+      </div>
+      <div class="level-item has-text-centered">
+        <router-link class="navbar-item" to="/contact">Contact</router-link>
       </div>
     </div>
-    <div :class="['navbar-menu', 'is-hidden-tablet', {'is-active': showMobileMenu}]">
-      <div class="navbar-item">
-        <router-link class="navbar-item" to="/" @click.native="toggleMobileMenu">Home</router-link>
+    <div class="is-hidden-tablet">
+      <div class="navbar-brand">
+        <router-link class="navbar-item brand" to="/">log.pocka.io</router-link>
+        <div class="navbar-burger" @click="toggleMobileMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-      <div class="navbar-item">
-        <router-link class="navbar-item" to="/posts" @click.native="toggleMobileMenu">Posts</router-link>
-      </div>
-      <div class="navbar-item">
-        <router-link class="navbar-item" to="/about" @click.native="toggleMobileMenu">About</router-link>
-      </div>
-      <div class="navbar-item">
-        <router-link class="navbar-item" to="/contact" @click.native="toggleMobileMenu">Contact</router-link>
+      <div :class="['navbar-menu', {'is-active': showMobileMenu}]">
+        <div class="navbar-item">
+          <router-link class="navbar-item" to="/" @click.native="toggleMobileMenu">Home</router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link class="navbar-item" to="/posts" @click.native="toggleMobileMenu">Posts</router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link class="navbar-item" to="/about" @click.native="toggleMobileMenu">About</router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link class="navbar-item" to="/contact" @click.native="toggleMobileMenu">Contact</router-link>
+        </div>
       </div>
     </div>
   </nav>
@@ -54,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  nav.level {
+  .navbar {
     position: sticky;
     top: 0;
     margin: 0;
@@ -63,6 +67,11 @@ export default {
 
     &.is-transparent {
       background-color: rgba(255, 255, 255, 0.92);
+    }
+
+    & > .container {
+      display: flex;
+      margin-bottom: 0;
     }
   }
 
