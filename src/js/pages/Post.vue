@@ -18,8 +18,8 @@
       </div>
     </section>
     <section class="section">
-      <div class="box">
-        <div class="container content" v-html="post.__content"></div>
+      <div class="container box">
+        <div class="content" v-html="post.__content"></div>
       </div>
     </section>
   </div>
