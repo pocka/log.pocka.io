@@ -8,6 +8,10 @@ const getMeta = require('./get-meta')
 
 const {stdin, stdout} = process
 
+// Modify markup building process
+let mdRenderer = new marked.Renderer()
+mdRenderer.heading = (text, level) => `<h${level + 1}>${text}</h${level + 1}>`
+
 // Markdown parsing configuration
 const mdOpts = {
   gfm: true,
@@ -16,6 +20,7 @@ const mdOpts = {
   highlight(code, lang) {
     return lang ? highlight(lang, code).value : highlightAuto(code).value
   },
+  renderer: mdRenderer,
 }
 
 const rl = readline.createInterface({
