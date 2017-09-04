@@ -1,5 +1,5 @@
 # Force HTTPS
-http://log.pocka.io/*   https://log.pocka.io/:splats 301!
+http://log.pocka.io/*   https://log.pocka.io/:splat 301!
 
 # Rewrite Rule for SPA
 /*      /index.html     200
