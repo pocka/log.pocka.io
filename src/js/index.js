@@ -17,6 +17,13 @@ const router = new VueRouter({
   mode: 'history',
 })
 
+router.afterEach((to, from) => {
+  const {ga} = window
+
+  ga('set', 'page', to.path)
+  ga('send', 'pageview')
+})
+
 new Vue({
   el: '#app',
   store,
