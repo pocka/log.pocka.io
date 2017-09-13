@@ -104,7 +104,7 @@ Vueは2.xを使い、[Single File Component](https://jp.vuejs.org/v2/guide/singl
 
 + SPAを構築するだけのフロントエンドの知識が必要
 + 記事の更新にgitやmarkdownの知識が必要(Netlify CMSで解決可能)
-+ 読み込むJSが大きくなりがち(このサイトの場合`296KB(gzip 90KB)`)
++ 読み込むJSが少し大きくなりがち(このサイトの場合`150KB(gzip 50KB)`)
 + JSが大きくなることによって初回ロードに少し時間がかかるようになる
 + コマンドポチポチで完成しない
 
