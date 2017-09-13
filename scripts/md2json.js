@@ -11,6 +11,9 @@ const {stdin, stdout} = process
 // Modify markup building process
 let mdRenderer = new marked.Renderer()
 mdRenderer.heading = (text, level) => `<h${level + 1}>${text}</h${level + 1}>`
+mdRenderer.link = (href, title, text) => href.match(/^(https?:\/\/|\/\/)/)
+  ? `<a href="${href}" title="${title || ''}" target="_blank">${text}</a>`
+  : `<a href="${href}" title="${title || ''}" data-vue-router-link>${text}</a>`
 
 // Markdown parsing configuration
 const mdOpts = {

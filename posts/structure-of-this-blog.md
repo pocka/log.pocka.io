@@ -3,7 +3,7 @@ name: structure-of-this-blog
 title: Vue.jsで作るSPAブログ
 description: Vue+Vuex+Vue-Routerを用いたブログの構築
 createdAt: 2017/09/06
-updatedAt: 2017/09/06
+updatedAt: 2017/09/13
 tags:
 - article
 - javascript
