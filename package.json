@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/pocka/log.pocka.io#readme",
   "dependencies": {
-    "buefy": "^0.5.1",
     "vue": "^2.4.1",
     "vue-meta": "^1.1.0",
     "vue-router": "^2.7.0",
