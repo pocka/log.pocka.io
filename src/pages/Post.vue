@@ -14,6 +14,9 @@
           <p class="is-size-7 has-text-white-ter">
             作成日: {{createdAt}}, 更新日: <time>{{updatedAt}}</time>
           </p>
+          <p class="is-size-7 has-text-white-ter">
+            <a :href="historyUri" target="_blank">更新履歴</a>
+          </p>
         </div>
       </div>
     </section>
@@ -97,6 +100,15 @@ export default {
 
       return `${updatedAt.getFullYear()}/${updatedAt.getMonth() + 1}/${updatedAt.getDate()}`
     },
+    historyUri() {
+      const {name} = this.post
+
+      if (!name) {
+        return ''
+      }
+
+      return `https://github.com/pocka/log.pocka.io/commits/master/posts/${name}.md`
+    }
   },
   methods: {
     fetchData() {
@@ -141,4 +153,11 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+.hero-body {
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
 </style>
