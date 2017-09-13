@@ -19,7 +19,7 @@
     </section>
     <section class="section">
       <div class="container box">
-        <div class="content" v-html="post.__content"></div>
+        <div class="content" v-html="post.__content" v-fetch></div>
       </div>
     </section>
   </div>
@@ -27,9 +27,22 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import {mapState} from 'vuex'
 import NotFound from './NotFound'
 import Spinner from '../components/Spinner'
+
+Vue.directive('fetch', {
+  componentUpdated(el, binding, vnode) {
+    [...el.querySelectorAll('[data-vue-router-link]')].forEach(link => {
+      link.addEventListener('click', ev => {
+        ev.preventDefault()
+
+        vnode.context.$router.push(ev.target.getAttribute('href'))
+      })
+    })
+  }
+})
 
 
 export default {
