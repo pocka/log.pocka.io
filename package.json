@@ -13,7 +13,7 @@
     "build:posts": "npm run create:directories && npm run compile:markdown && npm run build:list",
     "build:list": "find posts -name \"*.md\" -type f|node scripts/make-posts-list.js > public/posts.json",
     "build": "npm run build:posts && npm run build:app",
-    "watch": "npm run compile:pug && webpack-dev-server --hot --host 0.0.0.0"
+    "dev": "npm run compile:pug && webpack-dev-server --hot --host 0.0.0.0"
   },
   "repository": {
     "type": "git",
