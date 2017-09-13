@@ -3,3 +3,4 @@ node_modules
 public/*
 !public/_redirects
 !public/images
+!public/index.html
