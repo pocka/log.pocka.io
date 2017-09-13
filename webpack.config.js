@@ -13,7 +13,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           postLoaders: {
-            js: 'babel-loader?presets=es2015',
+            js: 'babel-loader?presets=es2015', // If omit this, UglifyJS in production build would fail.
           }
         },
       },
