@@ -26,7 +26,9 @@
       </div>
     </section>
   </div>
-  <not-found v-else/>
+  <div v-else>
+    Detail: {{notFound}}
+  </div>
 </template>
 
 <script>
@@ -129,7 +131,7 @@ export default {
         })
         this.notFound = false
       }).catch(err => {
-        this.notFound = true
+        this.notFound = err.message
       })
     }
   }
