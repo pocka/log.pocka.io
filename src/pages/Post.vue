@@ -116,6 +116,10 @@ export default {
     fetchData() {
       this.isLoading = true
 
+      this.isLoading = false
+      this.notFound = 'test'
+      return
+
       fetch(`/posts/${this.name}.json`).then(res => {
         this.isLoading = false
 
