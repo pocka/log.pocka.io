@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta'
-import Raven from 'raven'
+import Raven from 'raven-js'
 
 import App from './components/App'
 import store from './store'
