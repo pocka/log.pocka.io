@@ -129,7 +129,7 @@ export default {
         })
         this.notFound = false
       }).catch(err => {
-        this.notFound = true
+        this.notFound = err.message
       })
     }
   }
