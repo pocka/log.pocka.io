@@ -116,12 +116,14 @@ export default {
     fetchData() {
       this.isLoading = true
 
+      this.isLoading = false
+      this.notFound = 'Error'
+
       fetch(`/posts/${this.name}.json`).then(res => {
         this.isLoading = false
 
         if (res.status !== 200) {
-          throw new Error(`Status code error: ${res.status}`)
-          //return Promise.reject(`Status code error: ${res}`)
+          return Promise.reject(`Status code error: ${res}`)
         }
 
         return res.json()
