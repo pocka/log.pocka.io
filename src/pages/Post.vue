@@ -131,7 +131,7 @@ export default {
         })
         this.notFound = false
       }).catch(err => {
-        this.notFound = err.stack
+        this.notFound = err.message
       })
     }
   }
