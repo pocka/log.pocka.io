@@ -26,7 +26,9 @@
       </div>
     </section>
   </div>
-  <not-found v-else/>
+  <div v-else>
+    {{notFound}}
+  </div>
 </template>
 
 <script>
@@ -118,7 +120,8 @@ export default {
         this.isLoading = false
 
         if (res.status !== 200) {
-          return Promise.reject(`Status code error: ${res}`)
+          throw new Error(`Status code error: ${res.status}`)
+          //return Promise.reject(`Status code error: ${res}`)
         }
 
         return res.json()
@@ -129,7 +132,7 @@ export default {
         })
         this.notFound = false
       }).catch(err => {
-        this.notFound = true
+        this.notFound = err.message
       })
     }
   }
