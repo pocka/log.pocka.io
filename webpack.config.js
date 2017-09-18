@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['whatwg-fetch', './src/index.js'],
   output: {
     filename: 'bundle.js',
     path: `${__dirname}/public`,
