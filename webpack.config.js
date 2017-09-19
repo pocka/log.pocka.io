@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const BabelWebpackPlugin = require('babel-webpack-plugin')
 
 module.exports = {
   entry: ['whatwg-fetch', './src/index.js'],
@@ -27,7 +28,14 @@ module.exports = {
       },
     ]
   },
-  plugins: [],
+  plugins: process.env.NODE_ENV === 'production'
+    ? [new BabelWebpackPlugin({
+      test: /\.js$/,
+      presets: ['es2015'],
+      sourceMaps: false,
+      compact: false,
+    })]
+    : [],
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
