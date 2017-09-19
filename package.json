@@ -29,8 +29,7 @@
     "vue": "^2.4.1",
     "vue-meta": "^1.1.0",
     "vue-router": "^2.7.0",
-    "vuex": "^2.3.1",
-    "whatwg-fetch": "^2.0.3"
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
