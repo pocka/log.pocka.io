@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CMS: log.pocka.io</title>
+        <link rel="stylesheet" href="https://unpkg.com/netlify-cms@~0.4/dist/cms.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    </head>
+    <body>
+        <script src="https://unpkg.com/netlify-cms@~0.4/dist/cms.js"></script>
+        <script>
+            marked.setOptions({
+                gfm: true,
+                tables: true,
+                breaks: true,
+                highlight(code, lang) {
+                    return lang ? hljs.highlight(lang, code).value : hljs.highlightAuto(code).value
+                },
+            })
+
+            CMS.registerPreviewStyle("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css")
+            CMS.registerPreviewStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css")
+            CMS.registerPreviewStyle("style.css")
+
+            const PostPreview = createClass({
+                render: function () {
+                    const contentStyle = {
+                        padding: '1em',
+                    }
+
+                    const body = this.props.entry.getIn(['data', 'body'])
+                    const title = this.props.entry.getIn(['data', 'title'])
+                    const tags = this.props.entry.getIn(['data', 'tags'])
+                    const createdAt = this.props.entry.getIn(['data', 'createdAt'])
+                    const updatedAt = this.props.entry.getIn(['data', 'updatedAt'])
+
+                    return h('div', {}, [
+                        h('section', {className: 'hero is-dark'}, [
+                            h('div', {className: 'hero-body'}, [
+                                h('div', {className: 'container'}, [
+                                    h('h1', {className: 'title is-2'}, title),
+                                    h('div', {className: 'tags'}, tags.map(tag => h('span', {className: 'tag is-light'}, tag))),
+                                    h('p', {className: 'is-size-7 has-text-white-ter'}, `作成日: ${createdAt}, 更新日: ${updatedAt}`),
+                                ]),
+                            ]),
+                        ]),
+                        h('section', {className: 'section'}, [
+                            h('div', {className: 'container box'}, [
+                                h('div', {style: contentStyle, className: 'content', dangerouslySetInnerHTML: {__html: marked(body || '')}})
+                            ]),
+                        ]),
+                    ])
+                }
+            })
+
+            CMS.registerPreviewTemplate('blog', PostPreview)
+        </script>
+    </body>
+</html>
