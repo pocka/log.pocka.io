@@ -48,7 +48,7 @@
                         ]),
                         h('section', {className: 'section'}, [
                             h('div', {className: 'container box'}, [
-                                h('div', {style: contentStyle, className: 'content', dangerouslySetInnerHTML: {__html: marked(body || '')}})
+                                h('div', {style: contentStyle, className: 'content', dangerouslySetInnerHTML: {__html: marked(body || '<noscript></noscript>')}})
                             ]),
                         ]),
                     ])
