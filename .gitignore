@@ -1,6 +1,5 @@
 node_modules
 
-public/*
-!public/_redirects
-!public/images
-!public/index.html
+public/posts
+public/posts.json
+public/bundle.js
