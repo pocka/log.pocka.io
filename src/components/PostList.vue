@@ -1,5 +1,5 @@
 <template>
-  <div class="columns">
+  <div class="columns is-multiline">
     <div v-for="post in posts" :key="post.title" class="column is-4">
       <div class="card">
         <div class="card-content">
