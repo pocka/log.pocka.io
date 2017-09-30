@@ -13,7 +13,7 @@ collections:
   label: Blog
   folder: posts
   create: ture
-  slug: "{{name}}.md"
+  slug: "{{name}}"
   fields:
   - label: Name
     name: name
