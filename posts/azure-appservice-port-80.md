@@ -39,3 +39,7 @@ app.get('/', (req, res) => {
 
 app.listen(process.env.PORT || 80)
 ```
+
+# 参考リンク
+
+<https://stackoverflow.com/questions/45921289/node-js-azure-web-app-windows-500-1001-error#answer-45928929>
