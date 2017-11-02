@@ -21,6 +21,7 @@ const Photo = mongoose.Model('Photo', {
   owner: ObjectId,
   // 写真のメタ情報
   metadata: Object
+})
 ```
 
 スキーマがきっちり決まっていない外部のJSON(Object)をそのままDBに突っ込むということをしていた。
@@ -65,4 +66,5 @@ return Promise.all(photos.map(photo => {
 
 <https://stackoverflow.com/a/39823651>
 <https://qiita.com/Eiryyy/items/2b287023256e67172203>
+
 
