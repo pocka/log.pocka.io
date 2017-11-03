@@ -9,7 +9,7 @@ tags:
   - javascript
 ---
 <div class="notification is-info"><strong>2017/11/03追記</strong>
-[ECMAScript Proposal Stage-3にBigIntが入っており](https://github.com/tc39/proposal-bigint)、これが使用可能になればネイティブで64bit数値でのビット演算ができるようになる。そうなった場合はここに書かれている事象は発生しないし、ここに書かれていることを行う必要もなくなる。
+[ECMAScript Proposal Stage-3にBigIntが入っており](https://github.com/tc39/proposal-bigint)、これが使用可能になればネイティブで64bit数値でのビット演算ができるようになる。それを使えばここに書かれている事象は発生しないし、ここに書かれていることを行う必要もなくなる。
 </div>
 
 # 概要
@@ -83,5 +83,6 @@ Prototype拡張してるし、かなりの力技だけど、動けばそれで�
 * [Young risk taker.: \[Javascript\] 64bit Number型を上位32bitと下位32bitに分割:](http://rakuto.blogspot.jp/2007/11/javascript-64bit-nuber32bit32bit.html)
 * [JavaScript のビット演算子に unsigned を期待してはいけない : document:](http://imaya.blog.jp/archives/5156823.html)
 * [64bit - bitwise AND in Javascript with a 64 bit integer - Stack Overflow:](http://stackoverflow.com/questions/2983206/bitwise-and-in-javascript-with-a-64-bit-integer)
+
 
 
