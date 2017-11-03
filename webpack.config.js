@@ -35,11 +35,7 @@ module.exports = {
           loader: 'babel-loader',
           options: babelOptions
         }
-      },
-      {
-        test: /\.(css|sass|scss)$/,
-        loader: 'sass-loader',
-      },
+      }
     ]
   },
   plugins: [],
