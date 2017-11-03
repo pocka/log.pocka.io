@@ -1,7 +1,10 @@
 const webpack = require('webpack')
 
 const babelOptions = {
-  presets: [['es2015', {
+  presets: [['env', {
+    targets: {
+      browsers: 'last 2 versions'
+    },
     modules: false
   }]]
 }
