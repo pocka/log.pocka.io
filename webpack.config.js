@@ -1,5 +1,11 @@
 const webpack = require('webpack')
 
+const babelOptions = {
+  presets: [['es2015', {
+    modules: false
+  }]]
+}
+
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
@@ -12,14 +18,20 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          postLoaders: {
-            js: 'babel-loader?presets=es2015', // If omit this, UglifyJS in production build would fail.
+          loaders: {
+            js: {
+              loader: 'babel-loader',
+              options: babelOptions
+            }
           }
         },
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader?presets=es2015',
+        use: {
+          loader: 'babel-loader',
+          options: babelOptions
+        }
       },
       {
         test: /\.(css|sass|scss)$/,
