@@ -2,7 +2,7 @@
 name: js-bitwise-64bit
 title: Javascriptでの64bit演算
 description: かなり時間を食われてしまったので備忘録として残す
-createdAt: 08/17/2016
+createdAt: 2014-08-01T00:00:00+09:00
 updatedAt: 2017-11-03T11:44:28.236Z
 tags:
   - blog
@@ -83,6 +83,7 @@ Prototype拡張してるし、かなりの力技だけど、動けばそれで�
 * [Young risk taker.: \[Javascript\] 64bit Number型を上位32bitと下位32bitに分割:](http://rakuto.blogspot.jp/2007/11/javascript-64bit-nuber32bit32bit.html)
 * [JavaScript のビット演算子に unsigned を期待してはいけない : document:](http://imaya.blog.jp/archives/5156823.html)
 * [64bit - bitwise AND in Javascript with a 64 bit integer - Stack Overflow:](http://stackoverflow.com/questions/2983206/bitwise-and-in-javascript-with-a-64-bit-integer)
+
 
 
 
