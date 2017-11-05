@@ -22,6 +22,14 @@
     </section>
     <section class="section">
       <div class="container box">
+        <div v-if="isTooOldPost" class="notification is-warning">
+          <strong>この記事は3年以上更新されていません</strong><br>
+          内容が古くなっており、現在と状況が変わっている可能性が高い為注意してください
+        </div>
+        <div v-else-if="isOldPost" class="notification is-info">
+          <strong>この記事は1年以上更新されていません</strong><br>
+          内容が古くなっている可能性があるため注意してください
+        </div>
         <div class="content" v-html="post.__content" v-fetch></div>
       </div>
     </section>
@@ -47,6 +55,7 @@ Vue.directive('fetch', {
   }
 })
 
+const isNYearsAgo = n => date => Math.floor((new Date() - date) / (1000 * 60 * 60 * 24 * 365)) >= n
 
 export default {
   props: ['name'],
@@ -108,6 +117,33 @@ export default {
       }
 
       return `https://github.com/pocka/log.pocka.io/commits/master/posts/${name}.md`
+    },
+    isArticle() {
+      const {tags} = this.post
+
+      if (!tags) {
+        return false
+      }
+
+      return tags[0] === 'article'
+    },
+    isOldPost() {
+      const {updatedAt} = this.post
+
+      if (this.isArticle || !updatedAt) {
+        return false
+      }
+
+      return isNYearsAgo(1)(updatedAt)
+    },
+    isTooOldPost() {
+      const {updatedAt} = this.post
+
+      if (this.isArticle || !updatedAt) {
+        return false
+      }
+
+      return isNYearsAgo(3)(updatedAt)
     }
   },
   methods: {
