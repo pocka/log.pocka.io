@@ -140,10 +140,24 @@ export default {
   .post-container {
     & pre {
       background-color: #333;
+      code {
+        margin: 0;
+        padding: 0.25rem 0.5rem;
+      }
     }
     & code {
       background-color: #333;
       color: #fefefe;
+      border-radius: 3px;
+      margin: 0 0.1em;
+    }
+
+    & img {
+      $shadow-color: #aaa;
+      $shadow-blur: 5px;
+
+      margin: 1em 0;
+      box-shadow: 1px 0px $shadow-blur $shadow-color, -1px 0px $shadow-blur $shadow-color;
     }
 
     .tags > .tag.is-light {
