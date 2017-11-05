@@ -29,7 +29,17 @@ export default {
 }
 </script>
 
+<style lang="scss">
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", "Mplus 1c";
+}
+</style>
+
 <style lang="scss" scoped>
+#app {
+  font-family: "Saira Semi Condensed", "Mplus 1c";
+}
+
 p {
   font-weight: bold;
   font-size: 2em;
