@@ -33,9 +33,7 @@ Oculusの用意したデバッグツールを使用してスーパーサンプ�
 
 1. `<Oculusインストールフォルダ>/Support/oculus-diagnostics/OculusDebugTool.exe`を起動する
    普通にインストールした場合は以下のパスにあるはず
-  ```sh
-  C:/Program Files/Oculus/Support/oculus-diagnostics/OculusDebugTool.exe
-  ```
+  `C:/Program Files/Oculus/Support/oculus-diagnostics/OculusDebugTool.exe`
 
 1. 一番上の`Service`内にある`Pixels Per Display Pixel Override`に`1.0`から`2.0`までの数値を入力する
 1. Oculus Debug Toolを閉じずにVRアプリケーションを起動する
@@ -45,3 +43,4 @@ Oculusの用意したデバッグツールを使用してスーパーサンプ�
 # Oculus TrayToolを使う方法
 
 このあと書く予定...
+
