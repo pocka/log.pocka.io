@@ -45,7 +45,27 @@ Oculusの用意したデバッグツールを使用してスーパーサンプ�
 
 # Oculus TrayToolを使う方法
 
-このあと書く予定...
+こちらは有志の作成したOculus TrayToolを使う方法。
+Oculus TrayToolはタスクトレイに常駐してOculus Riftを使う際に便利な機能を提供してくれるユーティリティソフトウェア。スーパーサンプリングはその中の機能のひとつで、他にもASWの設定(Oculus DebugToolでもできる)やオーディオデバイスの切り替え機能などもある。
+
+1. [公式フォーラムにスレッドが立っており、](https://forums.oculus.com/community/discussion/47247/oculus-traytool-supersampling-profiles-hmd-disconnect-fixes-hopefully)そこにリンク(Dropbox)が貼ってあるのでインストーラをダウンロードする
+1. ダウンロードしたインストーラを起動し、Oculus TrayToolをインストールする
+1. インストール後、Oculus TrayToolを起動して`Game Settings`にある`Super Sampling`から設定値を選ぶ
+   ![Oculus TrayTool](/images/oculus-traytool.png)
+1. Oculus TrayToolは最小化させて常駐させておくと便利
+
+設定値についてはおそらくDebugToolと同じで、`1.0`が等倍で`2.0`が2x2の4倍になると思われる。
+また、TrayToolはOculusHomeに登録されたゲームであれば、ゲーム毎のプリセットを設定することが可能。
+
+1. `Game Settings`の`Profile`にある`View/Add Profiles`ボタンをクリック
+1. OculusHomeのライブラリに登録されているゲーム一覧が出てくるので、設定したいゲームの行の`Super Sampling`列をクリックして設定値を選択
 
 
+ちなみにプロファイル設定でのスーパーサンプリング設定だと何故か2.5まで選べる。
 
+# どっちを使えばいい？
+
+個人的にはOculus TrayToolをオススメする。
+というのも、Oculus Debug Toolは特に公式にやり方が書いてある方法でもなく、かつ"デバッグツール"をゲーム目的で使うのはどうかと思うためである。
+
+サードパーティのよくわからないソフトウェアが嫌だ！というならばOculus Debug Toolでもいいが、使い勝手やweb上の情報量を考えるとOculus TrayToolを使うのが安全かな、と思う。
