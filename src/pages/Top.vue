@@ -1,6 +1,23 @@
+<script>
+import {mapState} from 'vuex'
+
+import PostList from '../components/PostList'
+
+export default {
+  components: {PostList},
+  metaInfo: {
+    title: 'Top',
+  },
+  computed: mapState({
+    recentCreatedPosts: state => [...state.post.list].sort((a, b) => a.createdAt < b.createdAt).slice(0, 3),
+    recentUpdatedPosts: state => [...state.post.list].sort((a, b) => a.updatedAt < b.updatedAt).slice(0, 3),
+  })
+}
+</script>
+
 <template>
   <div>
-    <section class="hero is-dark is-large">
+    <section class="hero is-dark">
       <div class="hero-body">
         <div class="container">
           <h1 class="title is-1">log.pocka.io</h1>
@@ -10,26 +27,15 @@
     </section>
     <section class="section">
       <div class="container">
+        <h2 class="title is-4">最近作成された記事</h2>
+        <PostList :posts="recentCreatedPosts"/>
+        <hr/>
+        <h2 class="title is-4">最近更新された記事</h2>
+        <PostList :posts="recentUpdatedPosts"/>
       </div>
     </section>
   </div>
 </template>
-
-<script>
-import {mapState} from 'vuex'
-
-
-export default {
-    components: {
-    },
-    metaInfo: {
-      title: 'Top',
-    },
-    computed: mapState({
-        articles: state => state.article.list,
-    }),
-}
-</script>
 
 <style lang="scss" scoped>
 </style>
