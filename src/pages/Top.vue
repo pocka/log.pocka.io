@@ -9,8 +9,8 @@ export default {
     title: 'Top',
   },
   computed: mapState({
-    recentCreatedPosts: state => state.post.list.sort((a, b) => a.createdAt > b.createdAt).slice(0, 3),
-    recentUpdatedPosts: state => state.post.list.sort((a, b) => a.updatedAt > b.updatedAt).slice(0, 3),
+    recentCreatedPosts: state => [...state.post.list].sort((a, b) => a.createdAt < b.createdAt).slice(0, 3),
+    recentUpdatedPosts: state => [...state.post.list].sort((a, b) => a.updatedAt < b.updatedAt).slice(0, 3),
   })
 }
 </script>
