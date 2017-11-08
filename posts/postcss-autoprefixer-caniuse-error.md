@@ -78,13 +78,13 @@ caniuse-dbのGitHubリポジトリは[ここ](https://github.com/Fyrd/caniuse)�
 
 # 対処
 
-`node_modules`ディレクトリを消して`npm install`を行う。もしも新しいnpmを使っていて`package.lock.json`がある場合はそこにエラーバージョンが固定されてしまっているので、caniuseに依存しているモジュール(autoprefixer、もしくはそれに依存しているモジュール)を再インストールする。
+`node_modules`ディレクトリを消して`npm install`を行う。もしも新しいnpmを使っていて`package-lock.json`がある場合はそこにエラーバージョンが固定されてしまっているので、caniuseに依存しているモジュール(autoprefixer、もしくはそれに依存しているモジュール)を再インストールする。
 今回の場合は`css-loader -> cssnano -> autoprefixer -> caniuse-db`というように依存していたので以下のコマンドで解決した。
 ```shell
 npm uninstall --save-dev css-loader && npm install --save-dev css-loader
 ```
 
-`package.lock.json`消して再インストールでもいいけど、なんかね...
+`package-lock.json`消して再インストールでもいいけど、なんかね...
 
 # ちなみに...
 
@@ -94,3 +94,4 @@ npm uninstall --save-dev css-loader && npm install --save-dev css-loader
 
 - HTMLが入っている`data.json`
   <https://github.com/Fyrd/caniuse/blob/2155ae55c247357dc46d289054a773f3fcc51757/data.json>
+
