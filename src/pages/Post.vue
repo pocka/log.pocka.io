@@ -199,6 +199,24 @@ export default {
     .tags > .tag.is-light {
       color: #0a0a0a;
     }
+
+    .youtube {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+
+      background-color: #ccc;
+      border-radius: 5px;
+
+      & > iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 </style>
 
@@ -208,6 +226,12 @@ export default {
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 0;
   }
 }
 </style>
