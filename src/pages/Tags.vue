@@ -32,9 +32,7 @@ export default {
   },
   computed: {
     posts() {
-      const posts = this.$store.getters.posts
-
-      return posts.filter(post => post.tags.indexOf(this.tag) > -1)
+      return this.$store.getters.getPostsByTag(this.tag)
     },
   },
 }
