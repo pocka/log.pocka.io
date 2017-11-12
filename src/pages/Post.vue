@@ -228,4 +228,10 @@ export default {
     }
   }
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 0;
+  }
+}
 </style>
