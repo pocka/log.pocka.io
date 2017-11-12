@@ -31,13 +31,13 @@ export default {
 
 <style lang="scss">
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", "Mplus 1c", sans-serif;
+  font-family: "Raleway", "Mplus 1p", sans-serif;
 }
 </style>
 
 <style lang="scss" scoped>
 #app {
-  font-family: "Saira Semi Condensed", "Mplus 1c", sans-serif;
+  font-family: "Saira Semi Condensed", "Mplus 1p", sans-serif;
 }
 
 p {
