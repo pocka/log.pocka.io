@@ -28,4 +28,8 @@ new Vue({
   router,
   components: {App},
   template: '<App/>',
+  mounted () {
+    window.document.querySelector('#initial_view').classList.add('hidden')
+  }
 })
+
