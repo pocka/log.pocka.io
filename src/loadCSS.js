@@ -21,11 +21,11 @@ const loadCSS = hrefs => {
     })
   })
 
-  window.setTimeout(() => {
+  requestAnimationFrame(() => {
     elements.forEach(el => {
       insertTarget.insertBefore(el, insertBase)
     })
-  }, 0)
+  })
 
   return Promise.all(promises)
 }
