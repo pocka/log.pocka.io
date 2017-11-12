@@ -21,9 +21,11 @@ const loadCSS = hrefs => {
     })
   })
 
-  elements.forEach(el => {
-    insertTarget.insertBefore(el, insertBase)
-  })
+  window.setTimeout(() => {
+    elements.forEach(el => {
+      insertTarget.insertBefore(el, insertBase)
+    })
+  }, 0)
 
   return Promise.all(promises)
 }
