@@ -18,7 +18,7 @@ export default {
     getters: {
       posts: state => [...state.list].sort((a, b) => (state.desc ? -1 : 1) * (a[state.sort] > b[state.sort] ? 1 : -1)),
       getSortedPosts: state => (attr, desc = true) => [...state.list].sort((a, b) => (desc ? -1 : 1) * (a[attr] > b[attr] ? 1 : -1)),
-      getPostsByTag: (state, getters) => tag => getters.posts.filter(post => !!post.tags.find(tag)),
+      getPostsByTag: (state, getters) => tag => getters.posts.filter(post => !!post.tags.find(t => t === tag)),
     },
     actions: {
       [LoadPosts]({commit}) {
