@@ -6,6 +6,7 @@ import App from './components/App'
 import store from './store'
 import routes from './routes'
 
+import loadCSS from './loadCSS'
 
 Vue.use(VueRouter)
 Vue.use(VueMeta)
@@ -28,4 +29,11 @@ new Vue({
   router,
   components: {App},
   template: '<App/>',
+  mounted () {
+    window.document.querySelector('#initial_view').classList.add('app-loaded')
+  }
+})
+
+loadCSS().then(() => {
+  window.document.querySelector('#initial_view').classList.add('css-loaded')
 })
