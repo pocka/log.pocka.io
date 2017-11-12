@@ -1,5 +1,5 @@
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapGetters} from 'vuex'
 
 import PostList from '../components/PostList'
 
@@ -8,10 +8,14 @@ export default {
   metaInfo: {
     title: 'Top',
   },
-  computed: mapState({
-    recentCreatedPosts: state => [...state.post.list].sort((a, b) => a.createdAt < b.createdAt).slice(0, 3),
-    recentUpdatedPosts: state => [...state.post.list].sort((a, b) => a.updatedAt < b.updatedAt).slice(0, 3),
-  })
+  computed: {
+    recentCreatedPosts () {
+      return this.$store.getters.getSortedPosts('createdAt').slice(0, 3)
+    },
+    recentUpdatedPosts () {
+      return this.$store.getters.getSortedPosts('updatedAt').slice(0, 3)
+    }
+  }
 }
 </script>
 
