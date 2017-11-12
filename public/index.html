@@ -23,7 +23,9 @@
         ga('send', 'pageview');
     </script>
     <style>
-        .initial-loader,.initial-loader:before,.initial-loader:after {
+        .initial-loader,
+        .initial-loader:before,
+        .initial-loader:after {
             border-radius: 50%;
         }
 
@@ -48,7 +50,8 @@
             transform: translate(-50%, -50%);
         }
 
-        .initial-loader:before,.initial-loader:after {
+        .initial-loader:before,
+        .initial-loader:after {
             position: absolute;
             content: '';
         }
@@ -110,19 +113,22 @@
             background-color: #fff;
             transition: opacity 0.3s;
         }
+
         #initial_view.hidden {
             opacity: 0;
         }
     </style>
-    </head>
-    <body>
-        <div id="initial_view">
-            <div class="initial-loader-wrapper">
-                <div class="initial-loader"></div>
-            </div>
+</head>
+
+<body>
+    <div id="initial_view">
+        <div class="initial-loader-wrapper">
+            <div class="initial-loader"></div>
         </div>
-        <div id="app"></div>
-        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-        <script src="/bundle.js"></script>
-    </body>
+    </div>
+    <div id="app"></div>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="/bundle.js"></script>
+</body>
+
 </html>
