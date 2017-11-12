@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>log.pocka.io</title>
     <link rel="me" href="https://github.com/pocka" type="text/html">
     <link rel="me" href="https://twitter.com/pockaquel" type="text/html">
     <style>
@@ -105,6 +104,7 @@
             opacity: 0;
         }
     </style>
+    <title>log.pocka.io</title>
 </head>
 
 <body>
@@ -114,14 +114,14 @@
         </div>
     </div>
     <div id="app"></div>
-    <script id="load_css">
-        const me = document.querySelector('#load_css')
+    <script>
+        const title = document.querySelector('head > title')
 
         const load = function (href) {
             const l = document.createElement('link')
             l.rel = 'stylesheet'
             l.href = href
-            document.querySelector('head').insertBefore(l, me)
+            document.querySelector('head').insertBefore(l, title)
         }
 
         requestAnimationFrame(function () {
