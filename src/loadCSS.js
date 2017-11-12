@@ -2,9 +2,11 @@
  * Load CSSs
  * @returns {Promise<>}
  */
-const loadCSS = hrefs => {
+const loadCSS = () => {
   const insertTarget = document.querySelector('head')
   const insertBase = insertTarget.querySelector('title')
+
+  const hrefs = [...document.querySelectorAll('link[rel="preload"][as="style"]')].map(el => el.href)
 
   let elements = hrefs.map(href => {
     let el = document.createElement('link')
