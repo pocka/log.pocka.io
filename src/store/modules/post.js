@@ -16,7 +16,7 @@ export default {
       }
     },
     getters: {
-      posts: state => state.list.sort((a, b) => state.desc ^ (a[state.sort] > b[state.sort])),
+      posts: state => state.list.sort((a, b) => (state.desc ? -1 : 1) * (a[state.sort] > b[state.sort] ? 1 : -1)),
       getPostsByTag: (state, getters) => tag => getters.posts.filter(post => !!post.tags.find(tag)),
     },
     actions: {
