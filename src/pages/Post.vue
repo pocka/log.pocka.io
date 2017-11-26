@@ -77,6 +77,9 @@ export default {
         {name: 'keywords', content: this.post.tags.join(',')},
         {name: 'author', content: this.post.author},
       ],
+      link: [
+        {rel: 'amphtml', href: `https://log.pocka.io/amp/${this.name}.html`}
+      ]
     }
   },
   data: () => ({
