@@ -1,6 +1,13 @@
 <template>
   <div class="columns is-multiline">
-    <div v-for="post in posts" :key="post.title" class="column is-4">
+    <div v-show="isLoading" class="column is-12">
+      <div class="card fullwidth">
+        <div class="card-content">
+          Loading...
+        </div>
+      </div>
+    </div>
+    <div v-show="!isLoading" v-for="post in posts" :key="post.title" class="column is-4">
       <div class="card">
         <div class="card-content">
           <router-link :to="post.path" class="title is-4">{{post.title}}</router-link>
@@ -23,13 +30,18 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   props: {
     posts: {
       type: Array,
       default: [],
     }
-  }
+  },
+  computed: mapState({
+    isLoading: state => state.post.isLoading
+  })
 }
 </script>
 
@@ -66,5 +78,10 @@ export default {
 
 .column {
   display: flex;
+}
+
+.fullwidth {
+  width: 100%;
+  text-align: center;
 }
 </style>
