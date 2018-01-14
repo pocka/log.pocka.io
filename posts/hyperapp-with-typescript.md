@@ -82,7 +82,7 @@ actionsの実装に於いてはアクション名のチェック程度にしか�
 
 ロジックの次はviewを書く。特に難しいことは無い。
 
-```ts
+```jsx
 import { h, View } from 'hyperapp'
 
 const view: View<State, Actions> = (state, actions) => (
@@ -96,7 +96,7 @@ const view: View<State, Actions> = (state, actions) => (
 
 ジェネリクスパラメータで指定している`State`と`Actions`がここではちゃんと活きている。
 
-```ts
+```jsx
 // これはコンパイルエラーになる
 const view: View<State, Actions> = (state, actions) => (
   <main>
@@ -164,7 +164,7 @@ const actions: ActionsType<State, Actions> = {
 
 コンポーネントは至ってシンプル。
 
-```ts
+```jsx
 // components/Counter.tsx
 import { h, Component } from 'hyperapp'
 
@@ -204,4 +204,5 @@ interface Props {
 以上Hyperappの各要素にフォーカスした書き方でした。
 
 実際のサンプルが見たい場合は[Typescript+Hyperapp(+CSS Modules) build with Webpackなサンプルプロジェクトを用意している](https://github.com/pocka/hyperapp-typescript-demo)ので、そちらを見てね。
+
 
