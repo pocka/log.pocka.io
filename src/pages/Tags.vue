@@ -29,6 +29,9 @@ export default {
   },
   metaInfo: {
     title: 'Tags',
+    meta: [
+      {name: 'robots', content: 'noindex'},
+    ]
   },
   computed: {
     posts() {
