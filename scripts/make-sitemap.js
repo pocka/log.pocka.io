@@ -8,7 +8,7 @@ const postsJSON = require('../public/posts.json')
 const urls = [
   ...postsJSON.posts.map(post => ({
     url: post.path,
-    lastmodISO: post.updatedAt
+    lastmodISO: new Date(post.updatedAt).toISOString()
   })),
   { url: '/' },
   { url: '/posts' },
