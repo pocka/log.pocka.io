@@ -55,6 +55,7 @@
     "pug": "^2.0.0-rc.4",
     "remove-markdown": "^0.2.2",
     "sass-loader": "^6.0.6",
+    "sitemap": "^1.13.0",
     "uncss": "^0.16.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^12.2.2",
