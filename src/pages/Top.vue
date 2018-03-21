@@ -1,18 +1,18 @@
 <script>
-import {mapState, mapGetters} from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 import PostList from '../components/PostList'
 
 export default {
-  components: {PostList},
+  components: { PostList },
   metaInfo: {
-    title: 'Top',
+    title: 'Top'
   },
   computed: {
-    recentCreatedPosts () {
+    recentCreatedPosts() {
       return this.$store.getters.getSortedPosts('createdAt').slice(0, 3)
     },
-    recentUpdatedPosts () {
+    recentUpdatedPosts() {
       return this.$store.getters.getSortedPosts('updatedAt').slice(0, 3)
     }
   }
@@ -40,6 +40,3 @@ export default {
     </section>
   </div>
 </template>
-
-<style lang="scss" scoped>
-</style>

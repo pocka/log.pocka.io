@@ -39,13 +39,13 @@
 
 <script>
 import Vue from 'vue'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 import NotFound from './NotFound'
 import Spinner from '../components/Spinner'
 
 Vue.directive('fetch', {
   componentUpdated(el, binding, vnode) {
-    [...el.querySelectorAll('[data-vue-router-link]')].forEach(link => {
+    ;[...el.querySelectorAll('[data-vue-router-link]')].forEach(link => {
       link.addEventListener('click', ev => {
         ev.preventDefault()
 
@@ -55,65 +55,68 @@ Vue.directive('fetch', {
   }
 })
 
-const isNYearsAgo = n => date => Math.floor((new Date() - date) / (1000 * 60 * 60 * 24 * 365)) >= n
+const isNYearsAgo = n => date =>
+  Math.floor((new Date() - date) / (1000 * 60 * 60 * 24 * 365)) >= n
 
 export default {
   props: ['name'],
   components: {
     NotFound,
-    Spinner,
+    Spinner
   },
   metaInfo() {
     if (!this.post.__content) {
       return {
-        title: 'loading...',
+        title: 'loading...'
       }
     }
 
     return {
       title: this.post.title,
       meta: [
-        {name: 'description', content: this.post.subtitle},
-        {name: 'keywords', content: this.post.tags.join(',')},
-        {name: 'author', content: this.post.author},
+        { name: 'description', content: this.post.subtitle },
+        { name: 'keywords', content: this.post.tags.join(',') },
+        { name: 'author', content: this.post.author }
       ],
       link: [
-        {rel: 'amphtml', href: `https://log.pocka.io/amp/${this.name}.html`}
+        { rel: 'amphtml', href: `https://log.pocka.io/amp/${this.name}.html` }
       ]
     }
   },
   data: () => ({
     isLoading: false,
     post: {},
-    notFound: false,
+    notFound: false
   }),
   created() {
     this.fetchData()
   },
   watch: {
-    $route: 'fetchData',
+    $route: 'fetchData'
   },
-  computed:{
+  computed: {
     createdAt() {
-      const {createdAt} = this.post
+      const { createdAt } = this.post
 
       if (!createdAt) {
         return ''
       }
 
-      return `${createdAt.getFullYear()}/${createdAt.getMonth() + 1}/${createdAt.getDate()}`
+      return `${createdAt.getFullYear()}/${createdAt.getMonth() +
+        1}/${createdAt.getDate()}`
     },
     updatedAt() {
-      const {updatedAt} = this.post
+      const { updatedAt } = this.post
 
       if (!updatedAt) {
         return ''
       }
 
-      return `${updatedAt.getFullYear()}/${updatedAt.getMonth() + 1}/${updatedAt.getDate()}`
+      return `${updatedAt.getFullYear()}/${updatedAt.getMonth() +
+        1}/${updatedAt.getDate()}`
     },
     historyUri() {
-      const {name} = this.post
+      const { name } = this.post
 
       if (!name) {
         return ''
@@ -122,7 +125,7 @@ export default {
       return `https://github.com/pocka/log.pocka.io/commits/master/posts/${name}.md`
     },
     isArticle() {
-      const {tags} = this.post
+      const { tags } = this.post
 
       if (!tags) {
         return false
@@ -131,7 +134,7 @@ export default {
       return tags[0] === 'article'
     },
     isOldPost() {
-      const {updatedAt} = this.post
+      const { updatedAt } = this.post
 
       if (this.isArticle || !updatedAt) {
         return false
@@ -140,7 +143,7 @@ export default {
       return isNYearsAgo(1)(updatedAt)
     },
     isTooOldPost() {
-      const {updatedAt} = this.post
+      const { updatedAt } = this.post
 
       if (this.isArticle || !updatedAt) {
         return false
@@ -153,74 +156,78 @@ export default {
     fetchData() {
       this.isLoading = true
 
-      fetch(`/posts/${this.name}.json`).then(res => {
-        this.isLoading = false
+      fetch(`/posts/${this.name}.json`)
+        .then(res => {
+          this.isLoading = false
 
-        if (res.status !== 200) {
-          return Promise.reject(`Status code error: ${res}`)
-        }
+          if (res.status !== 200) {
+            return Promise.reject(`Status code error: ${res}`)
+          }
 
-        return res.json()
-      }).then(post => {
-        this.post = Object.assign({}, post, {
-          updatedAt: new Date(post.updatedAt),
-          createdAt: new Date(post.createdAt),
+          return res.json()
         })
-        this.notFound = false
-      }).catch(err => {
-        this.notFound = true
-      })
+        .then(post => {
+          this.post = Object.assign({}, post, {
+            updatedAt: new Date(post.updatedAt),
+            createdAt: new Date(post.createdAt)
+          })
+          this.notFound = false
+        })
+        .catch(err => {
+          this.notFound = true
+        })
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .post-container {
-    & pre {
-      background-color: #333;
-      code {
-        margin: 0;
-        padding: 0.25rem 0.5rem;
-      }
-    }
-    & code {
-      background-color: #333;
-      color: #fefefe;
-      border-radius: 3px;
-      margin: 0 0.1em;
-    }
-
-    & img {
-      $shadow-color: #aaa;
-      $shadow-blur: 5px;
-
-      margin: 1em 0;
-      box-shadow: 1px 0px $shadow-blur $shadow-color, -1px 0px $shadow-blur $shadow-color;
-    }
-
-    .tags > .tag.is-light {
-      color: #0a0a0a;
-    }
-
-    .youtube {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      overflow: hidden;
-
-      background-color: #ccc;
-      border-radius: 5px;
-
-      & > iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+.post-container {
+  & pre {
+    background-color: #333;
+    code {
+      margin: 0;
+      padding: 0.25rem 0.5rem;
     }
   }
+  & code {
+    background-color: #333;
+    color: #fefefe;
+    border-radius: 3px;
+    margin: 0 0.1em;
+  }
+
+  & img {
+    $shadow-color: #aaa;
+    $shadow-blur: 5px;
+
+    margin: 1em 0;
+    box-shadow: 1px 0px $shadow-blur $shadow-color,
+      -1px 0px $shadow-blur $shadow-color;
+  }
+
+  .tags > .tag.is-light {
+    color: #0a0a0a;
+  }
+
+  .youtube {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+
+    background-color: #ccc;
+    border-radius: 5px;
+
+    & > iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 </style>
 
 <style lang="scss" scoped>

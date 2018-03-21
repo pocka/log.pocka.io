@@ -12,17 +12,12 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
-
+import { mapState } from 'vuex'
 
 export default {
-    components: {
-    },
-    computed: mapState({
-        articles: state => state.article.list,
-    }),
+  components: {},
+  computed: mapState({
+    articles: state => state.article.list
+  })
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

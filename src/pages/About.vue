@@ -74,11 +74,7 @@
 <script>
 export default {
   metaInfo: {
-    title: 'About',
-  },
+    title: 'About'
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
-

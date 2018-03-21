@@ -17,23 +17,17 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 
 import PostList from '../components/PostList'
 
-
 export default {
   components: {
-    PostList,
+    PostList
   },
   metaInfo: {
-    title: 'Posts',
+    title: 'Posts'
   },
-  computed: mapGetters([
-    'posts',
-  ]),
+  computed: mapGetters(['posts'])
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

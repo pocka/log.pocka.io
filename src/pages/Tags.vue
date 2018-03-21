@@ -17,29 +17,23 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 
 import PostList from '../components/PostList'
-
 
 export default {
   props: ['tag'],
   components: {
-    PostList,
+    PostList
   },
   metaInfo: {
     title: 'Tags',
-    meta: [
-      {name: 'robots', content: 'noindex'},
-    ]
+    meta: [{ name: 'robots', content: 'noindex' }]
   },
   computed: {
     posts() {
       return this.$store.getters.getPostsByTag(this.tag)
-    },
-  },
+    }
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
