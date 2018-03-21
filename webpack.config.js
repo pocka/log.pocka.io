@@ -1,19 +1,24 @@
 const webpack = require('webpack')
 
 const babelOptions = {
-  presets: [['env', {
-    targets: {
-      browsers: 'last 2 versions'
-    },
-    modules: false
-  }]]
+  presets: [
+    [
+      'env',
+      {
+        targets: {
+          browsers: 'last 2 versions'
+        },
+        modules: false
+      }
+    ]
+  ]
 }
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     filename: 'bundle.js',
-    path: `${__dirname}/public`,
+    path: `${__dirname}/public`
   },
   module: {
     rules: [
@@ -27,7 +32,7 @@ module.exports = {
               options: babelOptions
             }
           }
-        },
+        }
       },
       {
         test: /\.js$/,
@@ -48,10 +53,10 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    contentBase: 'public',
+    contentBase: 'public'
   },
   performance: {
-    hints: false,
+    hints: false
   },
-  devtool: process.NODE_ENV === 'development' ? '#eval-source-map' : false,
+  devtool: process.NODE_ENV === 'development' ? '#eval-source-map' : false
 }
