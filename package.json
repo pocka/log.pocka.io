@@ -5,17 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create:directories": "find posts -type d|xargs -I{} sh -c 'mkdir -p public/{}'",
+    "create:directories":
+      "find posts -type d|xargs -I{} sh -c 'mkdir -p public/{}'",
     "create:amp-directories": "mkdir -p public/amp",
-    "compile:markdown": "find posts -name \"*.md\" -type f|xargs -I{} sh -c 'echo {}|node scripts/md2json.js > public/$(echo {}|sed -e \"s/\\.md$/.json/\")'",
-    "compile:amp": "find public/posts -name \"*.json\" -type f|node scripts/make-amp/index.js",
+    "compile:markdown":
+      "find posts -name \"*.md\" -type f|xargs -I{} sh -c 'echo {}|node scripts/md2json.js > public/$(echo {}|sed -e \"s/\\.md$/.json/\")'",
+    "compile:amp":
+      "find public/posts -name \"*.json\" -type f|node scripts/make-amp/index.js",
     "compile:js": "NODE_ENV=production webpack -p",
     "build:app": "npm run compile:js",
-    "build:posts": "npm run create:directories && npm run compile:markdown && npm run build:list",
+    "build:posts":
+      "npm run create:directories && npm run compile:markdown && npm run build:list",
     "build:amp": "npm run create:amp-directories && npm run compile:amp",
-    "build:sitemap": "HOST_NAME=https://log.pocka.io node scripts/make-sitemap.js",
-    "build:list": "find posts -name \"*.md\" -type f|node scripts/make-posts-list.js > public/posts.json",
-    "build": "npm run build:posts && npm run build:sitemap && npm run build:amp && npm run build:app",
+    "build:sitemap":
+      "HOST_NAME=https://log.pocka.io node scripts/make-sitemap.js",
+    "build:list":
+      "find posts -name \"*.md\" -type f|node scripts/make-posts-list.js > public/posts.json",
+    "build":
+      "npm run build:posts && npm run build:sitemap && npm run build:amp && npm run build:app",
     "dev": "webpack-dev-server --hot --host 0.0.0.0"
   },
   "repository": {
@@ -65,5 +72,8 @@
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1",
     "yaml-front-matter": "^3.4.0"
+  },
+  "babel": {
+    "plugins": ["transform-object-rest-spread"]
   }
 }
