@@ -3,5 +3,5 @@ node_modules
 public/posts
 public/amp
 public/posts.json
-public/*.js
+public/bundle.js
 public/sitemap.xml
