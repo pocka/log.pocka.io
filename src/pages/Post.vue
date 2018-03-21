@@ -73,7 +73,7 @@ export default {
     return {
       title: this.post.title,
       meta: [
-        { name: 'description', content: this.post.subtitle },
+        { name: 'description', content: this.post.description },
         { name: 'keywords', content: this.post.tags.join(',') },
         { name: 'author', content: this.post.author }
       ],
