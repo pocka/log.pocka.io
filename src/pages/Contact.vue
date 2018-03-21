@@ -39,13 +39,7 @@
 export default {
   metaInfo: {
     title: 'Contact',
-    meta: [
-      {name: 'description', content: '連絡先'},
-    ]
-  },
+    meta: [{ name: 'description', content: '連絡先' }]
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
-

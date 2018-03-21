@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta'
 
 import App from './components/App'
-import store from './store'
 import routes from './routes'
 
 import loadCSS from './loadCSS'
@@ -13,11 +12,11 @@ Vue.use(VueMeta)
 
 const router = new VueRouter({
   routes,
-  mode: 'history',
+  mode: 'history'
 })
 
 router.afterEach((to, from) => {
-  const {ga} = window
+  const { ga } = window
 
   ga('set', 'page', to.path)
   ga('send', 'pageview')
@@ -25,11 +24,10 @@ router.afterEach((to, from) => {
 
 new Vue({
   el: '#app',
-  store,
   router,
-  components: {App},
+  components: { App },
   template: '<App/>',
-  mounted () {
+  mounted() {
     window.document.querySelector('#initial_view').classList.add('app-loaded')
   }
 })

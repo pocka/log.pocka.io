@@ -10,36 +10,44 @@
     </section>
     <section class="section">
       <div class="container">
-        <post-list :posts="posts"/>
+        <post-list
+          :posts="matchedPosts"
+          :is-loading="isLoadingPosts"
+        />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-
 import PostList from '../components/PostList'
 
-
 export default {
-  props: ['tag'],
+  props: {
+    tag: {
+      type: String,
+      required: true
+    },
+    posts: {
+      type: Array,
+      required: true
+    },
+    isLoadingPosts: {
+      type: Boolean,
+      required: true
+    }
+  },
   components: {
-    PostList,
+    PostList
   },
   metaInfo: {
     title: 'Tags',
-    meta: [
-      {name: 'robots', content: 'noindex'},
-    ]
+    meta: [{ name: 'robots', content: 'noindex' }]
   },
   computed: {
-    posts() {
-      return this.$store.getters.getPostsByTag(this.tag)
-    },
-  },
+    matchedPosts() {
+      return this.posts.filter(post => post.tags.includes(this.tag))
+    }
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

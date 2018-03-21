@@ -30,18 +30,16 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
-
 export default {
   props: {
     posts: {
       type: Array,
-      default: [],
+      default: []
+    },
+    isLoading: {
+      type: Boolean
     }
-  },
-  computed: mapState({
-    isLoading: state => state.post.isLoading
-  })
+  }
 }
 </script>
 

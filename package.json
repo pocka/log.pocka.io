@@ -34,13 +34,13 @@
     "moment": "^2.21.0",
     "vue": "^2.4.1",
     "vue-meta": "^1.1.0",
-    "vue-router": "^2.7.0",
-    "vuex": "^2.3.1"
+    "vue-router": "^2.7.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "cheerio": "^1.0.0-rc.2",
     "css-loader": "^0.28.4",
@@ -64,5 +64,10 @@
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1",
     "yaml-front-matter": "^3.4.0"
+  },
+  "babel": {
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
   }
 }

@@ -10,30 +10,34 @@
     </section>
     <section class="section">
       <div class="container">
-        <post-list :posts="posts"/>
+        <post-list
+          :posts="posts"
+          :is-loading="isLoadingPosts"
+        />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-
 import PostList from '../components/PostList'
 
-
 export default {
+  props: {
+    posts: {
+      type: Array,
+      required: true
+    },
+    isLoadingPosts: {
+      type: Boolean,
+      required: true
+    }
+  },
   components: {
-    PostList,
+    PostList
   },
   metaInfo: {
-    title: 'Posts',
-  },
-  computed: mapGetters([
-    'posts',
-  ]),
+    title: 'Posts'
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

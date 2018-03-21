@@ -1,19 +1,31 @@
 <script>
-import {mapState, mapGetters} from 'vuex'
-
 import PostList from '../components/PostList'
 
 export default {
-  components: {PostList},
+  props: {
+    posts: {
+      type: Array,
+      required: true
+    },
+    isLoadingPosts: {
+      type: Boolean,
+      required: true
+    }
+  },
+  components: { PostList },
   metaInfo: {
-    title: 'Top',
+    title: 'Top'
   },
   computed: {
-    recentCreatedPosts () {
-      return this.$store.getters.getSortedPosts('createdAt').slice(0, 3)
+    recentCreatedPosts() {
+      return [...this.posts]
+        .sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
+        .slice(0, 3)
     },
-    recentUpdatedPosts () {
-      return this.$store.getters.getSortedPosts('updatedAt').slice(0, 3)
+    recentUpdatedPosts() {
+      return [...this.posts]
+        .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1))
+        .slice(0, 3)
     }
   }
 }
@@ -32,14 +44,17 @@ export default {
     <section class="section">
       <div class="container">
         <h2 class="title is-4">最近作成された記事</h2>
-        <PostList :posts="recentCreatedPosts"/>
+        <PostList
+          :posts="recentCreatedPosts"
+          :is-loading="isLoadingPosts"
+        />
         <hr/>
         <h2 class="title is-4">最近更新された記事</h2>
-        <PostList :posts="recentUpdatedPosts"/>
+        <PostList
+          :posts="recentUpdatedPosts"
+          :is-loading="isLoadingPosts"
+        />
       </div>
     </section>
   </div>
 </template>
-
-<style lang="scss" scoped>
-</style>
