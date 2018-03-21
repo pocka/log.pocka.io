@@ -182,6 +182,19 @@ export default {
 
 <style lang="scss">
 .post-container {
+  & p {
+    letter-spacing: 0.07em;
+    line-height: 1.7em;
+  }
+
+  & li {
+    line-height: 1.7em;
+  }
+
+  & strong {
+    letter-spacing: 0;
+  }
+
   & pre {
     background-color: #333;
     code {
@@ -193,7 +206,8 @@ export default {
     background-color: #333;
     color: #fefefe;
     border-radius: 3px;
-    margin: 0 0.1em;
+    margin: 0 0.2em;
+    letter-spacing: 0;
   }
 
   & img {
