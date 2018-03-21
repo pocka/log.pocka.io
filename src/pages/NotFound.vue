@@ -10,14 +10,3 @@
       </section>
     </div>
 </template>
-
-<script>
-import { mapState } from 'vuex'
-
-export default {
-  components: {},
-  computed: mapState({
-    articles: state => state.article.list
-  })
-}
-</script>

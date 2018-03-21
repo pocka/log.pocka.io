@@ -39,7 +39,6 @@
 
 <script>
 import Vue from 'vue'
-import { mapState } from 'vuex'
 import NotFound from './NotFound'
 import Spinner from '../components/Spinner'
 
