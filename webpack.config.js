@@ -18,7 +18,8 @@ module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     filename: 'bundle.js',
-    path: `${__dirname}/public`
+    path: `${__dirname}/public`,
+    chunkFilename: '[name].bundle.js'
   },
   module: {
     rules: [
