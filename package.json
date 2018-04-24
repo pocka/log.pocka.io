@@ -57,5 +57,9 @@
     "plugins": [
       "transform-object-rest-spread"
     ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }

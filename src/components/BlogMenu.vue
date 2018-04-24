@@ -47,7 +47,7 @@
 <script>
 export default {
   data: () => ({
-    showMobileMenu: false,
+    showMobileMenu: false
   }),
   methods: {
     toggleMobileMenu() {
@@ -57,42 +57,42 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .navbar {
-    position: sticky;
-    top: 0;
-    margin: 0;
-    z-index: 100;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+<style scoped>
+.navbar {
+  position: sticky;
+  top: 0;
+  margin: 0;
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
 
-    &.is-transparent {
-      background-color: rgba(255, 255, 255, 0.92);
-    }
+.navbar.is-transparent {
+  background-color: rgba(255, 255, 255, 0.92);
+}
 
-    & > .container {
-      display: flex;
-      margin-bottom: 0;
-    }
-  }
+.navbar > .container {
+  display: flex;
+  margin-bottom: 0;
+}
 
-  .navbar-item {
-    font-family: Cairo;
-  }
+.navbar-item {
+  font-family: Cairo;
+}
 
-  .navbar-menu {
-    position: absolute;
-    left: 0;
-    right: 0;
-    background-color: #fff;
-  }
+.navbar-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+}
 
-  .brand {
-    font-weight: bold;
-    font-size: 1.2em;
+.brand {
+  font-weight: bold;
+  font-size: 1.2em;
+}
 
-    &:hover {
-      background-color: transparent;
-    }
-  }
+.brand:hover {
+  background-color: transparent;
+}
 </style>

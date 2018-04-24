@@ -6,3 +6,6 @@ public/posts.json
 public/bundle.js
 public/sitemap.xml
 public/index.html
+
+dist
+.nuxt
