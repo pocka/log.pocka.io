@@ -36,6 +36,7 @@
     "moment": "^2.21.0"
   },
   "devDependencies": {
+    "@nuxtjs/pwa": "^2.0.8",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "cheerio": "^1.0.0-rc.2",
     "cssnano": "^3.10.0",

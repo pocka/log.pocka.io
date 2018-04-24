@@ -9,3 +9,5 @@ public/index.html
 
 dist
 .nuxt
+
+sw.*

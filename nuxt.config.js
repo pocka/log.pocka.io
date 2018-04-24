@@ -33,6 +33,7 @@ module.exports = {
       }
     ]
   },
+  modules: ['@nuxtjs/pwa'],
   plugins: ['~plugins/filters/ymd.js'],
   srcDir: 'src/'
 }
