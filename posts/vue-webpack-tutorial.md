@@ -3,12 +3,12 @@ name: vue-webpack-tutorial
 title: Webpackで始めるVue.js
 description: Webpack+Vue2(Single File Component)で簡単なSPAを作るチュートリアル
 createdAt: 2017/09/13
-updatedAt: 2017/09/13
+updatedAt: 2018-04-25T00:00:00+09:00
 tags:
-- article
-- javascript
-- vue.js
-- webpack
+  - article
+  - javascript
+  - vue.js
+  - webpack
 ---
 
 # まえがき
@@ -22,7 +22,7 @@ tags:
 対象読者は
 
 + フロントエンド開発の知識がある(JS/TSコンパイル、SASS/SCSSコンパイル等)
-+ npmの開発フローをある程度知っている(`npm init`、`npm install`、`npm run foo`等)
++ npmの開発フローをある程度知っている(`npm init`、`npm install`、npm scripts等)
 + Vue.jsの名前くらいは知っている
 + 最近のJavascriptがある程度書ける
 + browserifyやwebpack等のバンドルツール、又はGruntやGulp等のタスクランナーを触ったことがある
@@ -40,25 +40,19 @@ JSファイルのビルドにはWebpackを、各コンポーネントは単一�
 
 ## 環境構築
 
-まずはじめにプロジェクトのディレクトリを作り、Git環境を構築します。
+まずはじめにプロジェクトのディレクトリを作ります。(既存のディレクトリを使う場合は省略)
 
 ```sh
 mkdir vue-counter-app
 cd vue-counter-app
-git init
 ```
 
-次に、npmを使って`package.json`を作成します。
+作業ディレクトリに`package.json`を作成します。
 
 ```sh
 npm init # いくつか質問されるので適当に答える
 ```
 
-最後にnpmの管理するライブラリディレクトリである`node_modules`をGitの管理から外します。
-
-```sh
-echo node_modules > .gitignore
-```
 
 ## Webpackのインストール
 
@@ -69,12 +63,8 @@ echo node_modules > .gitignore
 npm install --save-dev webpack webpack-dev-server
 ```
 
-インストールできたらWebpackの設定ファイルを作成します。
+インストールできたらWebpackの設定ファイル(`webpack.config.js`)を作成します。
 
-```sh
-touch webpack.config.js
-# エディタで作成したファイルを開く`
-```
 
 ```javascript
 // webpack.config.js
@@ -114,18 +104,14 @@ echo 'console.log("Hello, World!")' > src/index.js
   // ...省略
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --hot --host 0.0.0.0" // <-- 追加
+    "dev": "webpack-dev-server --hot" // <-- 追加
   }
   // ...省略
 }
 ```
 
-最後に表示するHTMLファイル(`dest/index.html`)を以下のように作ります。
+最後に表示するHTMLファイル(`dest/index.html`)を作成し、以下の内容を貼り付けてください。
 
-```sh
-mkdir dest
-touch dest/index.html
-```
 
 ```html
 <!DOCTYPE html>
@@ -217,12 +203,8 @@ module.exports = {
 
 ではアプリを書いていきましょう。
 まず、適当なコンポーネントを作ってみましょう。
+`src/components/App.vue`を作成して以下の内容を書いてみてください。
 
-```sh
-mkdir src/components
-touch src/components/App.vue
-# エディタでApp.vueを開く
-```
 
 ```
 <template>
@@ -240,11 +222,10 @@ import Vue from 'vue'
 
 import App from './components/App' // 今作ったやつ
 
-
 new Vue({
     el: '#app', // アプリをマウントする要素
-    components: {App},
-    template: '<app/>',
+    components: { App }, // Appというコンポーネントを使うよ、という宣言
+    template: '<app/>', // el(今回は#app)の中に表示する内容
 })
 ```
 
@@ -276,18 +257,14 @@ new Vue({
 + <style lang="scss" scoped>
 ```
 
-罫線が減っていますね。これはScopedCSSというものです。基本的にはこれを使ってスタイルを適用していくのが良いと思います。
+罫線が減っていますね。これはScoped CSSというものです。基本的にはこれを使ってスタイルを適用していくのが良いと思います。
 
 ### カウンターコンポーネントを追加する
 
 ではカウンタの実装をしていきましょう。
 
-まずカウンタコンポーネントのvueファイルを作ります。
+まずカウンタコンポーネントのvueファイル(`src/components/Counter.vue`)を作ります。
 
-```sh
-touch src/components/Counter.vue
-# Counter.vueをエディタで開く
-```
 
 ```
 <template>
@@ -299,7 +276,7 @@ touch src/components/Counter.vue
 </template>
 ```
 
-作ったらそれをアプリに追加します。今回はメインコンポーネントである`App.vue`に追加します。
+作ったらそれをアプリに追加します。今回はメインコンポーネントである`src/components/App.vue`に追加します。
 
 ```diff
   <template>
@@ -324,7 +301,7 @@ touch src/components/Counter.vue
   </style>
 ```
 
-`export default {components: {Counter}}`の部分はカウンターコンポーネントを登録しており、`<counter/>`の部分で使用しています。
+追加した`export default ~`の部分でカウンターコンポーネントを登録し、テンプレート内の`<counter/>`の部分で使用しています。
 
 この状態でブラウザを確認すると追加したコンポーネントが表示されているはずです。
 
@@ -354,9 +331,10 @@ touch src/components/Counter.vue
 ```
 
 これでコンポーネントにデータを追加することができました。
+
 VueではHTMLテンプレート内に`{{value}}`で値を埋め込むことができます。
 ここにはComponentの各プロパティをキーだけで指定することができます。
-`count: 0`の部分の値を変えて保存し、ブラウザを変えてみると表示も変わっているかと思います。
+`count: 0`の部分の値を変えて保存し、ブラウザを見ると表示も変わっているかと思います。
 
 では、次にボタンを押すと値を増減できるようにしましょう。
 
@@ -391,8 +369,11 @@ VueではHTMLテンプレート内に`{{value}}`で値を埋め込むことが�
 ```
 
 これを保存しブラウザに戻ると、ボタンを押すと値が増減するようになっているはずです。
+
 Vueのコンポーネントの`methods`にメソッドを定義すると、`<template>`内で使うことができるようになります。
-`<template>`側で使うには`v-on:event`属性でメソッドを指定します。`onclick="increment"`みたいなものなのでわかりやすいですね。`@event`の略記法があり、基本的にそちらを使うことが推奨されています。
+`<template>`側で使うには`v-on:event`属性でメソッドを指定します。`onclick="increment"`みたいなものなのでわかりやすいですね。
+
+また、イベントのバインディングには`@event`という略記法があり、基本的にそちらを使うことが推奨されています。
 
 ```
 <button @click="decrement">-</button>
@@ -461,3 +442,4 @@ dest/**
 # おわり
 
 だいぶ長くなってしまいましたが、以上がWebpack+Vueを使ったシンプルなSPAの構築方法です。vue-cliは確かに便利ですが、こういうものを理解するのは手で書いていくのが一番なので是非公式でちゃんとチュートリアルを書いてほしいものです。
+
