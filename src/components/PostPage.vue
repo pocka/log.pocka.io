@@ -33,7 +33,7 @@ export default {
         { property: 'og:locale', content: 'ja_JP' }
       ],
       link: [
-        { rel: 'amphtml', href: `https://log.pocka.io/amp/${this.name}.html` }
+        { rel: 'amphtml', href: `https://log.pocka.io/amp/${post.name}.html` }
       ]
     }
   },
