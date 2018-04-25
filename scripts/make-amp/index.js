@@ -8,40 +8,42 @@ const moment = require('moment')
 const { buildCSS, removeUnusedCSS } = require('./buildCSS')
 const { buildPlainHTML, buildHTML } = require('./buildHTML')
 
-const destDir = path.resolve(__dirname, '../../public/amp')
+const destDir = path.resolve(__dirname, '../../src/static/amp')
 
-const {stdin, stdout} = process
+const { stdin, stdout } = process
 
 const rl = readline.createInterface({
   input: stdin,
   output: stdout
 })
 
-let jsonFiles = []
+let posts = []
 
 rl.on('line', line => {
-  jsonFiles.push(line)
+  posts.push(line)
 })
 
 rl.on('close', async () => {
   const css = await buildCSS()
 
-  rl.close()
+  await Promise.all(
+    posts.map(async line => {
+      const json = JSON.parse(line)
 
-  await Promise.all(jsonFiles.map(async file => {
-    const json = require(path.resolve(__dirname, '../../', file))
+      const post = Object.assign({}, json, {
+        createdAt: moment(new Date(json.createdAt)).format('YYYY/MM/DD'),
+        updatedAt: moment(new Date(json.updatedAt)).format('YYYY/MM/DD')
+      })
 
-    const post = Object.assign({}, json, {
-      createdAt: moment(new Date(json.createdAt)).format('YYYY/MM/DD'),
-      updatedAt: moment(new Date(json.updatedAt)).format('YYYY/MM/DD')
+      const minCSS = await removeUnusedCSS(css, buildPlainHTML(post))
+
+      const html = buildHTML(post, minCSS)
+
+      const destPath = path.resolve(destDir, `${post.name}.html`)
+
+      return fs.writeFile(destPath, html)
     })
+  )
 
-    const minCSS = await removeUnusedCSS(css, buildPlainHTML(post))
-
-    const html = buildHTML(post, minCSS)
-
-    const destPath = path.resolve(destDir, path.basename(file).replace(/\.json$/, '.html'))
-
-    return fs.writeFile(destPath, html)
-  }))
+  rl.close()
 })

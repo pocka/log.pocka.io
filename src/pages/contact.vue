@@ -1,3 +1,14 @@
+<script>
+export default {
+  head() {
+    return {
+      title: 'Contact',
+      meta: [{ name: 'description', content: '連絡先' }]
+    }
+  }
+}
+</script>
+
 <template>
   <div>
     <section class="hero is-dark">
@@ -34,12 +45,3 @@
     </section>
   </div>
 </template>
-
-<script>
-export default {
-  metaInfo: {
-    title: 'Contact',
-    meta: [{ name: 'description', content: '連絡先' }]
-  }
-}
-</script>

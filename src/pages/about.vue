@@ -1,3 +1,13 @@
+<script>
+export default {
+  head() {
+    return {
+      title: 'About'
+    }
+  }
+}
+</script>
+
 <template>
   <div>
     <section class="hero is-dark">
@@ -70,11 +80,3 @@
     </section>
   </div>
 </template>
-
-<script>
-export default {
-  metaInfo: {
-    title: 'About'
-  }
-}
-</script>
