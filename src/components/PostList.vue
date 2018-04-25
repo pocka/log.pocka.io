@@ -1,3 +1,14 @@
+<script>
+export default {
+  props: {
+    posts: {
+      type: Array,
+      default: []
+    }
+  }
+}
+</script>
+
 <template>
   <div class="columns is-multiline">
     <div
@@ -25,24 +36,21 @@
             </p>
           </div>
           <div class="tags">
-            <router-link v-for="tag in post.tags" :key="tag" :to="`/tags/${tag}`" :title="`${tag}タグのついた記事を探す`" class="tag is-dark">{{tag}}</router-link>
+            <router-link
+              v-for="tag in post.tags"
+              :key="tag"
+              :to="`/tags/${tag}`"
+              :title="`${tag}タグのついた記事を探す`"
+              class="tag is-dark"
+            >
+              {{tag}}
+            </router-link>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    posts: {
-      type: Array,
-      default: []
-    }
-  }
-}
-</script>
 
 <style scoped>
 .summary {

@@ -1,10 +1,15 @@
 <script>
-import Vue from 'vue'
+import OldPostNotification from '~/components/OldPostNotification'
+import TooOldPostNotification from '~/components/TooOldPostNotification'
 
 const isNYearsAgo = n => date =>
   Math.floor((new Date() - date) / (1000 * 60 * 60 * 24 * 365)) >= n
 
 export default {
+  components: {
+    OldPostNotification,
+    TooOldPostNotification
+  },
   props: {
     post: {
       type: Object,
@@ -85,14 +90,8 @@ export default {
     </section>
     <section class="section">
       <div class="container box">
-        <div v-if="isTooOldPost" class="notification is-warning">
-          <strong>この記事は3年以上更新されていません</strong><br>
-          内容が古くなっており、現在と状況が変わっている可能性が高い為注意してください
-        </div>
-        <div v-else-if="isOldPost" class="notification is-info">
-          <strong>この記事は1年以上更新されていません</strong><br>
-          内容が古くなっている可能性があるため注意してください
-        </div>
+        <too-old-post-notification v-if="isTooOldPost"/>
+        <old-post-notification v-else-if="isOldPost"/>
         <div class="content">
           <slot></slot>
         </div>
