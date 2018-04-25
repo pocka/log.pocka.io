@@ -1,13 +1,13 @@
 node_modules
 
-public/posts
-public/amp
-public/posts.json
-public/bundle.js
-public/sitemap.xml
-public/index.html
+src/static/amp
+src/static/sitemap.xml
 
-dist
+public
 .nuxt
 
 sw.*
+
+src/pages/posts/*.vue
+!src/pages/posts/index.vue
+src/assets/posts.json

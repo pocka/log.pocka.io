@@ -1,13 +1,8 @@
-const { posts } = require('./public/posts.json')
-
 module.exports = {
   build: {
     vendor: ['babel-polyfill']
   },
   css: ['bulma/css/bulma.css'],
-  generate: {
-    routes: posts.map(({ name }) => `/posts/${name}`)
-  },
   head: {
     titleTemplate: '%s | log.pocka.io',
     meta: [
@@ -32,6 +27,9 @@ module.exports = {
           'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css'
       }
     ]
+  },
+  generate: {
+    dir: 'public'
   },
   modules: ['@nuxtjs/pwa'],
   plugins: ['~plugins/filters/ymd.js'],

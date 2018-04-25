@@ -1,22 +1,16 @@
 <script>
 import Vue from 'vue'
 
-Vue.directive('fetch', {
-  inserted(el, binding, vnode) {
-    ;[...el.querySelectorAll('[data-vue-router-link]')].forEach(link => {
-      link.addEventListener('click', ev => {
-        ev.preventDefault()
-
-        vnode.context.$router.push(ev.target.getAttribute('href'))
-      })
-    })
-  }
-})
-
 const isNYearsAgo = n => date =>
   Math.floor((new Date() - date) / (1000 * 60 * 60 * 24 * 365)) >= n
 
 export default {
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
   head() {
     const { post } = this
     return {
@@ -41,11 +35,6 @@ export default {
       link: [
         { rel: 'amphtml', href: `https://log.pocka.io/amp/${this.name}.html` }
       ]
-    }
-  },
-  asyncData({ params }) {
-    return {
-      post: require(`../../../public/posts/${params.name}.json`)
     }
   },
   computed: {
@@ -104,7 +93,9 @@ export default {
           <strong>この記事は1年以上更新されていません</strong><br>
           内容が古くなっている可能性があるため注意してください
         </div>
-        <div class="content" v-html="post.__content" v-fetch></div>
+        <div class="content">
+          <slot></slot>
+        </div>
       </div>
     </section>
   </div>

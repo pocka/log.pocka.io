@@ -9,7 +9,7 @@ export default {
     }
   },
   asyncData() {
-    const { posts } = require('../../../public/posts.json')
+    const { posts } = require('~/assets/posts.json')
 
     return {
       posts: posts

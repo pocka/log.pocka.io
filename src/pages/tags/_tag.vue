@@ -3,7 +3,7 @@ import PostList from '~/components/PostList'
 
 export default {
   asyncData({ params }) {
-    const { posts } = require('../../../public/posts.json')
+    const { posts } = require('~/assets/posts.json')
 
     return {
       matchedPosts: posts.filter(post => post.tags.includes(params.tag)),

@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 
 const cheerio = require('cheerio')
@@ -5,7 +6,8 @@ const sizeOf = require('image-size')
 const pug = require('pug')
 
 const template = path.resolve(__dirname, '../../src/amp/template.pug')
-const publicDir = path.resolve(__dirname, '../../public/')
+const imagesDir = path.resolve(__dirname, '../../src/assets/images/')
+const ampImagesDir = path.resolve(__dirname, '../../src/static/amp/images/')
 
 /**
  * Lazy pug renderer
@@ -22,7 +24,7 @@ const renderer = {
 }
 
 /**
- * @param {object} post 
+ * @param {object} post
  * @returns {string} HTML
  */
 exports.buildPlainHTML = post => {
@@ -33,13 +35,14 @@ exports.buildPlainHTML = post => {
 }
 
 /**
- * @param {object} post 
- * @param {string} css 
+ * @param {object} post
+ * @param {string} css
  * @returns {string} HTML
  */
 exports.buildHTML = (post, css) => {
   const html = renderer.render({
-    post, css
+    post,
+    css
   })
 
   const $ = cheerio.load(html)
@@ -50,10 +53,15 @@ exports.buildHTML = (post, css) => {
     const img = $(el)
     img.attr('layout', 'responsive')
 
-    const size = getSizeOf(img.attr('src'))
+    const filename = path.basename(img.attr('src'))
+
+    const size = getSizeOf(filename)
+
+    copyImage(filename)
 
     img.attr('width', size.width)
     img.attr('height', size.height)
+    img.attr('src', `/amp/images/${filename}`)
   })
 
   $('.youtube').each((_, el) => {
@@ -66,7 +74,9 @@ exports.buildHTML = (post, css) => {
     const videoId = src.split(/[\/]/).reverse()[0]
 
     $(el).replaceWith(
-      $(`<amp-youtube layout="responsive" data-videoid="${videoId}" width="${width}" height="${height}"></amp-youtube>`)
+      $(
+        `<amp-youtube layout="responsive" data-videoid="${videoId}" width="${width}" height="${height}"></amp-youtube>`
+      )
     )
   })
 
@@ -84,7 +94,15 @@ exports.buildHTML = (post, css) => {
 }
 
 const getSizeOf = image => {
-  const imagePath = path.resolve(publicDir, image.replace(/^\//, './'))
+  const imagePath = path.resolve(imagesDir, image.replace(/^\//, './'))
 
   return sizeOf(imagePath)
+}
+
+const copyImage = filename => {
+  const srcPath = path.resolve(imagesDir, filename)
+
+  const destPath = path.resolve(ampImagesDir, filename)
+
+  fs.copyFile(srcPath, destPath, () => void 0)
 }

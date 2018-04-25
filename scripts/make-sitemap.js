@@ -3,7 +3,7 @@ const path = require('path')
 
 const Sitemap = require('sitemap')
 
-const postsJSON = require('../public/posts.json')
+const postsJSON = require('../src/assets/posts.json')
 
 const urls = [
   ...postsJSON.posts.map(post => ({
@@ -28,5 +28,5 @@ sitemap.toXML((err, xml) => {
     return
   }
 
-  fs.writeFile(path.resolve(__dirname, '../public/sitemap.xml'), xml)
+  fs.writeFile(path.resolve(__dirname, '../src/static/sitemap.xml'), xml)
 })

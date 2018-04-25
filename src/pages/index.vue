@@ -9,7 +9,7 @@ export default {
   },
   components: { PostList },
   asyncData() {
-    const { posts } = require('../../public/posts.json')
+    const { posts } = require('~/assets/posts.json')
 
     const formatted = posts.map(post => ({
       ...post,
