@@ -33,5 +33,9 @@ module.exports = {
   },
   modules: ['@nuxtjs/pwa'],
   plugins: ['~plugins/filters/ymd.js'],
-  srcDir: 'src/'
+  srcDir: 'src/',
+  transition: {
+    name: 'nuxt',
+    mode: 'out-in'
+  }
 }

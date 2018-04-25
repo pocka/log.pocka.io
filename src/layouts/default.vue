@@ -18,3 +18,15 @@ export default {
   font-family: 'IBM Plex Sans', 'Mplus 1p', sans-serif;
 }
 </style>
+
+<style>
+.nuxt-enter-active,
+.nuxt-leave-active {
+  transition: opacity 0.2s;
+}
+
+.nuxt-enter,
+.nuxt-leave-to {
+  opacity: 0;
+}
+</style>
