@@ -1,5 +1,5 @@
 <div align="center">
-    
+
 # log.pocka.io
 
 [![Netlify](https://www.netlify.com/img/global/badges/netlify-dark.svg)](https://www.netlify.com)
@@ -18,14 +18,13 @@
 
 ## 記事の編集
 
-+ 各記事は`posts`ディレクトリ配下にMarkdown形式で保存します
-+ Markdownの先頭部分にYAML形式で記事のメタ情報を記述します
+* 各記事は`posts`ディレクトリ配下に Markdown 形式で保存します
+* Markdown の先頭部分に YAML 形式で記事のメタ情報を記述します
 
 ## 開発にあたって
 
-+ 記事JSON、記事リストJSON、読み込まれるメインのJSファイルをビルドコマンドで生成し、静的サイトを組み上げます
-+ バージョン統一のために`nvm install`と`nvm use`コマンドを実行してから開発を行ってください
-+ Netlifyデプロイ時に自動的にビルドコマンドが走るため、ビルドして生成されたファイルはコミットしないでください
+* 記事 JSON、記事リスト JSON、読み込まれるメインの JS ファイルをビルドコマンドで生成し、静的サイトを組み上げます
+* バージョン統一のために`nvm install`と`nvm use`コマンドを実行してから開発を行ってください
 
 ### 開発ビルドモード
 
@@ -33,10 +32,10 @@
 npm run dev
 ```
 
-+ `localhost:8080`に開発サーバを立てます
-    - ブラウザのURLバーに`localhost:8080`とうち移動すると開発モードのサイトに移動できます
-    - `src`ディレクトリ配下のJSファイルに変更があると変更されたファイルのみをコンパイルし、できればその部分だけをリロードせずに置き換え、できなければブラウザをリロードします(HMR)
-+ 終了したい場合は起動したコンソールで`Ctrl + C`を押します
+* `localhost:8080`に開発サーバを立てます
+  * ブラウザの URL バーに`localhost:8080`とうち移動すると開発モードのサイトに移動できます
+  * `src`ディレクトリ配下の JS ファイルに変更があると変更されたファイルのみをコンパイルし、できればその部分だけをリロードせずに置き換え、できなければブラウザをリロードします(HMR)
+* 終了したい場合は起動したコンソールで`Ctrl + C`を押します
 
 ### まとめてビルド
 
@@ -44,27 +43,27 @@ npm run dev
 npm run build
 ```
 
-+ `npm run build:posts`と`npm run build:app`を実行します
+* `npm run build:posts`と`npm run build:app`を実行します
 
-### 記事JSONの生成
+### 記事 JSON の生成
 
 ```sh
 npm run build:posts
 ```
 
-+ `posts`ディレクトリの中にある記事のMarkdownを変換し、`public/posts`配下へJSONとして出力します
-+ `posts`ディレクトリの中にある記事のMarkdownを読み取り、その一覧を`public/posts.json`として保存します
+* `posts`ディレクトリの中にある記事の Markdown を変換し、`src/pages/posts`配下へ Vue のコンポーネントとして保存します
+* `posts`ディレクトリの中にある記事の Markdown を読み取り、その一覧を`src/assets/posts.json`として保存します
 
-### JSファイルの生成
+### JS ファイルの生成
 
 ```sh
 npm run build:app
 ```
 
-+ `src`ディレクトリの中身をコンパイルし、`public/bundle.js`に出力します
+* `src`ディレクトリの中身をコンパイルし、`public`ディレクトリに出力します
 
 ## Contributing
 
-内容・誤字脱字の指摘(Issue)や修正(PR)、その他Issue/PRは大歓迎です!!
+内容・誤字脱字の指摘(Issue)や修正(PR)、その他 Issue/PR は大歓迎です!!
 
-PRやIssueを投げる練習なんかにもどうぞ
+PR や Issue を投げる練習なんかにもどうぞ
