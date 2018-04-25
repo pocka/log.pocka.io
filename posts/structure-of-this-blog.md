@@ -11,7 +11,7 @@ tags:
 ---
 # 概要
 
-この技術ブログは[Vue.js](https://jp.vuejs.org/index.html)(2系)を用いたSPAを[Netlify](https://www.netlify.com/)上でホスティングして動いています。
+この技術ブログは、Nuxt.jsに移行する前は[Vue.js](https://jp.vuejs.org/index.html)(2系)を用いたSPAを[Netlify](https://www.netlify.com/)上でホスティングして動いていました。
 
 この記事ではその構築を通してわかったことや、
 ブログのようなシンプルなコンテンツサイトのSPA化のメリット、デメリットについて紹介したいと思います。
@@ -105,3 +105,4 @@ Vueは2.xを使い、[Single File Component](https://jp.vuejs.org/v2/guide/singl
 SPA化には確かにデメリットがありますが、いずれも対処して問題ないレベルまで落とし込めるようなものばかりなので、個人的には(**フロントエンドエンジニアにとっては**)ほぼメリットしかないと思っています。
 
 SPAライブラリもReact\+ReduxだけでなくVue(\+Vuex)やAngular2、Riot.jsと様々なものがあるので、使い勝手を知ったり、実際に案件で使う前の練習として簡単なSPAブログを構築してみるのもよいかもしれませんね。
+
