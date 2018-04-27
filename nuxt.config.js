@@ -31,7 +31,15 @@ module.exports = {
   generate: {
     dir: 'public'
   },
-  modules: ['@nuxtjs/pwa'],
+  modules: [
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-40502013-5'
+      }
+    ],
+    '@nuxtjs/pwa'
+  ],
   plugins: ['~plugins/filters/ymd.js'],
   srcDir: 'src/',
   transition: {

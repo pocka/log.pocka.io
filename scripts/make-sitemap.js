@@ -28,5 +28,14 @@ sitemap.toXML((err, xml) => {
     return
   }
 
-  fs.writeFile(path.resolve(__dirname, '../src/static/sitemap.xml'), xml)
+  fs.writeFile(
+    path.resolve(__dirname, '../src/static/sitemap.xml'),
+    xml,
+    err => {
+      if (err) {
+        console.error('Failed to write sitemap.xml')
+        console.error(err)
+      }
+    }
+  )
 })
