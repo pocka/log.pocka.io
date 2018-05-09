@@ -7,7 +7,11 @@ module.exports = {
     titleTemplate: '%s | log.pocka.io',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width,initial-scale=1' }
+      { name: 'viewport', content: 'width=device-width,initial-scale=1' },
+      {
+        name: 'google-site-verification',
+        content: '9etIdwX8pmsXbjvdmEaiw8OOmApz7Wl6x67z9Xy90Bo'
+      }
     ],
     link: [
       { rel: 'me', type: 'text/html', href: 'https://github.com/pocka' },
