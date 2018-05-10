@@ -150,7 +150,7 @@ export default {
   border-radius: 5px;
 }
 
-.post-container .youtube .iframe {
+.post-container .youtube iframe {
   position: absolute;
   top: 0;
   left: 0;
