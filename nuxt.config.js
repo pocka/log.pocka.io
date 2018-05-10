@@ -33,7 +33,10 @@ module.exports = {
     ]
   },
   generate: {
-    dir: 'public'
+    dir: 'public',
+    routes: require(`./src/assets/posts.json`).posts.map(
+      post => `/posts/${post.name}`
+    )
   },
   modules: [
     [
@@ -45,6 +48,9 @@ module.exports = {
     '@nuxtjs/pwa'
   ],
   plugins: ['~plugins/filters/ymd.js'],
+  render: {
+    resourceHints: false
+  },
   srcDir: 'src/',
   transition: {
     name: 'nuxt',
