@@ -6,7 +6,7 @@ const sizeOf = require('image-size')
 const pug = require('pug')
 
 const template = path.resolve(__dirname, '../../src/amp/template.pug')
-const imagesDir = path.resolve(__dirname, '../../src/assets/images/')
+const imagesDir = path.resolve(__dirname, '../../src/static/images/')
 const ampImagesDir = path.resolve(__dirname, '../../src/static/amp/images/')
 
 /**
