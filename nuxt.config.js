@@ -33,7 +33,10 @@ module.exports = {
     ]
   },
   generate: {
-    dir: 'public'
+    dir: 'public',
+    routes: require(`./src/assets/posts.json`).posts.map(
+      post => `/posts/${post.name}`
+    )
   },
   modules: [
     [

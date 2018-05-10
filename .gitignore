@@ -8,6 +8,5 @@ public
 
 sw.*
 
-src/pages/posts/*.vue
-!src/pages/posts/index.vue
+src/assets/posts
 src/assets/posts.json
