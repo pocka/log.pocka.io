@@ -3,7 +3,7 @@ name: building-spa-blog-with-nuxtjs
 title: Nuxt.jsで作るSPAブログ
 description: Nuxt.jsの静的生成機能(generate)を用いたブログの構築についてのお話
 createdAt: 2018-04-25T09:02:04.062Z
-updatedAt: 2018-05-10T17:00:00+09:00
+updatedAt: 2018-05-10T08:00:00.000Z
 tags:
   - article
   - javascript
@@ -27,7 +27,8 @@ Nuxt.jsを採用する前は[Vue.js製SPAに記事JSONをfetch方式](/posts/str
 [Vue.jsベースであった以前のもの](/posts/structure-of-this-blog)とそこまでは変わらないです。
 
 Netlify上から配信されているSPA部分は、`nuxt generate`コマンドで生成されたHTML+JS+CSS+その他です。
-各記事ページは、SPAブログでは一般的な(?)ランタイムで記事JSONをfetchして表示するタイプではなく、初回表示にはビルド時に生成したHTMLを、それ以降(Vueが読み込まれた後)はdynamic importを使ってランタイムで記事JSONをfetchして表示するハイブリッド型となっています。
+SPAブログの各記事ページでは一般的に(?)、ランタイムで記事JSONをfetchして表示するという方式がとられています。
+しかしこのサイトでは、初回表示にはビルド時に生成したHTMLを、それ以降(Vueが読み込まれた後)はdynamic importを使ってランタイムで記事JSONをfetchして表示するハイブリッド型となっています。
 
 ```diff
 (初回表示用HTML)
@@ -70,5 +71,6 @@ Nuxt.jsを採用して特に良かったと感じたのはディレクトリ構�
 # SPAブログの構築にNuxt.jsはオススメできるか？
 
 デザインや構造にこだわりがなく、ただ単にブログ等の記事管理をしたいというのであればVuePressやGatsby等を使ったほうが良いとは思います。ただ、「自分色にカスタマイズしたい !!」という欲求のある人には現状最もオススメできる選択肢です。
+
 
 
