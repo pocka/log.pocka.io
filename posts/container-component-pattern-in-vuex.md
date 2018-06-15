@@ -229,3 +229,4 @@ StateとActionsを対象コンポーネントのPropsにマッピングする、
 [vuex-connect-repository]:https://github.com/ktsn/vuex-connect
 [sample-repository]:https://github.com/pocka/vue-container-component-example
 
+
