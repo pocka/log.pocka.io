@@ -3,7 +3,7 @@ name: hyperapp-with-typescript
 title: TypescriptでHyperappを書く
 description: Typescriptを使ってHyperappアプリケーションを書いてみよう
 createdAt: 2018-01-13T22:58:15.689Z
-updatedAt: 2018-07-15T17:00:15+09:00
+updatedAt: 2018-07-15T08:00:15.000Z
 tags:
   - article
   - typescript
@@ -164,7 +164,7 @@ const actions: ActionsType<State, Actions> = {
 
 コンポーネントは至ってシンプル。
 
-```jsx
+```tsx
 // components/Counter.tsx
 import { h, Component } from 'hyperapp'
 
@@ -186,7 +186,7 @@ export default Counter
 
 ただ、このまま書いていくとpropsのバケツリレーが起きてしまう。そのため、[Lazy Components](https://github.com/hyperapp/hyperapp#lazy-components)という機能を使い、StateとActionsを直接コンポーネントに渡して冗長さを軽減することができる。
 
-```ts
+```tsx
 // ...
 
 import { State, Actions } from '../'
@@ -208,6 +208,7 @@ const Counter: Component<{}, State, Actions> = () => (state, actions) => (
 以上Hyperappの各要素にフォーカスした書き方でした。
 
 実際のサンプルが見たい場合は[Typescript+Hyperapp(+CSS Modules) build with Webpackなサンプルプロジェクトを用意している](https://github.com/pocka/hyperapp-typescript-demo)ので、そちらを見てね。
+
 
 
 
