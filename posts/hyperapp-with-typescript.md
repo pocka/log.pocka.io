@@ -164,7 +164,7 @@ const actions: ActionsType<State, Actions> = {
 
 コンポーネントは至ってシンプル。
 
-```tsx
+```jsx
 // components/Counter.tsx
 import { h, Component } from 'hyperapp'
 
@@ -186,7 +186,7 @@ export default Counter
 
 ただ、このまま書いていくとpropsのバケツリレーが起きてしまう。そのため、[Lazy Components](https://github.com/hyperapp/hyperapp#lazy-components)という機能を使い、StateとActionsを直接コンポーネントに渡して冗長さを軽減することができる。
 
-```tsx
+```jsx
 // ...
 
 import { State, Actions } from '../'
@@ -208,6 +208,7 @@ const Counter: Component<{}, State, Actions> = () => (state, actions) => (
 以上Hyperappの各要素にフォーカスした書き方でした。
 
 実際のサンプルが見たい場合は[Typescript+Hyperapp(+CSS Modules) build with Webpackなサンプルプロジェクトを用意している](https://github.com/pocka/hyperapp-typescript-demo)ので、そちらを見てね。
+
 
 
 
