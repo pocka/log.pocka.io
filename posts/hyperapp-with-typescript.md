@@ -3,7 +3,7 @@ name: hyperapp-with-typescript
 title: TypescriptでHyperappを書く
 description: Typescriptを使ってHyperappアプリケーションを書いてみよう
 createdAt: 2018-01-13T22:58:15.689Z
-updatedAt: 2018-01-13T22:58:15.691Z
+updatedAt: 2018-07-15T17:00:15+09:00
 tags:
   - article
   - typescript
@@ -19,7 +19,7 @@ HyperappのドキュメントにはTypescriptでの使い方が書いていな�
 
 この記事で書かれているコードの確認環境は以下の通り
 
-- Hyperapp@1.0.0
+- Hyperapp@1.2.6
 - Typescript@2.6.2
 
 また、仮想ノードの構築にはJSX(`.tsx`)を用いる。
@@ -184,17 +184,21 @@ const Counter: Component<Props> = ({ count, onchange }) => (
 export default Counter
 ```
 
-また、作法としてはあまりよくないが、stateとactionsをPropsで受け取るようにすればContainer Componentのようなものも作れる。
+ただ、このまま書いていくとpropsのバケツリレーが起きてしまう。そのため、[Lazy Components](https://github.com/hyperapp/hyperapp#lazy-components)という機能を使い、StateとActionsを直接コンポーネントに渡して冗長さを軽減することができる。
 
 ```ts
 // ...
 
 import { State, Actions } from '../'
 
-interface Props {
-  state: State
-  actions: Actions
-}
+// Component<Props, State, Actions>なので、propsを受け取らない場合は{}を指定する
+const Counter: Component<{}, State, Actions> = () => (state, actions) => (
+  <div>
+    <button onclick={actions.count.decrement}>-</button>
+    <span>{state.count.count}</span>
+    <button onclick={actions.count.increment}>+</button>
+  </div>
+)
 
 // ...
 ```
@@ -204,5 +208,6 @@ interface Props {
 以上Hyperappの各要素にフォーカスした書き方でした。
 
 実際のサンプルが見たい場合は[Typescript+Hyperapp(+CSS Modules) build with Webpackなサンプルプロジェクトを用意している](https://github.com/pocka/hyperapp-typescript-demo)ので、そちらを見てね。
+
 
 
