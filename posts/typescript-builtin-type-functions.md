@@ -283,7 +283,7 @@ type C = InstanceType<never> // any
 type ThisType<T>
 ```
 
-thisの型をTとすることができる特殊な型。型関数ではないが便利なので一応記載します。
+thisの型をTとすることができる特殊な型です。型関数ではないですが便利なので一応記載します。
 
 ```ts
 interface Foo { bar: number }
@@ -302,11 +302,10 @@ const corge: Baz & ThisType<Foo> = {
 }
 ```
 
-Javascriptのライブラリを使う際にあると便利な型。
+Javascriptのライブラリを使う際にあると便利な型です。
 詳細はQiitaに記事を上げてくれている人がいるので、それを参照してください。
 
 [TypeScript 2.3 RC 変更点@vvakame](https://qiita.com/vvakame/items/d926f0e1b02397dbd5df#this%E3%81%AE%E5%9E%8B%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%8C%E3%82%88%E3%82%8A%E6%9F%94%E8%BB%9F%E3%81%AB%E8%A1%8C%E3%82%8F%E3%82%8C%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F)
-
 
 
 
