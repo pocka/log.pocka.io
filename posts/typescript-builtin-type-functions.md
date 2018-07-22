@@ -39,7 +39,7 @@ type PartialFoo = Partial<Foo>
 // }
 ```
 
-ライブラリのオプションの型を書く際等に非常に役立ちます。
+ライブラリのオプションの型を書く時なんかに非常に役立ちます。
 
 ```ts
 interface Options {
@@ -306,6 +306,7 @@ Javascriptのライブラリを使う際にあると便利な型。
 詳細はQiitaに記事を上げてくれている人がいるので、それを参照してください。
 
 [TypeScript 2.3 RC 変更点@vvakame](https://qiita.com/vvakame/items/d926f0e1b02397dbd5df#this%E3%81%AE%E5%9E%8B%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%8C%E3%82%88%E3%82%8A%E6%9F%94%E8%BB%9F%E3%81%AB%E8%A1%8C%E3%82%8F%E3%82%8C%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F)
+
 
 
 
