@@ -10,7 +10,7 @@ tags:
 ---
 TypescriptにはPromiseやSymbolといったJavascript特有のグローバルオブジェクト以外に、型を扱う上で便利になるような組み込みのジェネリックな型関数<sup>※1</sup>が存在します。これらは非常に便利で様々なプロジェクトで使われているのですが、公式にリストもなく、説明も主にリリースノート等にしかないため、使い方等を交えて説明を書いていきたいと思います。
 
-なお、各定義は[Microsoft/TypeScriptの`src/lib/es5.d.ts`にあります](https://github.com/Microsoft/TypeScript/blob/93ab352189245fd3b2751e5ab0ad3ffee4906fca/src/lib/es5.d.ts)。
+なお、各定義は[Microsoft/TypeScriptの`src/lib/es5.d.ts`にあります](https://github.com/Microsoft/TypeScript/blob/93ab352189245fd3b2751e5ab0ad3ffee4906fca/src/lib/es5.d.ts#L1331)。
 
 <small>※1 ... 型を受け取って新しい型を返す型。多分正しい呼び名ではない。</small>
 
@@ -306,5 +306,6 @@ Javascriptのライブラリを使う際にあると便利な型。
 詳細はQiitaに記事を上げてくれている人がいるので、それを参照してください。
 
 [TypeScript 2.3 RC 変更点@vvakame](https://qiita.com/vvakame/items/d926f0e1b02397dbd5df#this%E3%81%AE%E5%9E%8B%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%8C%E3%82%88%E3%82%8A%E6%9F%94%E8%BB%9F%E3%81%AB%E8%A1%8C%E3%82%8F%E3%82%8C%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F)
+
 
 
