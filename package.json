@@ -48,7 +48,8 @@
     "remove-markdown": "^0.2.2",
     "sitemap": "^1.13.0",
     "uncss": "^0.16.0",
-    "yaml-front-matter": "^3.4.0"
+    "yaml-front-matter": "^3.4.0",
+    "yarn": "^1.9.4"
   },
   "babel": {
     "plugins": [

@@ -18,49 +18,53 @@
 
 ## 記事の編集
 
-* 各記事は`posts`ディレクトリ配下に Markdown 形式で保存します
-* Markdown の先頭部分に YAML 形式で記事のメタ情報を記述します
+- 各記事は`posts`ディレクトリ配下に Markdown 形式で保存します
+- Markdown の先頭部分に YAML 形式で記事のメタ情報を記述します
 
 ## 開発にあたって
 
-* 記事 JSON、記事リスト JSON、読み込まれるメインの JS ファイルをビルドコマンドで生成し、静的サイトを組み上げます
-* バージョン統一のために`nvm install`と`nvm use`コマンドを実行してから開発を行ってください
+- 記事 JSON、記事リスト JSON、読み込まれるメインの JS ファイルをビルドコマンドで生成し、静的サイトを組み上げます
+- バージョン統一のために`nvm install`と`nvm use`コマンドを実行してから開発を行ってください
 
 ### 開発ビルドモード
 
 ```sh
-npm run dev
+npx yarn dev
+# yarn dev
 ```
 
-* `localhost:3000`に開発サーバを立てます
-  * ブラウザの URL バーに`localhost:3000`とうち移動すると開発モードのサイトに移動できます
-  * `src`ディレクトリ配下の JS ファイルに変更があると変更されたファイルのみをコンパイルし、できればその部分だけをリロードせずに置き換え、できなければブラウザをリロードします(HMR)
-* 終了したい場合は起動したコンソールで`Ctrl + C`を押します
+- `localhost:3000`に開発サーバを立てます
+  - ブラウザの URL バーに`localhost:3000`とうち移動すると開発モードのサイトに移動できます
+  - `src`ディレクトリ配下の JS ファイルに変更があると変更されたファイルのみをコンパイルし、できればその部分だけをリロードせずに置き換え、できなければブラウザをリロードします(HMR)
+- 終了したい場合は起動したコンソールで`Ctrl + C`を押します
 
 ### まとめてビルド
 
 ```sh
-npm run build
+npx yarn build
+# yarn build
 ```
 
-* `npm run build:posts`と`npm run build:app`を実行します
+- `npm run build:posts`と`npm run build:app`を実行します
 
 ### 記事 JSON の生成
 
 ```sh
-npm run build:posts
+npx yarn build:posts
+# yarn build:posts
 ```
 
-* `posts`ディレクトリの中にある記事の Markdown を変換し、`src/pages/posts`配下へ Vue のコンポーネントとして保存します
-* `posts`ディレクトリの中にある記事の Markdown を読み取り、その一覧を`src/assets/posts.json`として保存します
+- `posts`ディレクトリの中にある記事の Markdown を変換し、`src/pages/posts`配下へ Vue のコンポーネントとして保存します
+- `posts`ディレクトリの中にある記事の Markdown を読み取り、その一覧を`src/assets/posts.json`として保存します
 
 ### JS ファイルの生成
 
 ```sh
-npm run build:app
+npx yarn build:app
+# yarn build:app
 ```
 
-* `src`ディレクトリの中身をコンパイルし、`public`ディレクトリに出力します
+- `src`ディレクトリの中身をコンパイルし、`public`ディレクトリに出力します
 
 ## Contributing
 
