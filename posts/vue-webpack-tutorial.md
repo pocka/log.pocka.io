@@ -3,7 +3,7 @@ name: vue-webpack-tutorial
 title: Webpackで始めるVue.js
 description: Webpack+Vue2(Single File Component)で簡単なSPAを作るチュートリアル
 createdAt: 2017/09/13
-updatedAt: 2018-04-25T14:10:00+09:00
+updatedAt: 2018-09-27T14:10:00+09:00
 tags:
   - article
   - javascript
@@ -478,5 +478,6 @@ webpackの`-p`オプションは`NODE_ENV=production`の指定と`webpack.optimi
 # おわり
 
 だいぶ長くなってしまいましたが、以上がWebpack+Vueを使ったシンプルなSPAの構築方法です。vue-cliは確かに便利ですが、こういうものを理解するのは手で書いていくのが一番なので是非公式でちゃんとチュートリアルを書いてほしいものです。
+
 
 
