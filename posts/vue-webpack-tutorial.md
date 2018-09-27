@@ -3,7 +3,7 @@ name: vue-webpack-tutorial
 title: Webpackで始めるVue.js
 description: Webpack+Vue2(Single File Component)で簡単なSPAを作るチュートリアル
 createdAt: 2017/09/13
-updatedAt: 2018-09-27T14:10:00+09:00
+updatedAt: 2018-09-27T05:10:00.000Z
 tags:
   - article
   - javascript
@@ -260,9 +260,9 @@ import Vue from 'vue'
 import App from './components/App' // 作ったやつ
 
 new Vue({
-    el: '#app', // アプリをマウントする要素(セレクタで指定)
-    components: { App }, // Appというコンポーネントを使うよ、という宣言
-    template: '<app/>', // el(今回は#app)の中に表示する内容
+  el: '#app', // アプリをマウントする要素(セレクタで指定)
+  components: { App }, // Appというコンポーネントを使うよ、という宣言
+  template: '<app/>', // el(今回は#app)の中に表示する内容
 })
 ```
 
@@ -478,6 +478,7 @@ webpackの`-p`オプションは`NODE_ENV=production`の指定と`webpack.optimi
 # おわり
 
 だいぶ長くなってしまいましたが、以上がWebpack+Vueを使ったシンプルなSPAの構築方法です。vue-cliは確かに便利ですが、こういうものを理解するのは手で書いていくのが一番なので是非公式でちゃんとチュートリアルを書いてほしいものです。
+
 
 
 
