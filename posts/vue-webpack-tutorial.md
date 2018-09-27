@@ -3,7 +3,7 @@ name: vue-webpack-tutorial
 title: Webpackで始めるVue.js
 description: Webpack+Vue2(Single File Component)で簡単なSPAを作るチュートリアル
 createdAt: 2017/09/13
-updatedAt: 2018-04-25T00:00:00+09:00
+updatedAt: 2018-09-27T05:10:00.000Z
 tags:
   - article
   - javascript
@@ -21,11 +21,10 @@ tags:
 
 対象読者は
 
-+ フロントエンド開発の知識がある(JS/TSコンパイル、SASS/SCSSコンパイル等)
-+ npmの開発フローをある程度知っている(`npm init`、`npm install`、npm scripts等)
++ フロントエンド開発の知識がある(JSやCSSのコンパイル等)
++ npmを用いた開発フローをある程度知っている
 + Vue.jsの名前くらいは知っている
 + 最近のJavascriptがある程度書ける
-+ browserifyやwebpack等のバンドルツール、又はGruntやGulp等のタスクランナーを触ったことがある
 
 くらいの人を想定しています。
 
@@ -36,20 +35,23 @@ JSファイルのビルドにはWebpackを、各コンポーネントは単一�
 
 チュートリアルを通して出来上がる最終的な完成物の[リポジトリ](https://github.com/pocka/vue-counter-example)を作成しているので、わからなくなったりうまく動かない場合は参照してください。
 
+# バージョン等
+
+- Webpack 4.x
+  - 確認環境: 4.20.2
+- Node.js >= 8
+  - ぶっちゃけ何でもいいですが、できるだけ新しいやつを使うといいです
+  - 確認環境: v10.10.0
+
 # チュートリアル
 
 ## 環境構築
 
-まずはじめにプロジェクトのディレクトリを作ります。(既存のディレクトリを使う場合は省略)
+まずはじめにプロジェクトのディレクトリを作り、`package.json`を作成します。(既存のディレクトリを使う場合は省略)
 
 ```sh
 mkdir vue-counter-app
 cd vue-counter-app
-```
-
-作業ディレクトリに`package.json`を作成します。
-
-```sh
 npm init # いくつか質問されるので適当に答える
 ```
 
@@ -58,83 +60,90 @@ npm init # いくつか質問されるので適当に答える
 
 次に、アプリケーションをビルドするためにWebpackをインストールします。
 一緒に超ベンリな開発サーバを立ててくれるwebpack-dev-serverもインストールします。
+webpack-cliは`webpack`コマンドを使うために必要なパッケージです。
 
 ```sh
-npm install --save-dev webpack webpack-dev-server
+npm install --save-dev webpack webpack-cli webpack-dev-server
+# 以降は下記の省略形式で記載します
+# npm i -D webpack
 ```
 
-インストールできたらWebpackの設定ファイル(`webpack.config.js`)を作成します。
+インストールできたらWebpackの設定ファイルを作成します。
 
 
-```javascript
+```js
 // webpack.config.js
+
+const path = require('path')
+
 module.exports = {
-    // メインとなるソースファイル
-    entry: './src/index.js',
-    // 出力設定
-    // この場合はdest/bundle.jsというファイルが生成される
-    output: {
-        // 出力先のファイル名
-        filename: 'bundle.js',
-        // 出力先のファイルパス
-        path: `${__dirname}/dest`,
-    },
-    // 開発サーバの設定
-    devServer: {
-        // destディレクトリの中身を表示してね、という設定
-        contentBase: 'dest',
-    },
+  // エントリポイントのファイル
+  entry: './src/index.js',
+  output: {
+    // 出力先のディレクトリ
+    path: path.resolve(__dirname, './dest'),
+    // 出力ファイル名
+    filename: 'bundle.js'
+  },
+  devServer: {
+    // webpackの扱わないファイル(HTMLや画像など)が入っているディレクトリ
+    contentBase: path.resolve(__dirname, 'public')
+  }
 }
 ```
 
 この時点でJSファイルをコンパイルする準備ができたので、試しに簡単なJSファイルをビルドしてみましょう。
+まず適当にソースファイルを作成します。
 
-まず適当にソースファイル(`src/index.js`)を作成します。
+```js
+// src/index.js
 
-```sh
-mkdir src
-echo 'console.log("Hello, World!")' > src/index.js
+console.log('Hello, World!')
 ```
 
-次に簡単に確認できるように`package.json`にnpm scriptを書きます。
+次に開発環境の起動コマンドを`package.json`に書きます。
 
-```javascript
+```js
 // package.json
+
 {
   // ...省略
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --hot" // <-- 追加
+    "start": "webpack-dev-server --hot" // <-- 追加
   }
   // ...省略
 }
 ```
 
-最後に表示するHTMLファイル(`dest/index.html`)を作成し、以下の内容を貼り付けてください。
+最後に表示するHTMLファイルを作成します。
 
 
 ```html
+<!-- public/index.html -->
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Vue app</title>
-    </head>
-    <body>
-        <div id="app"></div>
-        <script src="/bundle.js"></script>
-    </body>
+  <head>
+    <meta charset="utf-8">
+    <title>Vue app</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="bundle.js"></script>
+  </body>
 </html>
 ```
 
-以下のコマンドを実行してからブラウザで`localhost:8080`を開き、開発者ツールを開いてみましょう。
+以下のコマンドを実行してからブラウザで<http://localhost:8080>を開き、開発者ツールを開いてみましょう。
 `Hello, World!`という文字列が表示されていれば成功です。
 
 ```sh
-npm run dev
+npm start
 ```
 
 確認できたら一旦`Ctrl + C`で開発サーバを終了しときます。
+
 
 ## Vueのインストール
 
@@ -143,74 +152,101 @@ npm run dev
 まず以下のコマンドでVueをインストールします。
 
 ```sh
-npm install --save vue
+npm i --save vue
 ```
 
-また、Vueの単一ファイルコンポーネントをコンパイルするためにWebpackのローダーをインストールします。ついでにES2015でかけるようにbabel-loader、SASS(SCSS)を使えるようにsass-loaderもインストールします。
+また、Vueの単一ファイルコンポーネント(SFC)を扱うためのWebpackのローダーをインストールします。
+
+- SFCを扱うために必要な基本ローダー
+  - [vue-loader](https://github.com/vuejs/vue-loader/) (SFCを読み込む)
+  - [vue-template-compiler](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler) (ドキュメント等に記載はないがvue-loaderに必要)
+  - [css-loader](https://github.com/webpack-contrib/css-loader) (cssを読み込む)
+  - [style-loader](https://github.com/webpack-contrib/style-loader) (読み込んだCSSをJSに埋め込んだりする)
+- JSのトランスパイルに必要なローダー
+  - [babel-loader](https://github.com/babel/babel-loader) (JSをトランスパイルする)
+  - [@babel/core](https://github.com/babel/babel/tree/master/packages/babel-core) (Babelの本体)
+  - [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) (実行環境を指定してよしなにトランスパイルしてくれるやつ)
+- その他 (必要に応じてインストールしてください)
+  - [ts-loader](https://github.com/TypeStrong/ts-loader) (Typescriptを読み込む)
+    - [fork-ts-checker-webpack-plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin)+[@babel/preset-typescript](https://babeljs.io/docs/en/babel-preset-typescript)で多分代用可能かもしれない
+  - [sass-loader](https://github.com/webpack-contrib/sass-loader) (SASS/SCSSを読み込む)
+  - etc...
 
 ```sh
-# vue-loaderとそれに必要なモジュール
-npm install --save-dev vue-loader vue-template-compiler css-loader
-# babel-loaderとそれに必要なモジュール
-npm install --save-dev babel-loader babel babel-core babel-preset-es2015
-# sass-loaderとそれに必要なモジュール
-npm install --save-dev sass-loader node-sass
+# 基本ローダー
+npm i -D vue-loader vue-template-compiler css-loader style-loader
+# JS系ローダー
+npm i -D babel-loader @babel/core @babel/preset-env
 ```
 
-次に、`webpack.config.js`に各ローダーをセットしてビルドできるようにします。
+インストールしたローダーを組み込んでいきます。
 
-```javascript
+```js
 // webpack.config.js
+
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: `${__dirname}/dest`,
-  },
-  // ↓↓↓ここから↓↓↓
+  // ...
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
+        test: /\.vue$/, // ファイルが.vueで終われば...
+        loader: 'vue-loader' // vue-loaderを使う
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader?presets=es2015',
+        loader: 'babel-loader',
       },
       {
-        test: /\.(css|sass|scss)$/,
-        loader: 'sass-loader',
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'] // css-loader -> style-loaderの順で通していく
       },
     ]
   },
   resolve: {
+    // import './foo.vue' の代わりに import './foo' と書けるようになる(拡張子省略)
     extensions: ['.js', '.vue'],
     alias: {
+      // vue-template-compilerに読ませてコンパイルするために必要
       vue$: 'vue/dist/vue.esm.js',
     },
   },
-  // ↑↑↑ここまで追加↑↑↑
-  devServer: {
-    contentBase: 'public',
-  },
+  // ...
 }
 ```
 
-お疲れ様でした、これでVueアプリを開発する環境は整いました！
+最後にBabelの変換設定を追加して終了です。
+
+```js
+// package.json
+{
+  // ...
+  "babel": {
+    "presets": ["@babel/preset-env"]
+  },
+  // メジャーな最新2バージョンで、まともに使われており、IE以外のブラウザをターゲットにする
+  // ここはプロジェクトに応じて適当に決めてください
+  // 詳細は以下を参照
+  // https://github.com/browserslist/browserslist
+  "browserslist": "last 2 versions, not dead, not ie > 0",
+  // ...
+}
+```
+
+お疲れ様です、これでVueアプリを開発する環境は整いました！
 
 ## Vueアプリを書く
 
 ではアプリを書いていきましょう。
 まず、適当なコンポーネントを作ってみましょう。
-`src/components/App.vue`を作成して以下の内容を書いてみてください。
 
 
 ```
+<!-- src/components/App.vue -->
+
 <template>
-    <div>
-        <p>Hello, World!</p>
-    </div>
+  <div>
+    <p>Hello, World!</p>
+  </div>
 </template>
 ```
 
@@ -218,34 +254,37 @@ module.exports = {
 
 ```javascript
 // src/index.js
+
 import Vue from 'vue'
 
-import App from './components/App' // 今作ったやつ
+import App from './components/App' // 作ったやつ
 
 new Vue({
-    el: '#app', // アプリをマウントする要素
-    components: { App }, // Appというコンポーネントを使うよ、という宣言
-    template: '<app/>', // el(今回は#app)の中に表示する内容
+  el: '#app', // アプリをマウントする要素(セレクタで指定)
+  components: { App }, // Appというコンポーネントを使うよ、という宣言
+  template: '<app/>', // el(今回は#app)の中に表示する内容
 })
 ```
 
-`npm run dev`で開発サーバを立てて`localhost:8080`を確認してみるといつもの文字列が表示されているはずです。
+`npm start`で開発サーバを立てて<http://localhost:8080>を確認してみるといつもの文字列が表示されているはずです。
 
 ### スタイルを加えてみる
 
-先ほどの`src/components/App.vue`にひと手間加えてみましょう。
+先ほどのコンポーネントにひと手間加えてみましょう。
 
 ```
+<!-- src/components/App.vue -->
+
 <template>
-    <div>
-        <p>Hello, World!</p>
-    </div>
+  <div>
+    <p>Hello, World!</p>
+  </div>
 </template>
 
-<style lang="scss">
-    * {
-        border: 1px solid #f00;
-    }
+<style>
+  * {
+    border: 1px solid red;
+  }
 </style>
 ```
 
@@ -253,8 +292,8 @@ new Vue({
 ではこのコンポーネントで定義したスタイルをこのコンポーネントの要素のみに適用してみましょう。
 
 ```diff
-- <style lang="scss">
-+ <style lang="scss" scoped>
+- <style>
++ <style scoped>
 ```
 
 罫線が減っていますね。これはScoped CSSというものです。基本的にはこれを使ってスタイルを適用していくのが良いと思います。
@@ -263,45 +302,46 @@ new Vue({
 
 ではカウンタの実装をしていきましょう。
 
-まずカウンタコンポーネントのvueファイル(`src/components/Counter.vue`)を作ります。
 
 
 ```
+<!-- src/components/Counter.vue -->
+
 <template>
-    <div>
-        <button>-</button>
-        <span>0</span>
-        <button>+</button>
-    </div>
+  <div>
+    <button>-</button>
+    <span>0</span>
+    <button>+</button>
+  </div>
 </template>
 ```
 
 作ったらそれをアプリに追加します。今回はメインコンポーネントである`src/components/App.vue`に追加します。
 
-```diff
-  <template>
-      <div>
-          <p>Hello, World!</p>
-+         <counter/>
-      </div>
-  </template>
- 
+```diff 
 + <script>
 + import Counter from './Counter'
 +
 + export default {
-+     components: {Counter},
++   components: {Counter},
 + }
 + </script>
+
+  <template>
+    <div>
+      <p>Hello, World!</p>
++     <counter/>
+    </div>
+  </template>
  
   <style lang="scss">
-      * {
-          border: 1px solid #f00;
-      }
+    * {
+      border: 1px solid #f00;
+    }
   </style>
 ```
 
-追加した`export default ~`の部分でカウンターコンポーネントを登録し、テンプレート内の`<counter/>`の部分で使用しています。
+追加した`components: {Counter}`の部分でカウンターコンポーネントを登録し、テンプレート内の`<counter/>`の部分で使用しています。
 
 この状態でブラウザを確認すると追加したコンポーネントが表示されているはずです。
 
@@ -310,24 +350,24 @@ new Vue({
 それではカウンターを動くようにしましょう。
 
 ```diff
-  <template>
-      <div>
-          <button>-</button>
--         <span>0</span>
-+         <span>{{count}}</span>
-          <button>+</button>
-      </div>
-  </template>
-
 + <script>
 + export default {
-+     data() {
-+         return {
-+             count: 0,
-+         }
++   data() {
++     return {
++       count: 0,
 +     }
++   }
 + }
 + </script>
+
+  <template>
+    <div>
+      <button>-</button>
+-     <span>0</span>
++     <span>{{count}}</span>
+      <button>+</button>
+    </div>
+  </template>
 ```
 
 これでコンポーネントにデータを追加することができました。
@@ -339,33 +379,33 @@ VueではHTMLテンプレート内に`{{value}}`で値を埋め込むことが�
 では、次にボタンを押すと値を増減できるようにしましょう。
 
 ```diff
-  <template>
-      <div>
--         <button>-</button>
-+         <button v-on:click="decrement">-</button>
-          <span>{{count}}</span>
--         <button>+</button>
-+         <button v-on:click="increment">+</button>
-      </div>
-  </template>
-  
   <script>
   export default {
-      data() {
-          return {
-              count: 0,
-          }
-      },
-+     methods: {
-+         increment() {
-+             this.count += 1
-+         },
-+         decrement() {
-+             this.count -= 1
-+         },
+    data() {
+      return {
+        count: 0,
+      }
+    },
++   methods: {
++     increment() {
++       this.count += 1
 +     },
++     decrement() {
++       this.count -= 1
++     },
++   }
   }
   </script>
+
+  <template>
+    <div>
+-     <button>-</button>
++     <button v-on:click="decrement">-</button>
+      <span>{{count}}</span>
+-     <button>+</button>
++     <button v-on:click="increment">+</button>
+    </div>
+  </template>
 ```
 
 これを保存しブラウザに戻ると、ボタンを押すと値が増減するようになっているはずです。
@@ -391,55 +431,54 @@ Vueのコンポーネントの`methods`にメソッドを定義すると、`<tem
 ```js
 // package.json
 {
-    // 省略
-    "scripts": {
-        // 省略
-        "build": "webpack -p" // 追加
-    }
-    // 省略
+  // ...
+  "scripts": {
+    // ...
+    "build": "webpack -p"
+  }
+  // ...
 }
+```
+
+`public`ディレクトリ以下のファイルを`dest`にコピーするための用意をします。
+JSファイルの分割等を行う際に便利なので、`dest`にHTMLやWebフォントを置かずにこちらの方法をとることをおすすめします。
+
+```sh
+npm i -D copy-webpack-plugin
 ```
 
 ```js
 // webpack.config.js
+
+// ...
+const CopyPlugin = require('copy-webpack-plugin')
+
 module.exports = {
-    // 省略
-        {
-            test: /\.vue$/,
-            loader: 'vue-loader',
-            options: {
-                postLoaders: {
-                    // UglifyJSがこけるのでその対策として追加
-                    js: 'babel-loader?presets=es2015',
-                },
-            },
-        }
-    // 省略
+  // ...
+  plugins: [
+    // ...
+    new CopyPlugin({ from: './public' })
+  ],
+  // ...
 }
 ```
 
-以上を追記したら、以下のコマンドを叩いてください。
+
+以下のコマンドを叩くと、`dest/bundle.js`が生成されます。
 
 ```sh
 npm run build
 ```
 
-これで`dest`ディレクトリに`bundle.js`が生成されているはずです。
 webpackの`-p`オプションは`NODE_ENV=production`の指定と`webpack.optimize.UglifyJsPlugin`の指定をしてくれるので、基本的にこの設定だけでファイルは最小化されて出力されます。
 
 デプロイ時にはこの`dest`ディレクトリを公開します。
 
-### gitignore
-
-`.gitignore`では`dest/index.html`を除く`dest`ディレクトリ、`node_modules`を無視させます。
-
-```
-node_modules
-dest/**
-!dest/index.html
-```
 
 # おわり
 
 だいぶ長くなってしまいましたが、以上がWebpack+Vueを使ったシンプルなSPAの構築方法です。vue-cliは確かに便利ですが、こういうものを理解するのは手で書いていくのが一番なので是非公式でちゃんとチュートリアルを書いてほしいものです。
+
+
+
 
