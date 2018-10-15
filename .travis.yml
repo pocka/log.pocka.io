@@ -1,0 +1,11 @@
+language: node_js
+
+before_deploy:
+  - npm run build
+
+deploy:
+  provider: script
+  script: npm run deploy
+  skip-cleanup: true
+  on:
+    branch: master
