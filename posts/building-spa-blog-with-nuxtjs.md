@@ -3,7 +3,7 @@ name: building-spa-blog-with-nuxtjs
 title: Nuxt.jsで作るSPAブログ
 description: Nuxt.jsの静的生成機能(generate)を用いたブログの構築についてのお話
 createdAt: 2018-04-25T09:02:04.062Z
-updatedAt: 2018-05-10T08:00:00.000Z
+updatedAt: 2018-10-16T21:15:00.000Z
 tags:
   - article
   - javascript
@@ -12,7 +12,7 @@ tags:
 ---
 # 概要
 
-この技術ブログは[Nuxt.js](https://nuxtjs.org/)([日本語版](https://ja.nuxtjs.org/))によって生成されたSPAを[Netlify](https://www.netlify.com/)上で運用しています。
+この技術ブログは[Nuxt.js](https://nuxtjs.org/)([日本語版](https://ja.nuxtjs.org/))によって生成されたSPAをAWS S3+CloudFront上で運用しています。
 
 この記事では構成の概要や、Nuxt.jsについて紹介していきます。
 
@@ -26,7 +26,7 @@ Nuxt.jsを採用する前は[Vue.js製SPAに記事JSONをfetch方式](/posts/str
 
 [Vue.jsベースであった以前のもの](/posts/structure-of-this-blog)とそこまでは変わらないです。
 
-Netlify上から配信されているSPA部分は、`nuxt generate`コマンドで生成されたHTML+JS+CSS+その他です。
+S3上から配信されているSPA部分は、`nuxt generate`コマンドで生成されたHTML+JS+CSS+その他です。
 SPAブログの各記事ページでは一般的に(?)、ランタイムで記事JSONをfetchして表示するという方式がとられています。
 しかしこのサイトでは、初回表示にはビルド時に生成したHTMLを、それ以降(Vueが読み込まれた後)はdynamic importを使ってランタイムで記事JSONをfetchして表示するハイブリッド型となっています。
 
@@ -46,20 +46,12 @@ AMPページ部分はビルド時に記事JSONとAMPテンプレート用のPug�
 
 # 記事編集フロー
 
-ローカルの場合(あまりやらない)
+ローカルの場合
 
 1. `npm run build:posts && npm run dev`
 1. Markdownを編集
-1. `npm run build:posts` (自動化したかったけど複雑になるので断念)
+1. `npm run build:posts` (watch/importしたかったけど複雑になるので断念)
 1. ブラウザで確認(HMRが効いているので快適)
-
-NetlifyCMSの場合
-
-1. 記事を書く
-1. 保存するとPRが作成される
-1. Netlifyのプレビューを確認する
-
-NetlifyCMSがあまりにも便利なのでローカル編集の利便性は追求していない。
 
 # Nuxt.jsを採用してよかった点
 
