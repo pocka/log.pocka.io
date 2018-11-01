@@ -2,13 +2,22 @@
 import OldPostNotification from '~/components/OldPostNotification'
 import TooOldPostNotification from '~/components/TooOldPostNotification'
 
+import FacebookButton from '~/components/ShareButton/Facebook'
+import HatenaBookmarkButton from '~/components/ShareButton/HatenaBookmark'
+import PocketButton from '~/components/ShareButton/Pocket'
+import TwitterButton from '~/components/ShareButton/Twitter'
+
 const isNYearsAgo = n => date =>
   Math.floor((new Date() - date) / (1000 * 60 * 60 * 24 * 365)) >= n
 
 export default {
   components: {
     OldPostNotification,
-    TooOldPostNotification
+    TooOldPostNotification,
+    FacebookButton,
+    HatenaBookmarkButton,
+    PocketButton,
+    TwitterButton
   },
   props: {
     post: {
@@ -32,7 +41,7 @@ export default {
         },
         {
           property: 'og:url',
-          content: `https://log.pocka.io/posts/${post.name}`
+          content: this.pageURL
         },
         { property: 'og:description', content: post.description },
         { property: 'og:locale', content: 'ja_JP' }
@@ -56,6 +65,12 @@ export default {
     },
     isTooOldPost() {
       return !this.isArticle && isNYearsAgo(3)(new Date(this.post.updatedAt))
+    },
+    pageURL() {
+      return `https://log.pocka.io/posts/${this.post.name}`
+    },
+    shareTitle() {
+      return `${this.post.title} | log.pocka.io`
     }
   }
 }
@@ -85,6 +100,25 @@ export default {
           <p class="is-size-7 has-text-white-ter">
             <a :href="historyUri" target="_blank">更新履歴</a>
           </p>
+          <div class="share-buttons buttons">
+            <facebook-button  class="is-small" :url="pageURL"/>
+            <hatena-bookmark-button
+              class="is-small"
+              :url="pageURL"
+              :title="shareTitle"
+            />
+            <pocket-button
+              class="is-small"
+              :url="pageURL"
+              :title="shareTitle"
+            />
+            <twitter-button
+              class="is-small"
+              :url="pageURL"
+              :title="shareTitle"
+              via="pockauel"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -94,6 +128,23 @@ export default {
         <old-post-notification v-else-if="isOldPost"/>
         <div class="content">
           <slot></slot>
+        </div>
+        <hr/>
+        <div class="share-buttons buttons">
+          <facebook-button :url="pageURL"/>
+          <hatena-bookmark-button
+            :url="pageURL"
+            :title="shareTitle"
+          />
+          <pocket-button
+            :url="pageURL"
+            :title="shareTitle"
+          />
+          <twitter-button
+            :url="pageURL"
+            :title="shareTitle"
+            via="pockauel"
+          />
         </div>
       </div>
     </section>
@@ -162,6 +213,10 @@ export default {
 <style scoped>
 .hero-body a:hover {
   text-decoration: underline;
+}
+
+.share-buttons {
+  margin-top: 1em;
 }
 
 @media (max-width: 768px) {
