@@ -15,7 +15,7 @@
     "build": "npm run build:posts && npm run build:sitemap && npm run build:amp && npm run build:app",
     "dev": "nuxt dev",
     "test": "exit 0",
-    "deploy": "s3-deploy './public/**' --cwd './public/' --bucket $AWS_BUCKET_NAME --gzip --etag"
+    "deploy": "s3-deploy './public/**' --cwd './public/' --bucket $AWS_BUCKET_NAME --distId AWS_CF_DIST_ID --gzip --etag"
   },
   "repository": {
     "type": "git",
