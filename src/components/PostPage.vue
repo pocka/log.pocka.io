@@ -115,8 +115,7 @@ export default {
             <twitter-button
               class="is-small"
               :url="pageURL"
-              :title="shareTitle"
-              via="pockauel"
+              :title="post.title"
             />
           </div>
         </div>
@@ -142,8 +141,7 @@ export default {
           />
           <twitter-button
             :url="pageURL"
-            :title="shareTitle"
-            via="pockauel"
+            :title="post.title"
           />
         </div>
       </div>
