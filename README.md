@@ -2,11 +2,8 @@
 
 # log.pocka.io
 
-[![GitHub top language](https://img.shields.io/github/languages/top/pocka/log.pocka.io.svg)]()
 [![GitHub last commit](https://img.shields.io/github/last-commit/pocka/log.pocka.io.svg)]()
 [![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/pocka/log.pocka.io.svg)]()
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/pocka/log.pocka.io.svg)]()
-[![GitHub issues](https://img.shields.io/github/issues/pocka/log.pocka.io.svg)]()
 
 これは[log.pocka.io](https://log.pocka.io)のリポジトリです
 
