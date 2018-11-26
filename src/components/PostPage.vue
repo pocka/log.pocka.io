@@ -98,7 +98,7 @@ export default {
             作成日: {{post.createdAt | ymd}}, 更新日: <time>{{post.updatedAt | ymd}}</time>
           </p>
           <p class="is-size-7 has-text-white-ter">
-            <a :href="historyUri" target="_blank">更新履歴</a>
+            <a :href="historyUri" target="_blank" rel="noopener">更新履歴</a>
           </p>
           <div class="share-buttons buttons">
             <facebook-button  class="is-small" :url="pageURL"/>
