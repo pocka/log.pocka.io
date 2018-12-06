@@ -11,40 +11,25 @@ export default {
 
 <template>
   <div class="columns is-multiline">
-    <div
-      v-for="post in posts"
-      :key="post.title"
-      class="column is-4"
-    >
+    <div v-for="post in posts" :key="post.title" class="column is-4">
       <div class="card">
         <div class="card-content">
-          <router-link
-            :to="post.path"
-            class="title is-4"
-          >
-            {{post.title}}
-          </router-link>
+          <router-link :to="post.path" class="title is-4">{{post.title}}</router-link>
 
           <p class="summary">{{post.summary}}</p>
 
           <div class="dates">
-            <p class="is-size-7 has-text-grey">
-              更新日: {{post.updatedAt | ymd}}
-            </p>
-            <p class="is-size-7 has-text-grey">
-              作成日: {{post.createdAt | ymd}}
-            </p>
+            <p class="is-size-7 has-text-grey">更新日: {{post.updatedAt | ymd}}</p>
+            <p class="is-size-7 has-text-grey">作成日: {{post.createdAt | ymd}}</p>
           </div>
           <div class="tags">
             <router-link
               v-for="tag in post.tags"
               :key="tag"
-              :to="`/tags/${tag}`"
+              :to="`/tags/${tag}/`"
               :title="`${tag}タグのついた記事を探す`"
               class="tag is-dark"
-            >
-              {{tag}}
-            </router-link>
+            >{{tag}}</router-link>
           </div>
         </div>
       </div>

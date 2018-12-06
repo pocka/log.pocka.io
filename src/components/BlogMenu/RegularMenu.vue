@@ -1,44 +1,19 @@
 <template>
   <div class="container level is-hidden-mobile">
     <div class="level-item has-text-centered">
-      <router-link
-        class="navbar-item"
-        to="/"
-      >
-        Home
-      </router-link>
+      <router-link class="navbar-item" to="/">Home</router-link>
     </div>
     <div class="level-item has-text-centered">
-      <router-link
-        class="navbar-item"
-        to="/posts"
-      >
-        Posts
-      </router-link>
+      <router-link class="navbar-item" to="/posts/">Posts</router-link>
     </div>
     <div class="level-item has-text-centered">
-      <router-link
-        class="navbar-item brand"
-        to="/"
-      >
-        log.pocka.io
-      </router-link>
+      <router-link class="navbar-item brand" to="/">log.pocka.io</router-link>
     </div>
     <div class="level-item has-text-centered">
-      <router-link
-        class="navbar-item"
-        to="/about"
-      >
-        About
-      </router-link>
+      <router-link class="navbar-item" to="/about/">About</router-link>
     </div>
     <div class="level-item has-text-centered">
-      <router-link
-        class="navbar-item"
-        to="/contact"
-      >
-        Contact
-      </router-link>
+      <router-link class="navbar-item" to="/contact/">Contact</router-link>
     </div>
   </div>
 </template>

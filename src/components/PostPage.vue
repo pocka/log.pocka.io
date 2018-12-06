@@ -67,7 +67,7 @@ export default {
       return !this.isArticle && isNYearsAgo(3)(new Date(this.post.updatedAt))
     },
     pageURL() {
-      return `https://log.pocka.io/posts/${this.post.name}`
+      return `https://log.pocka.io/posts/${this.post.name}/`
     },
     shareTitle() {
       return `${this.post.title} | log.pocka.io`
@@ -87,36 +87,23 @@ export default {
             <router-link
               v-for="tag in post.tags"
               :key="tag"
-              :to="`/tags/${tag}`"
+              :to="`/tags/${tag}/`"
               :title="`${tag}タグのついた記事を探す`"
               class="tag is-light"
-            >
-              {{tag}}
-            </router-link>
+            >{{tag}}</router-link>
           </div>
           <p class="is-size-7 has-text-white-ter">
-            作成日: {{post.createdAt | ymd}}, 更新日: <time>{{post.updatedAt | ymd}}</time>
+            作成日: {{post.createdAt | ymd}}, 更新日:
+            <time>{{post.updatedAt | ymd}}</time>
           </p>
           <p class="is-size-7 has-text-white-ter">
             <a :href="historyUri" target="_blank" rel="noopener">更新履歴</a>
           </p>
           <div class="share-buttons buttons">
-            <facebook-button  class="is-small" :url="pageURL"/>
-            <hatena-bookmark-button
-              class="is-small"
-              :url="pageURL"
-              :title="shareTitle"
-            />
-            <pocket-button
-              class="is-small"
-              :url="pageURL"
-              :title="shareTitle"
-            />
-            <twitter-button
-              class="is-small"
-              :url="pageURL"
-              :title="post.title"
-            />
+            <facebook-button class="is-small" :url="pageURL"/>
+            <hatena-bookmark-button class="is-small" :url="pageURL" :title="shareTitle"/>
+            <pocket-button class="is-small" :url="pageURL" :title="shareTitle"/>
+            <twitter-button class="is-small" :url="pageURL" :title="post.title"/>
           </div>
         </div>
       </div>
@@ -128,21 +115,12 @@ export default {
         <div class="content">
           <slot></slot>
         </div>
-        <hr/>
+        <hr>
         <div class="share-buttons buttons">
           <facebook-button :url="pageURL"/>
-          <hatena-bookmark-button
-            :url="pageURL"
-            :title="shareTitle"
-          />
-          <pocket-button
-            :url="pageURL"
-            :title="shareTitle"
-          />
-          <twitter-button
-            :url="pageURL"
-            :title="post.title"
-          />
+          <hatena-bookmark-button :url="pageURL" :title="shareTitle"/>
+          <pocket-button :url="pageURL" :title="shareTitle"/>
+          <twitter-button :url="pageURL" :title="post.title"/>
         </div>
       </div>
     </section>
