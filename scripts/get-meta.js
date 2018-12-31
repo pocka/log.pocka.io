@@ -23,6 +23,6 @@ module.exports = path => {
     createdAt: createdAt || fileInfo.birthtime.toISOString(),
     updatedAt: updatedAt || fileInfo.mtime.toISOString(),
     author: author || 'pocka',
-    path: `/${path.replace(/\.md$/, '')}`,
+    path: `/${path.replace(/\.md$/, '')}/`,
   })
 }
