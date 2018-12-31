@@ -7,7 +7,7 @@
     "compile:markdown": "find posts -name \"*.md\" -type f|xargs -I{} sh -c 'echo {}|node scripts/md2json.js > src/assets/$(echo {}|sed -e \"s/\\.md$/.json/\")'",
     "compile:amp": "find posts -name \"*.md\" -type f |node scripts/md2json.js|node scripts/make-amp/index.js >/dev/null",
     "compile:js": "NODE_ENV=production webpack -p",
-    "build:app": "NODE_ENV=production nuxt generate",
+    "build:app": "NODE_ENV=production nuxt generate --modern client",
     "build:posts": "mkdir -p src/assets/posts && npm run compile:markdown && npm run build:list",
     "build:amp": "npm run create:amp-directories && npm run compile:amp",
     "build:sitemap": "HOST_NAME=https://log.pocka.io node scripts/make-sitemap.js",
@@ -30,20 +30,20 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bulma": "^0.6.1",
-    "moment": "^2.21.0"
+    "moment": "^2.21.0",
+    "nuxt": "^2.3.4"
   },
   "devDependencies": {
     "@nuxtjs/google-analytics": "^2.0.2",
     "@nuxtjs/pwa": "^2.0.8",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "cheerio": "^1.0.0-rc.2",
-    "cssnano": "^3.10.0",
+    "cssnano": "^4.1.8",
     "highlight.js": "^9.12.0",
     "image-size": "^0.6.1",
     "marked": "^0.3.9",
     "mz": "^2.7.0",
-    "nuxt": "^1.4.0",
-    "postcss": "^6.0.14",
+    "postcss": "^7.0.7",
     "postcss-amp": "^1.1.0",
     "postcss-uncss": "^0.15.0",
     "pug": "^2.0.0-rc.4",
@@ -59,6 +59,13 @@
       "transform-object-rest-spread"
     ]
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 Firefox versions",
+    "last 2 iOS versions",
+    "last 2 Safari versions"
+  ],
   "prettier": {
     "semi": false,
     "singleQuote": true

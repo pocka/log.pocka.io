@@ -1,7 +1,6 @@
+const { posts } = require('./src/assets/posts.json')
+
 module.exports = {
-  build: {
-    vendor: ['babel-polyfill']
-  },
   css: ['bulma/css/bulma.css'],
   head: {
     titleTemplate: '%s | log.pocka.io',
@@ -34,9 +33,13 @@ module.exports = {
   },
   generate: {
     dir: 'public',
-    routes: require(`./src/assets/posts.json`).posts.map(
-      post => `/posts/${post.name}`
-    )
+    routes: [
+      ...posts.map(post => `/posts/${post.name}`),
+      ...[]
+        .concat(...posts.map(p => p.tags || []))
+        .filter((tag, i, tags) => tags.indexOf(tag) === i)
+        .map(tag => `/tags/${tag}`)
+    ]
   },
   modules: [
     [
