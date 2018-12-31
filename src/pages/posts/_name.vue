@@ -17,7 +17,7 @@ Vue.directive('dynamic-content', {
 export default {
   components: { PostPage },
   async asyncData({ params }) {
-    const post = await import(`~/assets/posts/${params.name}.json`)
+    const post = (await import(`~/assets/posts/${params.name}.json`)).default
 
     return { post }
   }
