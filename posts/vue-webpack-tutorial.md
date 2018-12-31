@@ -3,7 +3,7 @@ name: vue-webpack-tutorial
 title: Webpackで始めるVue.js
 description: Webpack+Vue2(Single File Component)で簡単なSPAを作るチュートリアル
 createdAt: 2017/09/13
-updatedAt: 2018-09-27T05:10:00.000Z
+updatedAt: 2018-12-31T13:00:00.000+09:00
 tags:
   - article
   - javascript
@@ -184,6 +184,9 @@ npm i -D babel-loader @babel/core @babel/preset-env
 ```js
 // webpack.config.js
 
+// vue-loader@15から必要
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   // ...
   module: {
@@ -198,7 +201,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'] // css-loader -> style-loaderの順で通していく
+        use: ['vue-style-loader', 'css-loader'] // css-loader -> vue-style-loaderの順で通していく
       },
     ]
   },
@@ -210,6 +213,7 @@ module.exports = {
       vue$: 'vue/dist/vue.esm.js',
     },
   },
+  plugins: [VueLoaderPlugin()],
   // ...
 }
 ```
@@ -457,7 +461,7 @@ module.exports = {
   // ...
   plugins: [
     // ...
-    new CopyPlugin({ from: './public' })
+    new CopyPlugin([{ from: './public' }])
   ],
   // ...
 }
