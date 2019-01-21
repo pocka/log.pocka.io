@@ -28,6 +28,9 @@ module.exports = {
         rel: 'stylesheet',
         href:
           'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css'
+      },{
+        rel: 'shortcut icon',
+        href: '/favicon.png'
       }
     ]
   },
