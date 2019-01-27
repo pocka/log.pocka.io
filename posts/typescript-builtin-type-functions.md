@@ -3,7 +3,7 @@ name: typescript-builtin-type-functions
 title: Typescript特有の組み込み型関数
 description: Typescript特有のジェネリックな組み込み型関数の一覧と説明、及び使用例
 createdAt: '07/22/2018 15:00'
-updatedAt: '07/22/2018 15:00'
+updatedAt: 2019-01-28T01:30:00.000+0900
 tags:
   - article
   - typescript
@@ -232,6 +232,47 @@ type NonNullable<T>
 type A = NonNullable<string | null> // string
 type B = NonNullable<null> // never
 type C = NonNullable<string> // string
+```
+
+## Parameters
+
+- 利用可能バージョン: TypeScript3.1~
+- リリースノート及びドキュメントに記載なし
+
+```ts
+type Parameters<T extends (...args: any[]) => any>
+```
+
+関数型Tの引数の型をタプルとして抽出します。
+
+```ts
+function foo(arg1: string, arg2: number): void {}
+function bar(): void {}
+
+type Foo = Parameters<typeof foo> // [string, number]
+type Bar = Parameters<typeof bar> // []
+```
+
+ちょくちょく使える場面はあるので覚えておくと便利です。
+
+## ConstructorParameters
+
+- 利用可能バージョン: TypeScript3.1~
+- リリースノート及びドキュメントに記載なし
+
+```ts
+type ConstructorParameters<T extends new (...args: any[]) => any>
+```
+
+型Tのコンストラクタの引数の型をタプルとして抽出します。
+`Parameters`のコンストラクタ版です。
+
+```ts
+class Foo {
+  constructor(arg1: string, arg2?: boolean) {}
+}
+
+type Bar = ConstructorParameters<typeof Foo> // [string, boolean] | [string]
 ```
 
 ## ReturnType
