@@ -1,14 +1,14 @@
 ---
 name: typescript-builtin-type-functions
-title: Typescript特有の組み込み型関数
-description: Typescript特有のジェネリックな組み込み型関数の一覧と説明、及び使用例
+title: TypeScript特有の組み込み型関数
+description: TypeScript特有のジェネリックな組み込み型関数の一覧と説明、及び使用例
 createdAt: '07/22/2018 15:00'
 updatedAt: 2019-01-28T01:30:00.000+0900
 tags:
   - article
   - typescript
 ---
-TypescriptにはPromiseやSymbolといったJavascript特有のグローバルオブジェクト以外に、型を扱う上で便利になるような組み込みのジェネリックな型関数<sup>※1</sup>が存在します。これらは非常に便利で様々なプロジェクトで使われているのですが、公式にリストもなく、説明も主にリリースノート等にしかないため、使い方等を交えて説明を書いていきたいと思います。
+TypeScriptにはPromiseやSymbolといったJavascript特有のグローバルオブジェクト以外に、型を扱う上で便利になるような組み込みのジェネリックな型関数<sup>※1</sup>が存在します。これらは非常に便利で様々なプロジェクトで使われているのですが、公式にリストもなく、説明も主にリリースノート等にしかないため、使い方等を交えて説明を書いていきたいと思います。
 
 なお、各定義は[Microsoft/TypeScriptの`src/lib/es5.d.ts`にあります](https://github.com/Microsoft/TypeScript/blob/93ab352189245fd3b2751e5ab0ad3ffee4906fca/src/lib/es5.d.ts#L1331)。
 
@@ -16,7 +16,7 @@ TypescriptにはPromiseやSymbolといったJavascript特有のグローバル�
 
 ## Partial
 
-- 利用可能バージョン: Typescript2.1~
+- 利用可能バージョン: TypeScript2.1~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick>
 
 ```ts
@@ -67,7 +67,7 @@ main({
 
 ## Required
 
-- 利用可能バージョン: Typescript2.8~
+- 利用可能バージョン: TypeScript2.8~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#improved-control-over-mapped-type-modifiers>
 
 ```ts
@@ -92,7 +92,7 @@ type RequiredFoo = Required<Foo>
 
 ## Readonly
 
-- 利用可能バージョン: Typescript2.1~
+- 利用可能バージョン: TypeScript2.1~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick>
 
 ```ts
@@ -117,7 +117,7 @@ type ReadonlyFoo = Readonly<Foo>
 
 ## Pick
 
-- 利用可能バージョン: Typescript2.1~
+- 利用可能バージョン: TypeScript2.1~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick>
 
 ```ts
@@ -144,9 +144,9 @@ type BarAndQux = Pick<Foo, 'bar' | 'qux'>
 
 react-redux等のHoCを作成/使用する際に多用します。
 
-なお、逆の「特定のプロパティを取り除く」という動きをする型関数は、[「既存の型を組み合わせれば簡単にできるからTypescript本体にはのっけないよ」とのことです(リンク先NOTE参照)](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)。
+なお、逆の「特定のプロパティを取り除く」という動きをする型関数は、[「既存の型を組み合わせれば簡単にできるからTypeScript本体にはのっけないよ」とのことです(リンク先NOTE参照)](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)。
 
-以下のように書くことで実装できます(Typescript2.8~)。また、react-reduxは利便性の為かそれをexportしてくれています。
+以下のように書くことで実装できます(TypeScript2.8~)。また、react-reduxは利便性の為かそれをexportしてくれています。
 
 ```ts
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
@@ -157,7 +157,7 @@ import { Omit } from 'react-redux'
 
 ## Record
 
-- 利用可能バージョン: Typescript2.1~
+- 利用可能バージョン: TypeScript2.1~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#partial-readonly-record-and-pick>
 
 ```ts
@@ -182,7 +182,7 @@ type StringFoo = Record<keyof Foo, string>
 
 ## Exclude
 
-- 利用可能バージョン: Typescript2.8~
+- 利用可能バージョン: TypeScript2.8~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types>
 
 ```ts
@@ -200,7 +200,7 @@ type C = Exclude<string | number | boolean, string | boolean> // number
 
 ## Extract
 
-- 利用可能バージョン: Typescript2.8~
+- 利用可能バージョン: TypeScript2.8~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types>
 
 ```ts
@@ -219,7 +219,7 @@ type C = Extract<string | number | boolean, string | boolean> // string | boolea
 
 ## NonNullable
 
-- 利用可能バージョン: Typescript2.8~
+- 利用可能バージョン: TypeScript2.8~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types>
 
 ```ts
@@ -277,7 +277,7 @@ type Bar = ConstructorParameters<typeof Foo> // [string, boolean] | [string]
 
 ## ReturnType
 
-- 利用可能バージョン: Typescript2.8~
+- 利用可能バージョン: TypeScript2.8~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types>
 
 ```ts
@@ -296,7 +296,7 @@ type C = ReturnType<() => void> // void
 
 ## InstanceType
 
-- 利用可能バージョン: Typescript2.8~
+- 利用可能バージョン: TypeScript2.8~
 - リリースノート: <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types>
 
 ```ts
@@ -317,7 +317,7 @@ type C = InstanceType<never> // any
 
 ## ThisType
 
-- 利用可能バージョン: Typescript2.3~
+- 利用可能バージョン: TypeScript2.3~
 - リリースノート及びドキュメントに記載なし
 
 ```ts
