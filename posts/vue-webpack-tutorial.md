@@ -167,7 +167,7 @@ npm i --save vue
   - [@babel/core](https://github.com/babel/babel/tree/master/packages/babel-core) (Babelの本体)
   - [@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) (実行環境を指定してよしなにトランスパイルしてくれるやつ)
 - その他 (必要に応じてインストールしてください)
-  - [ts-loader](https://github.com/TypeStrong/ts-loader) (Typescriptを読み込む)
+  - [ts-loader](https://github.com/TypeStrong/ts-loader) (TypeScriptを読み込む)
     - [fork-ts-checker-webpack-plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin)+[@babel/preset-typescript](https://babeljs.io/docs/en/babel-preset-typescript)で多分代用可能かもしれない
   - [sass-loader](https://github.com/webpack-contrib/sass-loader) (SASS/SCSSを読み込む)
   - etc...

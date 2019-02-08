@@ -219,7 +219,7 @@ pub fn add(a: i32, b: i32) -> i32 {
 
 - `pub`は[エクスポート指定子](https://doc.rust-lang.org/book/first-edition/crates-and-modules.html#exporting-a-public-interface)。JSの`export`みたいなもん。
 - `fn`はJSで言うところの`function`。ちなみにGo言語は`func`だよ。
-- 関数名と引数名は特に問題はないかと思う。型指定はTypescriptと殆ど同じだけど、返り値の指定にシングルアロー演算子(`->`)を使うところが独特。
+- 関数名と引数名は特に問題はないかと思う。型指定はTypeScriptと殆ど同じだけど、返り値の指定にシングルアロー演算子(`->`)を使うところが独特。
   - ちなみに`i32`は32bitの整数型のこと。Integer(32bit)。
   - この関数は「32bitの整数を2つ受け取って32bitの整数を返す公開関数」ということになる。
 - `a + b` ... Rustは関数ボディの最後にセミコロンなしで式文を書くことで、その値を返すことができる。明示的に`return`することもできるけど、できるだけ暗黙のreturnを使ったほうがいいらしい。
