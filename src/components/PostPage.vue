@@ -4,7 +4,6 @@ import TooOldPostNotification from '~/components/TooOldPostNotification'
 
 import FacebookButton from '~/components/ShareButton/Facebook'
 import HatenaBookmarkButton from '~/components/ShareButton/HatenaBookmark'
-import PocketButton from '~/components/ShareButton/Pocket'
 import TwitterButton from '~/components/ShareButton/Twitter'
 
 const isNYearsAgo = n => date =>
@@ -16,7 +15,6 @@ export default {
     TooOldPostNotification,
     FacebookButton,
     HatenaBookmarkButton,
-    PocketButton,
     TwitterButton
   },
   props: {
@@ -102,7 +100,6 @@ export default {
           <div class="share-buttons buttons">
             <facebook-button class="is-small" :url="pageURL"/>
             <hatena-bookmark-button class="is-small" :url="pageURL" :title="shareTitle"/>
-            <pocket-button class="is-small" :url="pageURL" :title="shareTitle"/>
             <twitter-button class="is-small" :url="pageURL" :title="post.title"/>
           </div>
         </div>
@@ -119,7 +116,6 @@ export default {
         <div class="share-buttons buttons">
           <facebook-button :url="pageURL"/>
           <hatena-bookmark-button :url="pageURL" :title="shareTitle"/>
-          <pocket-button :url="pageURL" :title="shareTitle"/>
           <twitter-button :url="pageURL" :title="post.title"/>
         </div>
       </div>
