@@ -1,7 +1,8 @@
+const sass = require('sass')
+
 const { posts } = require('./src/assets/posts.json')
 
 module.exports = {
-  css: ['bulma/css/bulma.css'],
   head: {
     titleTemplate: '%s | log.pocka.io',
     meta: [
@@ -28,7 +29,8 @@ module.exports = {
         rel: 'stylesheet',
         href:
           'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css'
-      },{
+      },
+      {
         rel: 'shortcut icon',
         href: '/favicon.png'
       }
@@ -43,6 +45,13 @@ module.exports = {
         .filter((tag, i, tags) => tags.indexOf(tag) === i)
         .map(tag => `/tags/${tag}`)
     ]
+  },
+  build: {
+    loaders: {
+      scss: {
+        implementation: sass
+      }
+    }
   },
   modules: [
     [

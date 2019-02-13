@@ -29,7 +29,6 @@
   "homepage": "https://github.com/pocka/log.pocka.io#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "bulma": "^0.6.1",
     "moment": "^2.21.0",
     "nuxt": "^2.4.3"
   },
