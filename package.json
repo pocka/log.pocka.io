@@ -31,7 +31,7 @@
     "babel-polyfill": "^6.26.0",
     "bulma": "^0.6.1",
     "moment": "^2.21.0",
-    "nuxt": "^2.3.4"
+    "nuxt": "^2.4.3"
   },
   "devDependencies": {
     "@nuxtjs/google-analytics": "^2.0.2",
@@ -49,6 +49,8 @@
     "pug": "^2.0.0-rc.4",
     "remove-markdown": "^0.2.2",
     "s3-deploy": "^1.1.4",
+    "sass": "^1.17.0",
+    "sass-loader": "^7.1.0",
     "sitemap": "^1.13.0",
     "uncss": "^0.16.0",
     "yaml-front-matter": "^3.4.0",
