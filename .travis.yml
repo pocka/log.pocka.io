@@ -1,6 +1,7 @@
 language: node_js
 
 before_deploy:
+  - npx lerna bootstrap
   - npm run build
 
 deploy:

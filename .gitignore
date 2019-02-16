@@ -1,12 +1,5 @@
 node_modules
 
-src/static/amp
-src/static/sitemap.xml
+*.log
 
-public
-.nuxt
-
-sw.*
-
-src/assets/posts
-src/assets/posts.json
+/dist
