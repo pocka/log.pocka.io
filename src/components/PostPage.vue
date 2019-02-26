@@ -143,7 +143,6 @@ export default {
 
 .post-container pre code {
   margin: 0;
-  padding: 0.25rem 0.5rem;
 }
 
 .post-container code {
