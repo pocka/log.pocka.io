@@ -12,7 +12,7 @@ tags:
 
 # やりたいこと
 
-Firebase を使った Web アプリケーションをローカルで動かしたい。
+Firebase Functions を使った Web アプリケーションをローカルで動かしたい。
 ただ、[Firebase CLI](https://github.com/firebase/firebase-tools)の`firebase serve`だと Hosting は HMR どころかホットリロードすらされないので webpack-dev-server を使いたい。
 
 # TL;DR
