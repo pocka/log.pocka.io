@@ -21,9 +21,6 @@ tags:
 module.exports = {
   srcDir: 'src/',
   ignore: ['**/*.stories.*'],
-  generate: {
-    dir: 'dist'
-  },
   modules: ['@nuxtjs/pwa']
 }
 ```
