@@ -3,7 +3,7 @@ name: react-typescript-inherit-props
 title: React+TypeScriptでPropsを継承する
 description: TypeScriptでReactコンポーネントを書く際に中で使用するコンポーネントのPropsを継承する方法
 createdAt: 2019-02-26T12:00:00.000Z
-updatedAt: 2019-02-26T12:00:00.000Z
+updatedAt: 2019-03-19T12:21:30.000Z
 tags:
   - blog
   - typescript
@@ -127,11 +127,13 @@ BarProps = {
 
 # 組み込み要素(HTML タグ)に渡す場合
 
-`ComponentProps`と`ReactHTML`を使います。
+`PropsWithoutRef`と`JSX.IntrinsicElements`を使います。
 なお、この場合は型の特性上`interface`での継承は使えないので Intersection Type を使う必要があります。
 
 ```ts
-type FooProps = ComponentProps<ReactHTML['a']> & {
+import { PropsWithoutRef } from 'react'
+
+type FooProps = PropsWithoutRef<JSX.IntrinsicElements['a']> & {
   hoge: string
 }
 ```
@@ -141,7 +143,7 @@ type FooProps = ComponentProps<ReactHTML['a']> & {
 ```ts
 // Extendは上で定義しているもの
 type FooProps = Extend<
-  ComponentProps<ReactHTML['a']>,
+  PropsWithoutRef<JSX.IntrinsicElements['a']>,
   {
     title: boolean
   }
@@ -153,11 +155,11 @@ type FooProps = Extend<
 ジェネリクスを使うとこんなこともできます。
 
 ```ts
-import { createElement, ComponentProps, ReactElement, ReactHTML } from 'react'
+import { createElement, ComponentProps, PropsWithoutRef } from 'react'
 
 type Tags = 'p' | 'input'
 
-type FooProps<T extends Tags> = ComponentProps<ReactHTML[T]> & {
+type FooProps<T extends Tags> = PropsWithoutRef<JSX.IntrinsicElements[T]> & {
   htmlTag?: T
 }
 
