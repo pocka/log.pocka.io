@@ -19,6 +19,8 @@ tags:
 当初は、既にメンテナンスされておらず新しい Storybook に対応していない[storybook-addon-figma](https://github.com/hharnisc/storybook-addon-figma)の代替として開発されました。
 しかし、コンセプト的に Figma 以外にも応用できそうだとわかったため、PDF や画像の埋め込みにも対応した、汎用デザインプレビューアドオンとして開発することになりました。
 
+実際にどんなものか見てみたい、という場合は[オンラインデモ](https://pocka.github.io/storybook-addon-designs)があるのでこちらをどうぞ。
+
 # Why?
 
 Storybook を使ったコンポーネント駆動開発では、コンポーネント単位で見た目や動きの確認をすることができます。
