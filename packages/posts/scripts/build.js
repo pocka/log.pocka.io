@@ -16,7 +16,11 @@ const build = async () => {
     withFileTypes: true
   })
 
-  const mdFiles = files.filter(file => file.isFile() && /\.md$/.test(file.name))
+  const mdFiles = files.filter(
+    file =>
+      fs.statSync(path.resolve(srcDir, file)).isFile() &&
+      /\.md$/.test(file.name)
+  )
 
   const list = await Promise.all(
     mdFiles.map(file => md2json(path.resolve(srcDir, file.name)))
@@ -36,4 +40,8 @@ const build = async () => {
   )
 }
 
-build()
+build().catch(err => {
+  console.error(err)
+
+  return process.exit(1)
+})
