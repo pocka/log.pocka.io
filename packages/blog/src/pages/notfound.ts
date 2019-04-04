@@ -1,9 +1,10 @@
 import { Page } from './Page'
 
 const page: Page = {
-  render(container) {
-    container.innerHTML = '404'
+  render() {
+    return '404'
   },
+  title: 'Not found',
   description: 'Page not found'
 }
 

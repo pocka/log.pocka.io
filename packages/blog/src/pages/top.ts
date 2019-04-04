@@ -1,9 +1,10 @@
 import { Page } from './Page'
 
 const page: Page = {
-  render(container) {
-    container.innerHTML = 'Hello, World!'
+  render() {
+    return 'Hello, World!'
   },
+  title: 'Top',
   description: 'OMG'
 }
 

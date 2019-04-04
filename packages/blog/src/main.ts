@@ -1,6 +1,10 @@
 import './scss/global.scss?inject'
 
-const container = document.getElementById('app')!
+const mods = [import('./components/layout')]
+
+mods.forEach(mod => mod.then(m => m.register()))
+
+const app = document.getElementById('app')!
 
 const setDescription = (description: string = '') => {
   const tag =
@@ -31,12 +35,15 @@ const render = (ssr = false) => {
   })()
 
   if (!ssr) {
-    load.then(({ default: { render, description } }) => {
-      container.innerHTML = ''
+    load.then(({ default: { render, title, description } }) => {
+      app.innerHTML = ''
 
+      document.title = title
       setDescription(description)
 
-      render(container)
+      app.innerHTML = `
+        ${render()}
+      `
     })
   }
 }

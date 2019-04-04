@@ -118,5 +118,10 @@ module.exports = {
       defer: /\.defer\..+\.js$/
     }),
     new ForkTsCheckerPlugin()
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
 }

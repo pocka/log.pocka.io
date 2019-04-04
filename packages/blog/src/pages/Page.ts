@@ -1,5 +1,7 @@
 export interface Page {
-  render(container: HTMLElement): any
+  render(): string
+
+  title: string
 
   description?: string
 }
