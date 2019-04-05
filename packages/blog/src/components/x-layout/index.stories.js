@@ -6,7 +6,7 @@ import './register'
 
 import notes from '!raw-loader!./README.md'
 
-storiesOf('x-html', module).add(
+storiesOf('x-layout', module).add(
   'Preview',
   () => `
     <x-layout>
