@@ -16,12 +16,7 @@ export class XLayout extends HTMLElement {
       <style>${style}</style>
 
       <div class="nav">
-        <svg class="nav-bg" viewbox="0 0 200 50" preserveAspectRatio="none">
-          <polygon points="0,0 200,0 200,30, 0,50"/>
-        </svg>
-        <div class="nav-contents">
-          <slot name="nav"/>
-        </div>
+        <slot name="nav"/>
       </div>
 
       <div class="main">
