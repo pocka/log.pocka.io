@@ -1,4 +1,4 @@
-import { addDecorator, configure } from '@storybook/html'
+import { addDecorator, configure } from '@storybook/react'
 
 import { withA11y } from '@storybook/addon-a11y'
 import { withKnobs } from '@storybook/addon-knobs'
@@ -9,7 +9,7 @@ addDecorator(withKnobs)
 addDecorator(withDesign)
 
 // automatically import all files ending in *.stories.js
-const req = require.context('../../src', true, /\.stories\.jsx?$/)
+const req = require.context('../src', true, /\.stories\.jsx?$/)
 function loadStories() {
   req.keys().forEach(filename => req(filename))
 }
