@@ -26,11 +26,13 @@ const MENU_SIZE = 1
 const BAR_HEIGHT = 1 / 6
 
 const $container = css`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
   width: ${MENU_SIZE}em;
   height: ${MENU_SIZE}em;
+
+  vertical-align: text-top;
 `
 
 const $bar = css`
