@@ -12,9 +12,7 @@ const build = async () => {
   const postsDir = path.resolve(buildDir, 'posts')
   const srcDir = path.resolve(__dirname, '../../../posts')
 
-  const files = await fsp.readdir(srcDir, {
-    withFileTypes: true
-  })
+  const files = await fsp.readdir(srcDir)
 
   const mdFiles = files.filter(
     file =>
