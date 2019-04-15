@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { CSSProperties, SFC } from 'react'
+import { SFC } from 'react'
 
-interface Props {
-  className?: string
-  style?: CSSProperties
+import { BaseProps } from '~/components/BaseProps'
 
+interface Props extends BaseProps {
   expanded?: boolean
 
   onClick?(): any
