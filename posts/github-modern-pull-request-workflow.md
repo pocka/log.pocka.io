@@ -2,8 +2,8 @@
 name: github-modern-pull-request-workflow
 title: モダンなPull Requestの回し方
 description: GitHubの機能をフルに活かして効率よくPull Requestを回す方法
-createdAt: 2019-04-26T16:00:00.000+09:00
-updatedAt: 2019-04-26T16:00:00.000+09:00
+createdAt: 2019-04-26T17:00:00.000+09:00
+updatedAt: 2019-04-26T17:00:00.000+09:00
 tags:
   - article
   - github
