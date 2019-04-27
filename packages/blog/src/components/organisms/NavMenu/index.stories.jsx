@@ -14,7 +14,7 @@ storiesOf('organisms|NavMenu', module)
         right: 0,
         bottom: 0,
         left: 0,
-        background: 'tomato'
+        background: '#ddddff'
       }}
     >
       {fn()}

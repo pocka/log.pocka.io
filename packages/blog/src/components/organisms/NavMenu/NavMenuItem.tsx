@@ -4,6 +4,7 @@ import { useContext, SFC } from 'react'
 import Link from 'next/link'
 
 import { BaseProps } from '~/components/BaseProps'
+import { up } from '~/misc/breakpoints'
 import { Theme } from '~/theme'
 
 import { OpenStateContext } from './OpenStateContext'
@@ -67,5 +68,9 @@ const $item = (theme: Theme) => css`
     color: ${theme.colors.fgLight};
     text-decoration: none;
     pointer-events: none;
+  }
+
+  @media (${up(theme.breakpoints.md)}) {
+    margin-top: 1.6rem;
   }
 `

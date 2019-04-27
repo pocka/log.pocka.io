@@ -12,7 +12,7 @@ export const Home: SFC = () => {
       `}
     >
       Hello, World!
-      <NavMenu />
+      <NavMenu title="foo" />
     </div>
   )
 }

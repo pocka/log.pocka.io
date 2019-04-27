@@ -15,7 +15,7 @@ interface Props extends BaseProps {
   title: string
 }
 
-export const NavMenu: SFC<Props> = ({ children, title, ...rest }) => {
+export const CompactNavMenu: SFC<Props> = ({ children, title, ...rest }) => {
   const [isOpened, toggleOpen] = useToggle(false)
 
   const ctx = useMemo<ContextType<typeof OpenStateContext>>(
@@ -66,7 +66,7 @@ export const NavMenu: SFC<Props> = ({ children, title, ...rest }) => {
   )
 }
 
-export default NavMenu
+export default CompactNavMenu
 
 const $container = css`
   position: relative;
