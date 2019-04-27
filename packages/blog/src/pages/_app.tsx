@@ -20,6 +20,10 @@ export default class MyApp extends App {
             body {
               margin: 0;
             }
+
+            * {
+              box-sizing: border-box;
+            }
           `}
         />
         <ThemeProvider theme={light}>
