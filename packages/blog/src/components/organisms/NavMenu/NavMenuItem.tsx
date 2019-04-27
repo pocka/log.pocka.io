@@ -20,12 +20,17 @@ export const NavMenuItem: SFC<Props> = ({
   href,
   ...rest
 }) => {
-  const isOpened = useContext(OpenStateContext)
+  const [isOpened, toggleOpen] = useContext(OpenStateContext)
 
   return (
     <li css={$container} {...rest}>
       <Link href={href} passHref>
-        <a css={$item} tabIndex={isOpened ? 0 : -1}>
+        <a
+          css={$item}
+          aria-disabled={active}
+          tabIndex={isOpened ? 0 : -1}
+          onClick={toggleOpen}
+        >
           {children}
         </a>
       </Link>
@@ -47,6 +52,8 @@ const $item = (theme: Theme) => css`
   color: ${theme.colors.fgSub};
   text-decoration: none;
 
+  transition: color 0.15s ease;
+
   &:hover {
     text-decoration: underline;
   }
@@ -54,5 +61,11 @@ const $item = (theme: Theme) => css`
   &:focus {
     outline: 0;
     text-decoration: underline;
+  }
+
+  &[aria-disabled='true'] {
+    color: ${theme.colors.fgLight};
+    text-decoration: none;
+    pointer-events: none;
   }
 `

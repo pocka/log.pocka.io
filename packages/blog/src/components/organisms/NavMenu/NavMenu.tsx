@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { SFC } from 'react'
+import { useMemo, ContextType, CSSProperties, SFC } from 'react'
 
 import { useToggle } from '~/hooks/useToggle'
 
@@ -17,6 +17,19 @@ interface Props extends BaseProps {
 
 export const NavMenu: SFC<Props> = ({ children, title, ...rest }) => {
   const [isOpened, toggleOpen] = useToggle(false)
+
+  const ctx = useMemo<ContextType<typeof OpenStateContext>>(
+    () => [isOpened, toggleOpen],
+    [isOpened, toggleOpen]
+  )
+
+  const backdropStyle = useMemo<CSSProperties>(
+    () => ({
+      opacity: isOpened ? 0.5 : 0,
+      pointerEvents: isOpened ? 'all' : 'none'
+    }),
+    [isOpened]
+  )
 
   return (
     <nav css={$container} {...rest}>
@@ -37,12 +50,18 @@ export const NavMenu: SFC<Props> = ({ children, title, ...rest }) => {
         <div css={$spacer} aria-hidden="true" />
         <ul css={$menuItems}>
           <hr css={$separator} aria-hidden="true" />
-          <OpenStateContext.Provider value={isOpened}>
+          <OpenStateContext.Provider value={ctx}>
             {children}
           </OpenStateContext.Provider>
         </ul>
         <div css={$spacer} aria-hidden="true" />
       </div>
+      <div
+        css={$backdrop}
+        style={backdropStyle}
+        aria-hidden="true"
+        onClick={toggleOpen}
+      />
     </nav>
   )
 }
@@ -62,7 +81,7 @@ const $navbar = (theme: Theme) => css`
   padding-bottom: 0;
 
   background-color: ${theme.colors.bg};
-  z-index: 1;
+  z-index: 3;
 `
 
 const $hamburger = (theme: Theme) => css`
@@ -113,8 +132,9 @@ const $menu = (theme: Theme) => css`
   display: flex;
 
   background-color: ${theme.colors.bg};
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
+  user-select: none;
 
   transition: transform ${MENU_TRANSLATE_DURATION}s ${MENU_FADE_DURATION}s ease;
 
@@ -148,7 +168,7 @@ const $menu = (theme: Theme) => css`
 
 const $menuItems = css`
   flex-grow: 1;
-  padding: 1.6rem 2.4rem;
+  padding: 1.6rem 4rem;
   margin: 0;
   font-size: 1.6rem;
 
@@ -165,4 +185,17 @@ const $separator = (theme: Theme) => css`
 
   border: 0 none;
   border-bottom: 0.1rem solid ${theme.colors.border};
+`
+
+const $backdrop = (theme: Theme) => css`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: ${theme.colors.bg};
+  z-index: 1;
+
+  transition: opacity 0.2s ease;
 `
