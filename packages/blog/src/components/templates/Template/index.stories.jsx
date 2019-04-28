@@ -6,6 +6,8 @@ import { number, text } from '@storybook/addon-knobs'
 import { lorem } from 'faker'
 
 import { Template } from '.'
+import { Heading } from '~/components/atoms/Heading'
+import { Paragraph } from '~/components/atoms/Paragraph'
 import { NavMenuItem } from '~/components/organisms/NavMenu'
 
 storiesOf('templates|Template', module).add('default', () => (
@@ -19,13 +21,13 @@ storiesOf('templates|Template', module).add('default', () => (
       </>
     }
   >
-    <p>HEAD</p>
+    <Heading>Head</Heading>
     {lorem
       .paragraphs(number('Paragraph count', 5), '\n')
       .split('\n')
       .map((p, i) => (
-        <p key={i}>{p}</p>
+        <Paragraph key={i}>{p}</Paragraph>
       ))}
-    <p>TAIL</p>
+    <Heading>Tail</Heading>
   </Template>
 ))
