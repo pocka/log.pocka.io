@@ -71,7 +71,7 @@ export default class MyApp extends App {
           <NavMenuItem
             key={item.path}
             href={item.path}
-            active={router.pathname === item.path}
+            active={router.pathname === item.path.replace(/(?<=.)\/$/, '')}
           >
             {item.label}
           </NavMenuItem>
