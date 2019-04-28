@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { ReactChildren, SFC } from 'react'
+import { CSSProperties, FC } from 'react'
 import Link from 'next/link'
 
 import { BaseProps } from '~/components/BaseProps'
@@ -10,15 +10,23 @@ import { Theme } from '~/theme'
 import { Logo } from '~/components/atoms/Logo'
 import { NavMenu } from '~/components/organisms/NavMenu'
 
+const invisible: CSSProperties = {
+  opacity: 0,
+  pointerEvents: 'none'
+}
+
 interface Props extends BaseProps {
   title: string
+
+  showLogo: boolean
 
   navMenuItems: JSX.Element
 }
 
-export const Template: SFC<Props> = ({
+export const Template: FC<Props> = ({
   children,
   navMenuItems,
+  showLogo = true,
   title,
   ...rest
 }) => (
@@ -30,7 +38,7 @@ export const Template: SFC<Props> = ({
     <main css={$main}>
       <div css={$contents}>{children}</div>
     </main>
-    <div css={$logoArea}>
+    <div css={$logoArea} style={!showLogo ? invisible : undefined}>
       <Link href="/" passHref>
         <a tabIndex={0} aria-label="Go to top page" css={$logoLink}>
           <Logo css={$logo} />
@@ -140,6 +148,8 @@ const $bottomDim = (theme: Theme) => css`
 
 const $logoArea = (theme: Theme) => css`
   display: none;
+
+  transition: opacity 0.2s ease;
 
   @media (${up(theme.breakpoints.md)}) {
     flex-grow: 1;

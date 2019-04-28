@@ -30,7 +30,7 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component } = this.props
+    const { Component, router } = this.props
     const pageProps: PageProps = this.props.pageProps
 
     return (
@@ -53,6 +53,7 @@ export default class MyApp extends App {
         <ThemeProvider theme={light}>
           <Template
             navMenuItems={this.getNavMenuItems()}
+            showLogo={router.pathname !== '/'}
             title={pageProps.title || 'log'}
           >
             <Component {...pageProps} />

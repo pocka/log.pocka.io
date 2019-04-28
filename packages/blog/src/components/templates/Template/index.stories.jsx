@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { storiesOf } from '@storybook/react'
-import { number, text } from '@storybook/addon-knobs'
+import { boolean, number, text } from '@storybook/addon-knobs'
 
 import { lorem } from 'faker'
 
@@ -12,6 +12,7 @@ import { NavMenuItem } from '~/components/organisms/NavMenu'
 
 storiesOf('templates|Template', module).add('default', () => (
   <Template
+    showLogo={boolean('showLogo', true)}
     title={text('Title', 'title')}
     navMenuItems={
       <>
