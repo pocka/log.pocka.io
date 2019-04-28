@@ -14,7 +14,7 @@ type InheritProps<T> = T extends ComponentType<infer P>
 
 type Props<T> = OwnProps &
   InheritProps<T> & {
-    as: T
+    as?: T
   }
 
 export function Heading<T extends ElementType<any> = 'h1'>({
