@@ -13,7 +13,7 @@ import { NavMenu } from '~/components/organisms/NavMenu'
 interface Props extends BaseProps {
   title: string
 
-  navMenuItems: ReactChildren
+  navMenuItems: JSX.Element
 }
 
 export const Template: SFC<Props> = ({
@@ -81,6 +81,7 @@ const $main = (theme: Theme) => css`
   margin: 0 auto;
   font-size: 1.6rem;
 
+  color: ${theme.colors.fg};
   overflow-y: auto;
   padding: 0 1.6rem;
 

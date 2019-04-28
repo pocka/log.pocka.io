@@ -1,20 +1,17 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { SFC } from 'react'
+import { GetInitialProps, NextContext } from 'next'
 
-import { NavMenu } from '~/components/organisms/NavMenu'
+import { PageProps } from '~/misc/PageProps'
 
-export const Home: SFC = () => {
-  return (
-    <div
-      css={css`
-        background-color: tomato;
-      `}
-    >
-      Hello, World!
-      <NavMenu title="foo" />
-    </div>
-  )
+export const Home = () => {
+  return 'Top'
 }
+
+const getInitialProps: GetInitialProps<PageProps, NextContext> = ({}) => {
+  return { title: 'Top' }
+}
+
+Home.getInitialProps = getInitialProps
 
 export default Home

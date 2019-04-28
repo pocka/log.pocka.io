@@ -1,13 +1,37 @@
-import React, { SFC } from 'react'
+import React from 'react'
 import App, { Container } from 'next/app'
 
 import { css, Global } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming'
 import { light } from '~/theme'
 
+import { PageProps } from '~/misc/PageProps'
+
+import { NavMenuItem } from '~/components/organisms/NavMenu'
+import { Template } from '~/components/templates/Template'
+
 export default class MyApp extends App {
+  private static menuItems: ReadonlyArray<{ label: string; path: string }> = [
+    { label: 'Top', path: '/' },
+    { label: 'About', path: '/about/' },
+    { label: 'Posts', path: '/posts/' },
+    { label: 'Tags', path: '/tags/' }
+  ]
+
+  static getInitialProps: typeof App.getInitialProps = async ({
+    Component,
+    ctx
+  }) => {
+    const pageProps = Component.getInitialProps
+      ? await Component.getInitialProps(ctx)
+      : {}
+
+    return { pageProps }
+  }
+
   render() {
-    const { Component, pageProps } = this.props
+    const { Component } = this.props
+    const pageProps: PageProps = this.props.pageProps
 
     return (
       <Container>
@@ -27,9 +51,32 @@ export default class MyApp extends App {
           `}
         />
         <ThemeProvider theme={light}>
-          <Component {...pageProps} />
+          <Template
+            navMenuItems={this.getNavMenuItems()}
+            title={pageProps.title || 'log'}
+          >
+            <Component {...pageProps} />
+          </Template>
         </ThemeProvider>
       </Container>
+    )
+  }
+
+  private getNavMenuItems = () => {
+    const { router } = this.props
+
+    return (
+      <>
+        {MyApp.menuItems.map(item => (
+          <NavMenuItem
+            key={item.path}
+            href={item.path}
+            active={router.pathname === item.path}
+          >
+            {item.label}
+          </NavMenuItem>
+        ))}
+      </>
     )
   }
 }
