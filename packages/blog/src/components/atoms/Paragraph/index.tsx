@@ -14,4 +14,8 @@ const $paragraph = css`
   line-height: 1.15;
 
   font-weight: normal;
+
+  &:first-child {
+    margin-top: 0;
+  }
 `

@@ -34,6 +34,10 @@ const $base = css`
   line-height: 1.15;
 
   font-weight: 500;
+
+  &:first-child {
+    margin-top: 0;
+  }
 `
 
 const $heading = {
