@@ -35,6 +35,10 @@ const $base = css`
 
   font-weight: 500;
 
+  p + & {
+    padding-top: 1.6rem;
+  }
+
   &:first-child {
     margin-top: 0;
   }
