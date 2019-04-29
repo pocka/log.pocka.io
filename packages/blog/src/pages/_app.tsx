@@ -37,12 +37,6 @@ export default class MyApp extends App {
 
     return (
       <Container>
-        <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500|Roboto:400,500"
-            rel="stylesheet"
-          />
-        </Head>
         <Global
           styles={css`
             html {

@@ -9,6 +9,8 @@ import { BaseProps } from '~/components/BaseProps'
 import { up } from '~/misc/breakpoints'
 import { Theme } from '~/theme'
 
+import { useGoogleFonts } from '~/hooks/useGoogleFonts'
+
 import { Logo } from '~/components/atoms/Logo'
 import { NavMenu } from '~/components/organisms/NavMenu'
 
@@ -31,25 +33,31 @@ export const Template: FC<Props> = ({
   showLogo = true,
   title,
   ...rest
-}) => (
-  <div css={$container} {...rest}>
-    <div css={$topDim} aria-hidden="true" />
-    <NavMenu css={$nav} title={title}>
-      {navMenuItems}
-    </NavMenu>
-    <main css={$main}>
-      <div css={$contents}>{children}</div>
-    </main>
-    <div css={$logoArea} style={!showLogo ? invisible : undefined}>
-      <Link href="/" passHref>
-        <a tabIndex={0} aria-label="Go to top page" css={$logoLink}>
-          <Logo css={$logo} />
-        </a>
-      </Link>
+}) => {
+  useGoogleFonts(
+    'https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500|Roboto:400,500'
+  )
+
+  return (
+    <div css={$container} {...rest}>
+      <div css={$topDim} aria-hidden="true" />
+      <NavMenu css={$nav} title={title}>
+        {navMenuItems}
+      </NavMenu>
+      <main css={$main}>
+        <div css={$contents}>{children}</div>
+      </main>
+      <div css={$logoArea} style={!showLogo ? invisible : undefined}>
+        <Link href="/" passHref>
+          <a tabIndex={0} aria-label="Go to top page" css={$logoLink}>
+            <Logo css={$logo} />
+          </a>
+        </Link>
+      </div>
+      <div css={$bottomDim} aria-hidden="true" />
     </div>
-    <div css={$bottomDim} aria-hidden="true" />
-  </div>
-)
+  )
+}
 
 export default Template
 
