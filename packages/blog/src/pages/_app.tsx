@@ -9,6 +9,7 @@ import { PageProps } from '~/misc/PageProps'
 
 import { NavMenuItem } from '~/components/organisms/NavMenu'
 import { Template } from '~/components/templates/Template'
+import { PageTransition } from '~/components/misc/PageTransition'
 
 export default class MyApp extends App {
   private static menuItems: ReadonlyArray<{ label: string; path: string }> = [
@@ -56,7 +57,9 @@ export default class MyApp extends App {
             showLogo={router.pathname !== '/'}
             title={pageProps.title || 'log'}
           >
-            <Component {...pageProps} />
+            <PageTransition>
+              <Component {...pageProps} />
+            </PageTransition>
           </Template>
         </ThemeProvider>
       </Container>
