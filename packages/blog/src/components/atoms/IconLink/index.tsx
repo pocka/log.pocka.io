@@ -38,6 +38,7 @@ const $link = (theme: Theme) => css`
   height: 1em;
 
   border-radius: 50%;
+  color: inherit;
   background-color: currentColor;
 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
