@@ -5,6 +5,7 @@ import { useMemo, ContextType, CSSProperties, SFC } from 'react'
 import { useToggle } from '~/hooks/useToggle'
 
 import { BaseProps } from '~/components/BaseProps'
+import { up } from '~/misc/breakpoints'
 import { Theme } from '~/theme'
 
 import { Hamburger } from '~/components/atoms/Hamburger'
@@ -68,9 +69,13 @@ export const CompactNavMenu: SFC<Props> = ({ children, title, ...rest }) => {
 
 export default CompactNavMenu
 
-const $container = css`
+const $container = (theme: Theme) => css`
   position: relative;
   margin-bottom: 1.6rem;
+
+  @media (${up(theme.breakpoints.md)}) {
+    visibility: hidden;
+  }
 `
 
 const $navbar = (theme: Theme) => css`

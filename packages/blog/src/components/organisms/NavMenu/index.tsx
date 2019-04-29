@@ -17,7 +17,7 @@ interface Props extends BaseProps {
 }
 
 export const NavMenu = withTheme<ComponentType<Props>>(({ theme, ...rest }) => {
-  const isCompact = useMedia(`(${down(theme.breakpoints.md)})`)
+  const isCompact = useMedia(`(${down(theme.breakpoints.md)})`, true)
 
   return isCompact ? <CompactNavMenu {...rest} /> : <RegularNavMenu {...rest} />
 })
