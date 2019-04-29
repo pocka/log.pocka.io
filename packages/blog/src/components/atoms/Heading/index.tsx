@@ -30,6 +30,7 @@ export function Heading<T extends ElementType<any> = 'h1'>({
 export default Heading
 
 const $base = css`
+  display: block;
   margin: 0;
   line-height: 1.15;
 
