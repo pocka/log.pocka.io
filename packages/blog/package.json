@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist ./src/.next",
     "build": "npm run clean && next build ./src && next export ./src -o ./dist",
     "dev": "next dev ./src",
     "storybook": "start-storybook -c .storybook -p 6006",
