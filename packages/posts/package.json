@@ -2,6 +2,7 @@
   "name": "@log.pocka.io/posts",
   "version": "0.0.0",
   "main": "build/list.js",
+  "types": "index.d.ts",
   "files": [
     "build"
   ],
