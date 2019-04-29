@@ -26,24 +26,30 @@ interface TopLink {
   icon: ReactNode
 }
 
-const topLinks: readonly TopLink[] = [
-  { url: '/tags/typescript/', label: 'TypeScriptの記事', icon: <TypeScript/> },
-  { url: '/tags/react/', label: 'React.jsの記事', icon: <FaReact/> },
-  { url: '/tags/webpack/', label: 'Webpackの記事', icon: <Webpack/> },
-  { url: '/tags/javascript/', label: 'JavaScriptの記事', icon: <FaJsSquare/> },
-  { url: '/tags/webcomponents/', label: 'WebComponentsの記事', icon: <WebComponents/> },
-  { url: '/tags/vue/', label: 'Vue.jsの記事', icon: <FaVuejs/> },
-  { url: '/tags/nuxt/', label: 'Nuxt.jsの記事', icon: <Nuxt/> },
-  { url: '/tags/vr/', label: 'VR関係の記事', icon: <FaVrCardboard/> },
+const topLinks: ReadonlyArray<TopLink> = [
+  { url: '/tags/typescript/', label: 'TypeScriptの記事', icon: <TypeScript /> },
+  { url: '/tags/react/', label: 'React.jsの記事', icon: <FaReact /> },
+  { url: '/tags/webpack/', label: 'Webpackの記事', icon: <Webpack /> },
+  { url: '/tags/javascript/', label: 'JavaScriptの記事', icon: <FaJsSquare /> },
+  {
+    url: '/tags/webcomponents/',
+    label: 'WebComponentsの記事',
+    icon: <WebComponents />
+  },
+  { url: '/tags/vue/', label: 'Vue.jsの記事', icon: <FaVuejs /> },
+  { url: '/tags/nuxt/', label: 'Nuxt.jsの記事', icon: <Nuxt /> },
+  { url: '/tags/vr/', label: 'VR関係の記事', icon: <FaVrCardboard /> }
 ]
 
 export const Home = () => {
   const isNarrowScreen = useMedia('(max-width: 399.98px)')
 
-  const centerItem = <div css={$logoContainer}>
-    <Logo />
-    <span css={$logoText}>pocka.io</span>
-  </div>
+  const centerItem = (
+    <div css={$logoContainer}>
+      <Logo />
+      <span css={$logoText}>pocka.io</span>
+    </div>
+  )
 
   return (
     <div css={$container}>
@@ -54,7 +60,7 @@ export const Home = () => {
       >
         {topLinks.map(link => (
           <IconLink key={link.url} href={link.url} label={link.label}>
-          {link.icon}
+            {link.icon}
           </IconLink>
         ))}
       </Galaxy>
