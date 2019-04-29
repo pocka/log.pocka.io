@@ -13,12 +13,14 @@ interface Props extends BaseProps {
   title: string
 }
 
-export const NavMenu: FC<Props> = (({ ...rest }) => {
-  return <Fragment>
-    <CompactNavMenu css={$compact} {...rest}/>
-    <RegularNavMenu css={$regular} {...rest}/>
-  </Fragment>
-})
+export const NavMenu: FC<Props> = ({ ...rest }) => {
+  return (
+    <Fragment>
+      <CompactNavMenu css={$compact} {...rest} />
+      <RegularNavMenu css={$regular} {...rest} />
+    </Fragment>
+  )
+}
 
 export default NavMenu
 
