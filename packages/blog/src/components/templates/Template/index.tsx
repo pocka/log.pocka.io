@@ -3,6 +3,8 @@ import { css, jsx } from '@emotion/core'
 import { CSSProperties, FC } from 'react'
 import Link from 'next/link'
 
+import hexToRgba from 'hex-to-rgba'
+
 import { BaseProps } from '~/components/BaseProps'
 import { up } from '~/misc/breakpoints'
 import { Theme } from '~/theme'
@@ -118,8 +120,6 @@ const $dim = (theme: Theme) => css`
   left: 0;
   right: 0;
   height: 4rem;
-
-  color: ${theme.colors.bg};
 `
 
 const $topDim = (theme: Theme) => css`
@@ -128,9 +128,9 @@ const $topDim = (theme: Theme) => css`
 
   background-image: linear-gradient(
     to bottom,
-    currentColor,
-    currentColor 3%,
-    transparent
+    ${theme.colors.bg},
+    ${theme.colors.bg} 3%,
+    ${hexToRgba(theme.colors.bg, 0)}
   );
 `
 
@@ -140,9 +140,9 @@ const $bottomDim = (theme: Theme) => css`
 
   background-image: linear-gradient(
     to top,
-    currentColor,
-    currentColor 3%,
-    transparent
+    ${theme.colors.bg},
+    ${theme.colors.bg} 3%,
+    ${hexToRgba(theme.colors.bg, 0)}
   );
 `
 
