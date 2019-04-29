@@ -16,12 +16,11 @@ const build = async () => {
 
   const mdFiles = files.filter(
     file =>
-      fs.statSync(path.resolve(srcDir, file)).isFile() &&
-      /\.md$/.test(file.name)
+      fs.statSync(path.resolve(srcDir, file)).isFile() && /\.md$/.test(file)
   )
 
   const list = await Promise.all(
-    mdFiles.map(file => md2json(path.resolve(srcDir, file.name)))
+    mdFiles.map(file => md2json(path.resolve(srcDir, file)))
   )
 
   await fsp.writeFile(
