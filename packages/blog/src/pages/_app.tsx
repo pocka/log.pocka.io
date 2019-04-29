@@ -1,5 +1,6 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import Head from 'next/head'
 
 import { css, Global } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming'
@@ -36,10 +37,17 @@ export default class MyApp extends App {
 
     return (
       <Container>
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500|Roboto:400,500"
+            rel="stylesheet"
+          />
+        </Head>
         <Global
           styles={css`
             html {
               font-size: 62.5%;
+              font-family: Roboto, 'Noto Sans JP', sans-serif;
             }
 
             body {
