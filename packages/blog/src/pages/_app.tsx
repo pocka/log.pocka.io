@@ -37,6 +37,9 @@ export default class MyApp extends App {
 
     return (
       <Container>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
         <Global
           styles={css`
             html {
