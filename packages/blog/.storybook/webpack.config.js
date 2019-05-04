@@ -1,19 +1,18 @@
 const path = require('path')
 
-const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin')
+const project = require('../webpack.config')
 
 module.exports = ({ config }) => {
-  config.module.rules.push({
-    test: /\.tsx?$/,
-    loader: 'babel-loader',
-    options: require('../package.json').babel
-  })
+  config.module.rules = project.module.rules
 
-  config.resolve.extensions.push('.ts', '.tsx')
+  config.resolve.extensions.push('.ts')
 
   config.resolve.alias['~'] = path.resolve(__dirname, '../src')
 
-  config.plugins.push(new ForkTsCheckerPlugin())
+  // Workaround for SB core-js issue (#6204)
+  delete config.resolve.alias['core-js']
+
+  config.resolve.extensions = project.resolve.extensions
 
   return config
 }

@@ -2,11 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "esnext",
-    "jsx": "react",
     "moduleResolution": "node",
     "module": "esnext",
     "allowJs": true,
     "noEmit": true,
+    "resolveJsonModule": true,
     "strict": true,
     "isolatedModules": true,
     "esModuleInterop": true,
@@ -15,5 +15,5 @@
       "~/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.ts"]
 }

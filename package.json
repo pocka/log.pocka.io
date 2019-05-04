@@ -14,7 +14,7 @@
     "deploy": "s3-deploy './dist/**' --cwd './dist/' --bucket $AWS_BUCKET_NAME --distId $AWS_CF_DIST_ID --invalidate '/*' --gzip --etag",
     "dev": "lerna run dev --parallel --stream",
     "storybook": "lerna run storybook --parallel --stream",
-    "test": "lerna run test"
+    "test": "lerna run test --stream --"
   },
   "workspaces": [
     "packages/*"

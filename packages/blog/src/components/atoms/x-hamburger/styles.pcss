@@ -1,0 +1,40 @@
+:host {
+  --menu-size: 1em;
+  --bar-height: calc(1em / 6);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--menu-size);
+  height: var(--menu-size);
+
+  vertical-align: text-top;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: var(--bar-height);
+
+  border-radius: 1px;
+  background-color: currentColor;
+
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+:host([expanded='expanded']) > .bar {
+  --offset-y: calc(var(--menu-size) / 2 - var(--bar-height) / 1.75);
+
+  &:first-of-type {
+    transform: translateY(var(--offset-y)) rotate(45deg);
+  }
+
+  &:nth-of-type(2) {
+    transform: rotate(-45deg);
+    opacity: 0;
+  }
+
+  &:last-of-type {
+    transform: translateY(calc(var(--offset-y) * -1)) rotate(-45deg);
+  }
+}

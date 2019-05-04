@@ -10,12 +10,6 @@ export interface Theme {
 
     border: string
   }
-  breakpoints: {
-    sm: number
-    md: number
-    lg: number
-    xl: number
-  }
 }
 
 export const light: Theme = {
@@ -29,11 +23,5 @@ export const light: Theme = {
     fgLight: '#C5C5C5',
 
     border: '#B4AF9D'
-  },
-  breakpoints: {
-    sm: 600,
-    md: 960,
-    lg: 1280,
-    xl: 1920
   }
 }
