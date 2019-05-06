@@ -1,0 +1,14 @@
+{
+  "version": "0.0.0",
+  "name": "@log.pocka.io/router",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "core-js": "^3.0.1"
+  }
+}
