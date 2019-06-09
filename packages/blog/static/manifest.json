@@ -1,8 +1,8 @@
 {
-	"background_color": "#ffffff",
+	"background_color": "#eff1f3",
 	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
+	"name": "log.pocka.io",
+	"short_name": "log.pocka.io",
 	"display": "minimal-ui",
 	"start_url": "/",
 	"icons": [
