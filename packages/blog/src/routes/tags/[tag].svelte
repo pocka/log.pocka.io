@@ -1,9 +1,9 @@
 <script context="module">
   export function preload({ params: { tag }, query }) {
-    return this.fetch(`/posts.json?tag=${tag}`)
+    return this.fetch('/posts.json')
       .then(r => r.json())
       .then(posts => {
-        return { posts, tag }
+        return { posts: posts.filter(post => post.tags.includes(tag)), tag }
       })
   }
 </script>
