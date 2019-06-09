@@ -1,14 +1,20 @@
-import { addDecorator, configure } from '@storybook/html'
+import { addDecorator, addParameters, configure } from '@storybook/svelte'
 
 import { withA11y } from '@storybook/addon-a11y'
 import { withKnobs } from '@storybook/addon-knobs'
-import { withDesign } from 'storybook-addon-designs'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
-import '~/bootstrap/misc'
+import '../src/global.css'
+import '../src/async-resources'
 
 addDecorator(withA11y)
 addDecorator(withKnobs)
-addDecorator(withDesign)
+
+addParameters({
+  viewport: {
+    viewports: INITIAL_VIEWPORTS
+  }
+})
 
 // automatically import all files ending in *.stories.js
 const req = require.context('../src', true, /\.stories\.js$/)

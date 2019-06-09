@@ -1,9 +1,0 @@
-@custom-media --up-sm (min-width: 600px);
-@custom-media --up-md (min-width: 960px);
-@custom-media --up-lg (min-width: 1280px);
-@custom-media --up-xl (min-width: 1920px);
-
-@custom-media --down-sm (max-width: 599.98px);
-@custom-media --down-md (max-width: 959.98px);
-@custom-media --down-lg (max-width: 1279.98px);
-@custom-media --down-xl (max-width: 1919.98px);

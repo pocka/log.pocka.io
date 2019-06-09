@@ -1,0 +1,80 @@
+<script context="module">
+  export async function preload({ params, query }) {
+    const res = await this.fetch(`/posts/${params.slug}.json`)
+    const data = await res.json()
+
+    if (res.status === 200) {
+      return { post: data }
+    } else {
+      this.error(res.status, data.message)
+    }
+  }
+</script>
+
+<script>
+  import Tags from '../../components/molecules/Tags'
+
+  import FacebookShare from '../../components/organisms/FacebookShare'
+  import HatenaBookmark from '../../components/organisms/HatenaBookmark'
+  import TwitterShare from '../../components/organisms/TwitterShare'
+
+  if (process.browser) {
+    import('highlight.js/styles/monokai-sublime.css')
+  }
+
+  export let post
+
+  $: url = `https://log.pocka.io/posts/${post.name}/`
+  $: shareTitle = `${post.title} - log.pocka.io`
+</script>
+
+<style>
+  .meta {
+    display: flex;
+    align-items: center;
+  }
+
+  .meta > :not(:first-child) {
+    font-size: 1em;
+    margin-left: 2rem;
+  }
+
+  .updatedAt {
+    color: var(--color-fg-sub);
+  }
+
+  .shares {
+    display: flex;
+    margin-top: calc(var(--baseline) * 2rem);
+    font-size: 1.5em;
+  }
+
+  .shares > :not(:nth-child(0)) {
+    flex-basis: 2rem;
+
+    text-align: center;
+  }
+  .shares > :not(:first-child) {
+    margin-left: 0.5em;
+  }
+</style>
+
+<svelte:head>
+  <title>{post.title} - log.pocka.io</title>
+</svelte:head>
+
+<div class="tags" />
+
+<h1>{post.title}</h1>
+<div class="meta">
+  <date class="updatedAt">{post.updatedAtFormatted}</date>
+  <Tags tags={post.tags} />
+</div>
+
+{@html post.__content}
+
+<section class="shares">
+  <TwitterShare {url} title={shareTitle} />
+  <FacebookShare {url} />
+  <HatenaBookmark {url} title={shareTitle} />
+</section>
