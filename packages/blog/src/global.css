@@ -1,5 +1,3 @@
-@import url('https://rsms.me/inter/inter.css');
-
 :root {
   font-size: 1em;
 
@@ -19,7 +17,7 @@
 }
 
 html {
-  font-family: 'Inter var', 'M PLUS Rounded 1c', sans-serif;
+  font-family: 'Hind Siliguri', 'M PLUS Rounded 1c', sans-serif;
 }
 
 body {
@@ -65,6 +63,7 @@ pre {
 
 pre > code {
   all: unset;
+  font-family: Inconsolata, monospace;
 }
 
 code {
@@ -74,6 +73,7 @@ code {
   background-color: var(--color-bg-accent);
   color: darkred;
   border-radius: calc(1rem / 4);
+  font-family: Inconsolata, monospace;
 }
 
 a,
