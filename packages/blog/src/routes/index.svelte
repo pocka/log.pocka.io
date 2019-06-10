@@ -1,6 +1,8 @@
 <script context="module">
+  import hash from '@log.pocka.io/posts/build/hash'
+
   export function preload({ query }) {
-    return this.fetch(`/posts.json`)
+    return this.fetch(`/posts/list.${hash}.json`)
       .then(r => r.json())
       .then(posts => {
         return { posts: posts.slice(0, 3) }
