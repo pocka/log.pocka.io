@@ -1,3 +1,4 @@
+const { createHash } = require('crypto')
 const { promises: fsp, ...fs } = require('fs')
 const path = require('path')
 
@@ -28,6 +29,17 @@ const build = async () => {
     jsonModule(
       list.map(info => Object.assign({}, info, { __content: undefined }))
     )
+  )
+
+  const md5 = createHash('md5')
+
+  md5.update(JSON.stringify(list))
+
+  const hash = md5.digest('hex')
+
+  await fsp.writeFile(
+    path.resolve(buildDir, 'hash.js'),
+    `module.exports='${hash}'`
   )
 
   await Promise.all(
