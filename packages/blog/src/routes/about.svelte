@@ -124,10 +124,25 @@
   <tbody>
     <tr>
       <td>ラテン(英数字)</td>
-      <td>Inter</td>
+      <td>Hind Siliguri</td>
       <td>
-        <a href="https://rsms.me/inter/" target="_blank" rel="noopener">
-          Inter font family
+        <a
+          href="https://fonts.google.com/specimen/Hind+Siliguri"
+          target="_blank"
+          rel="noopener">
+          Hind Siliguri - Google Fonts
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>等幅ラテン(英数字)</td>
+      <td>Inconsolata</td>
+      <td>
+        <a
+          href="https://fonts.google.com/specimen/Inconsolata"
+          target="_blank"
+          rel="noopener">
+          Inconsolata - Google Fonts
         </a>
       </td>
     </tr>
