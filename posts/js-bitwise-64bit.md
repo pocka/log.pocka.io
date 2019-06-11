@@ -8,28 +8,28 @@ tags:
   - blog
   - javascript
 ---
-<div class="notification is-info"><strong>2017/11/03追記</strong>
-[ECMAScript Proposal Stage-3にBigIntが入っており](https://github.com/tc39/proposal-bigint)、これが使用可能になればネイティブで64bit数値でのビット演算ができるようになる。それを使えばここに書かれている事象は発生しないし、ここに書かれていることを行う必要もなくなる。
-</div>
+
+**2017/11/03 追記**
+[ECMAScript Proposal Stage-3 に BigInt が入っており](https://github.com/tc39/proposal-bigint)、これが使用可能になればネイティブで 64bit 数値でのビット演算ができるようになる。それを使えばここに書かれている事象は発生しないし、ここに書かれていることを行う必要もなくなる。
 
 # 概要
 
-[このサイト](https://pocka.onl/app/moe/db/)にあるMoE装備DBでは、アイテムの産出\(アイテムの出どころ\)属性をビットフラグで管理している。
-ある日、防具装飾武器に加え飲食物データも管理できるようにしようと思いたち、4つくらい項目\(というか状態?\)を増やした。
-ところが追加した項目を含めようとしても\(ビットOR\)全くビットの状態に変化がない...。
-色々調べてみた結果、Javascript、もといECMAScriptの仕様が原因だとわかった。
+[このサイト](https://pocka.onl/app/moe/db/)にある MoE 装備 DB では、アイテムの産出\(アイテムの出どころ\)属性をビットフラグで管理している。
+ある日、防具装飾武器に加え飲食物データも管理できるようにしようと思いたち、4 つくらい項目\(というか状態?\)を増やした。
+ところが追加した項目を含めようとしても\(ビット OR\)全くビットの状態に変化がない...。
+色々調べてみた結果、Javascript、もとい ECMAScript の仕様が原因だとわかった。
 
 # 原因
 
-ECMAScriptでは[64ビットの整数でもビット演算時は32ビットに丸められてしまう。](http://rakuto.blogspot.jp/2007/11/javascript-64.html)
+ECMAScript では[64 ビットの整数でもビット演算時は 32 ビットに丸められてしまう。](http://rakuto.blogspot.jp/2007/11/javascript-64.html)
 
 # 対処
 
-<div class="notification is-info"><strong>2016/09/06追記</strong>
-Githubにリポジトリを作っているので、そっちを見て下さい
+**2016/09/06 追記**
+Github にリポジトリを作っているので、そっちを見て下さい
 [pocka/bitwise64](https://github.com/pocka/bitwise64)</div>
 
-64bit演算を行うためのモジュールを作成した。
+64bit 演算を行うためのモジュールを作成した。
 
 ```javascript
 //bitwise64.js
@@ -75,15 +75,11 @@ Githubにリポジトリを作っているので、そっちを見て下さい
 });
 ```
 
-XOR,NOTには未対応\(力尽きた\)。
-Prototype拡張してるし、かなりの力技だけど、動けばそれでいいのだ。
+XOR,NOT には未対応\(力尽きた\)。
+Prototype 拡張してるし、かなりの力技だけど、動けばそれでいいのだ。
 
 ## 参考にさせてもらったサイト
 
-* [Young risk taker.: \[Javascript\] 64bit Number型を上位32bitと下位32bitに分割:](http://rakuto.blogspot.jp/2007/11/javascript-64bit-nuber32bit32bit.html)
-* [JavaScript のビット演算子に unsigned を期待してはいけない : document:](http://imaya.blog.jp/archives/5156823.html)
-* [64bit - bitwise AND in Javascript with a 64 bit integer - Stack Overflow:](http://stackoverflow.com/questions/2983206/bitwise-and-in-javascript-with-a-64-bit-integer)
-
-
-
-
+- [Young risk taker.: \[Javascript\] 64bit Number 型を上位 32bit と下位 32bit に分割:](http://rakuto.blogspot.jp/2007/11/javascript-64bit-nuber32bit32bit.html)
+- [JavaScript のビット演算子に unsigned を期待してはいけない : document:](http://imaya.blog.jp/archives/5156823.html)
+- [64bit - bitwise AND in Javascript with a 64 bit integer - Stack Overflow:](http://stackoverflow.com/questions/2983206/bitwise-and-in-javascript-with-a-64-bit-integer)
