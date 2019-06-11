@@ -209,3 +209,8 @@ img {
 img:not(:first-child) {
   margin-top: calc(var(--baseline) * 1rem);
 }
+
+hr {
+  margin: 0;
+  margin-top: calc(var(--baseline) * 1rem);
+}
