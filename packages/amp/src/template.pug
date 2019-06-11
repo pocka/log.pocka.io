@@ -24,9 +24,23 @@ html(amp)
     //- AMP components (optional)
     script(async, custom-element="amp-youtube", src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js")
 
+    //- Google Analytics
+    script(async, custom-element="amp-analytics", src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js")
+
     //- AMP script (required)
     script(async, src="https://cdn.ampproject.org/v0.js")
   body
+    amp-analytics(type="gtag", data-credentials="include")
+      script(type="application/json").
+        {
+          "vars" : {
+            "gtag_id": "UA-40502013-5",
+            "config" : {
+              "UA-40502013-5": { "groups": "default" }
+            }
+          }
+        }
+
     nav.navbar
       .navbar-brand
         .container.level

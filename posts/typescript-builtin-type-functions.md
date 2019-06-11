@@ -3,14 +3,14 @@ name: typescript-builtin-type-functions
 title: TypeScript特有の組み込み型関数
 description: TypeScript特有のジェネリックな組み込み型関数の一覧と説明、及び使用例
 createdAt: '07/22/2018 15:00'
-updatedAt: 2019-01-28T01:30:00.000+0900
+updatedAt: 2019-05-30T11:30:00.000+0900
 tags:
   - article
   - typescript
 ---
 TypeScriptにはPromiseやSymbolといったJavascript特有のグローバルオブジェクト以外に、型を扱う上で便利になるような組み込みのジェネリックな型関数<sup>※1</sup>が存在します。これらは非常に便利で様々なプロジェクトで使われているのですが、公式にリストもなく、説明も主にリリースノート等にしかないため、使い方等を交えて説明を書いていきたいと思います。
 
-なお、各定義は[Microsoft/TypeScriptの`src/lib/es5.d.ts`にあります](https://github.com/Microsoft/TypeScript/blob/93ab352189245fd3b2751e5ab0ad3ffee4906fca/src/lib/es5.d.ts#L1331)。
+なお、各定義は[Microsoft/TypeScriptの`src/lib/es5.d.ts`にあります](https://github.com/microsoft/TypeScript/blob/cf7b2d4ae91c4f27ba9ae7137ddf9a407815e590/src/lib/es5.d.ts#L1401)。
 
 <small>※1 ... 型を受け取って新しい型を返す型。多分正しい呼び名ではない。</small>
 
@@ -144,15 +144,31 @@ type BarAndQux = Pick<Foo, 'bar' | 'qux'>
 
 react-redux等のHoCを作成/使用する際に多用します。
 
-なお、逆の「特定のプロパティを取り除く」という動きをする型関数は、[「既存の型を組み合わせれば簡単にできるからTypeScript本体にはのっけないよ」とのことです(リンク先NOTE参照)](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#predefined-conditional-types)。
+## Omit
 
-以下のように書くことで実装できます(TypeScript2.8~)。また、react-reduxは利便性の為かそれをexportしてくれています。
+- 利用可能バージョン: TypeScript3.5~
+- リリースノート: <https://devblogs.microsoft.com/typescript/announcing-typescript-3-5/>(TODO: TS公式サイトのwhat's newに差し替え)
 
 ```ts
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+type Omit<T, K extends keyof any>
+```
 
-// react-reduxを使っている場合
-import { Omit } from 'react-redux'
+型Tの中から、キー名がKに当てはまるプロパティを*除外した*新しい型を返します。
+なお、Pickとは異なりKにはTのキー名以外を指定することができます。
+
+```ts
+interface Foo {
+  foo: string
+  bar: number
+  baz: boolean
+}
+
+type FooWithoutBar = Omit<Foo, 'bar'>
+
+// FooWithoutBar {
+//   foo: string
+//   baz: boolean
+// }
 ```
 
 ## Record
