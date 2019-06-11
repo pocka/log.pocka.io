@@ -47,6 +47,20 @@
   .button[aria-hidden='true'] {
     opacity: 0;
   }
+
+  @media (max-width: 799.98px) {
+    .button {
+      font-size: 1.5em;
+      right: 0.2em;
+      bottom: 0.2em;
+
+      border-radius: 50%;
+    }
+
+    .button-label {
+      display: none;
+    }
+  }
 </style>
 
 <i bind:this={scrollDetector} class="scroll-detector" aria-hidden="true" />
