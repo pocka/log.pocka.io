@@ -11,6 +11,7 @@
 </script>
 
 <script>
+  import Head from '../components/Head'
   import LogDot from '../components/icons/LogDot'
   import Posts from '../components/organisms/Posts'
 
@@ -47,7 +48,7 @@
 </style>
 
 <svelte:head>
-  <title>log.pocka.io</title>
+  <Head description="JS/TS周りのweb系技術ブログ" />
 </svelte:head>
 
 <section class="logo">

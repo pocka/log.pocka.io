@@ -11,6 +11,7 @@
 </script>
 
 <script>
+  import Head from '../../components/Head'
   import Posts from '../../components/organisms/Posts'
 
   export let posts = []
@@ -18,7 +19,9 @@
 </script>
 
 <svelte:head>
-  <title>Posts tagged by "{tag}" - log.pocka.io</title>
+  <Head
+    title="Posts tagged by '{tag}'"
+    description="'{tag}'タグのついた記事一覧" />
 </svelte:head>
 
 <h1>Posts tagged by "{tag}"</h1>

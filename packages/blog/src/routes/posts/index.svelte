@@ -11,13 +11,14 @@
 </script>
 
 <script>
+  import Head from '../../components/Head'
   import Posts from '../../components/organisms/Posts'
 
   export let posts = []
 </script>
 
 <svelte:head>
-  <title>Posts - log.pocka.io</title>
+  <Head title="Posts" description="記事一覧" />
 </svelte:head>
 
 <h1>All Posts</h1>

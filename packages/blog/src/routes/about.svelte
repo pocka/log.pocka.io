@@ -1,5 +1,17 @@
+<script>
+  import Head from '../components/Head'
+</script>
+
 <svelte:head>
-  <title>About - log.pocka.io</title>
+  <Head
+    title="About"
+    description="このブログやこれをかいている人についての説明"
+    type="profile">
+    <meta property="profile:first_name" content="Shota" />
+    <meta property="profile:last_name" content="Fuji" />
+    <meta property="profile:username" content="pocka" />
+    <meta property="profile:gender" content="male" />
+  </Head>
 </svelte:head>
 
 <h1>About this site</h1>

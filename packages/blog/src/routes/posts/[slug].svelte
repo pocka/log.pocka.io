@@ -12,6 +12,7 @@
 </script>
 
 <script>
+  import Head from '../../components/Head'
   import Tags from '../../components/molecules/Tags'
 
   import FacebookShare from '../../components/organisms/FacebookShare'
@@ -60,7 +61,14 @@
 </style>
 
 <svelte:head>
-  <title>{post.title} - log.pocka.io</title>
+  <Head title={post.title} description={post.description} type="article">
+    <meta property="article:published_time" content={post.createdAt} />
+    <meta property="article:modified_time" content={post.updatedAt} />
+    <meta property="article:author" content="https://log.pocka.io/about/" />
+    {#each post.tags as tag (tag)}
+      <meta property="article:tag" content={tag} />
+    {/each}
+  </Head>
 </svelte:head>
 
 <div class="tags" />
