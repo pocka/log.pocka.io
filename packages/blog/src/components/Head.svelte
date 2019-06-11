@@ -1,5 +1,5 @@
 <script>
-  export let title = 'log.pocka.io'
+  export let title = ''
   $: _title = title ? `${title} - log.pocka.io` : 'log.pocka.io'
 
   export let description = ''
