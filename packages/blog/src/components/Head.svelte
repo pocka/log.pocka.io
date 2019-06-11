@@ -6,7 +6,9 @@
 
   export let type = 'website'
 
-  export let image = '/logo-512.png'
+  export let image = process.browser
+    ? location.origin + '/logo-512.png'
+    : 'https://log.pocka.io/logo-512.png'
 
   export let url = process.browser ? location.href : 'https://log.pocka.io'
 </script>
