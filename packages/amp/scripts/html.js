@@ -27,7 +27,8 @@ const pug = {
 
 exports.build = async (post, css) => {
   const html = pug.render({
-    post
+    post,
+    gaTrackingId: process.env.GA_TRACKING_ID
   })
 
   const $ = cheerio.load(html)

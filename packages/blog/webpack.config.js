@@ -41,7 +41,8 @@ module.exports = {
       // dev && new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({
         'process.browser': true,
-        'process.env.NODE_ENV': JSON.stringify(mode)
+        'process.env.NODE_ENV': JSON.stringify(mode),
+        'process.env.GA_TRACKING_ID': JSON.stringify(process.env.GA_TRACKING_ID)
       })
     ].filter(Boolean),
     devtool: dev && 'inline-source-map'
