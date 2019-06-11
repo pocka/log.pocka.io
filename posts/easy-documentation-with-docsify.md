@@ -40,8 +40,7 @@ IT, 特に Web 系において最近はドキュメントをソースからビ�
 
 # 導入方法
 
-<div class="notification is-info">npmのv5.2.0で導入された`npx`というコマンド(機能)を使っています。npmのバージョンが古い場合はnpmを更新するか、[nvm](https://github.com/creationix/nvm)や[n](https://github.com/tj/n)を使ってNode.js自体のバージョン管理をできるようにすることをおすすめします。
-</div>
+_NOTE: npm の v5.2.0 で導入された`npx`というコマンド(機能)を使っています。npm のバージョンが古い場合は npm を更新するか、[nvm](https://github.com/creationix/nvm)や[n](https://github.com/tj/n)を使って Node.js 自体のバージョン管理をできるようにすることをおすすめします。_
 
 基本的には公式の[Quick Start](https://docsify.js.org/#/quickstart)を読めば全てわかりますが、セットアップコマンドに関しては公式のグローバルインストール方式はおすすめできないので以下のコマンドを叩くことを推奨します。
 

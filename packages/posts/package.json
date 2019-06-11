@@ -1,0 +1,19 @@
+{
+  "name": "@log.pocka.io/posts",
+  "version": "0.0.0",
+  "main": "build/list.js",
+  "types": "index.d.ts",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "clean": "rm -rf build",
+    "build": "npm run clean && mkdir -p build/posts && node ./scripts/build.js",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "highlight.js": "^9.14.2",
+    "marked": "^0.6.0",
+    "yaml-front-matter": "^4.0.0"
+  }
+}

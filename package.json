@@ -1,70 +1,23 @@
 {
   "name": "log.pocka.io",
-  "version": "1.0.0",
-  "description": "Repositry for log.pocka.io",
-  "scripts": {
-    "create:amp-directories": "mkdir -p src/static/amp/images",
-    "compile:markdown": "find posts -name \"*.md\" -type f|xargs -I{} sh -c 'echo {}|node scripts/md2json.js > src/assets/$(echo {}|sed -e \"s/\\.md$/.json/\")'",
-    "compile:amp": "find posts -name \"*.md\" -type f |node scripts/md2json.js|node scripts/make-amp/index.js >/dev/null",
-    "compile:js": "NODE_ENV=production webpack -p",
-    "build:app": "NODE_ENV=production nuxt generate --modern client",
-    "build:posts": "mkdir -p src/assets/posts && npm run compile:markdown && npm run build:list",
-    "build:amp": "npm run create:amp-directories && npm run compile:amp",
-    "build:sitemap": "HOST_NAME=https://log.pocka.io node scripts/make-sitemap.js",
-    "build:list": "find posts -name \"*.md\" -type f|node scripts/make-posts-list.js > src/assets/posts.json",
-    "build": "npm run build:posts && npm run build:sitemap && npm run build:amp && npm run build:app",
-    "dev": "nuxt dev",
-    "test": "exit 0",
-    "deploy": "s3-deploy './public/**' --cwd './public/' --bucket $AWS_BUCKET_NAME --distId $AWS_CF_DIST_ID --invalidate '/*' --gzip --etag"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pocka/log.pocka.io.git"
-  },
-  "author": "pocka",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pocka/log.pocka.io/issues"
-  },
-  "homepage": "https://github.com/pocka/log.pocka.io#readme",
-  "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "bulma": "^0.6.1",
-    "moment": "^2.21.0",
-    "nuxt": "^2.3.4"
-  },
+  "private": true,
   "devDependencies": {
-    "@nuxtjs/google-analytics": "^2.0.2",
-    "@nuxtjs/pwa": "^2.0.8",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "cheerio": "^1.0.0-rc.2",
-    "cssnano": "^4.1.8",
-    "highlight.js": "^9.12.0",
-    "image-size": "^0.6.1",
-    "marked": "^0.3.9",
-    "mz": "^2.7.0",
-    "postcss": "^7.0.7",
-    "postcss-amp": "^1.1.0",
-    "postcss-uncss": "^0.15.0",
-    "pug": "^2.0.0-rc.4",
-    "remove-markdown": "^0.2.2",
-    "s3-deploy": "^1.1.4",
-    "sitemap": "^1.13.0",
-    "uncss": "^0.16.0",
-    "yaml-front-matter": "^3.4.0",
-    "yarn": "^1.9.4"
+    "lerna": "^3.11.1",
+    "prettier": "^1.16.4",
+    "s3-deploy": "^1.3.0"
   },
-  "babel": {
-    "plugins": [
-      "transform-object-rest-spread"
-    ]
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && npm run build:pages && npm run build:copy",
+    "build:pages": "lerna run build",
+    "build:copy": "cp -r packages/blog/dist dist && cp -r packages/amp/dist dist/amp",
+    "deploy": "s3-deploy './dist/**' --cwd './dist/' --bucket $AWS_BUCKET_NAME --distId $AWS_CF_DIST_ID --invalidate '/*' --gzip --etag",
+    "dev": "lerna run dev --parallel --stream",
+    "storybook": "lerna run storybook --parallel --stream",
+    "test": "lerna run test --stream --"
   },
-  "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 ChromeAndroid versions",
-    "last 2 Firefox versions",
-    "last 2 iOS versions",
-    "last 2 Safari versions"
+  "workspaces": [
+    "packages/*"
   ],
   "prettier": {
     "semi": false,
