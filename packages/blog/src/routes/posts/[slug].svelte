@@ -12,6 +12,8 @@
 </script>
 
 <script>
+  import { onMount } from 'svelte'
+
   import Head from '../../components/Head'
   import BackToTop from '../../components/molecules/BackToTop'
   import Tags from '../../components/molecules/Tags'
@@ -23,6 +25,20 @@
   if (process.browser) {
     import('highlight.js/styles/monokai-sublime.css')
   }
+
+  onMount(() => {
+    const { hash } = location
+
+    if (!hash) return
+
+    const el = document.querySelector(hash)
+
+    if (!el) return
+
+    window.scroll({
+      top: el.getBoundingClientRect().top
+    })
+  })
 
   export let post
 

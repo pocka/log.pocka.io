@@ -3,7 +3,8 @@ const marked = require('marked')
 
 const mdRenderer = new marked.Renderer()
 
-mdRenderer.heading = (text, level) => `<h${level + 1}>${text}</h${level + 1}>`
+mdRenderer.heading = (text, level, raw, slugger) =>
+  `<h${level + 1} id="${slugger.slug(text)}">${text}</h${level + 1}>`
 mdRenderer.link = (href, title, text) =>
   href.match(/^(https?:\/\/|\/\/)/)
     ? `<a href="${href}" title="${title ||
