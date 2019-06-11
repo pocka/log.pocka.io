@@ -13,6 +13,7 @@
 
 <script>
   import Head from '../../components/Head'
+  import BackToTop from '../../components/molecules/BackToTop'
   import Tags from '../../components/molecules/Tags'
 
   import FacebookShare from '../../components/organisms/FacebookShare'
@@ -86,3 +87,5 @@
   <FacebookShare {url} />
   <HatenaBookmark {url} title={shareTitle} />
 </section>
+
+<BackToTop />

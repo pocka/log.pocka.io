@@ -18,6 +18,7 @@
 
 html {
   font-family: 'Hind Siliguri', 'M PLUS Rounded 1c', sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -86,6 +87,10 @@ s,
 b,
 i {
   line-height: 1;
+}
+
+button {
+  font-family: inherit;
 }
 
 s,
