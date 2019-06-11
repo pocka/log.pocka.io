@@ -16,8 +16,8 @@ module.exports = async path => {
   } = frontMatter
 
   return Object.assign({}, frontMatter, {
-    createdAt,
-    updatedAt,
+    createdAt: new Date(createdAt).toISOString(),
+    updatedAt: new Date(updatedAt).toISOString(),
     author,
     __content: parse(frontMatter.__content)
   })
