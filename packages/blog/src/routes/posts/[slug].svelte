@@ -27,6 +27,15 @@
   }
 
   onMount(() => {
+    const hashLinks = document.querySelectorAll('[data-hash-link]')
+    ;[...hashLinks].forEach(link => {
+      const href = link.getAttribute('href')
+
+      if (/^#/.test(href)) {
+        link.setAttribute('href', location.pathname + href)
+      }
+    })
+
     const { hash } = location
 
     if (!hash) return

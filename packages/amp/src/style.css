@@ -1,19 +1,19 @@
 .dates {
-	display: block;
+  display: block;
 }
 
 .date {
-	display: inline-block;
-	color: #ccc;
-	font-size: 0.8rem;
+  display: inline-block;
+  color: #ccc;
+  font-size: 0.8rem;
 }
 .date + .date {
-	margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .logo {
-	font-family: Cairo;
-	font-weight: bold;
+  font-family: Cairo;
+  font-weight: bold;
 }
 
 .content amp-img {
@@ -24,36 +24,41 @@
 /* Overrides bulma styles */
 
 .hero-body {
-	padding: 1.5rem;
+  padding: 1.5rem;
 }
 .hero-body > .tags {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .content {
-	padding: 1rem 0;
-	font-size: 0.9rem;
+  padding: 1rem 0;
+  font-size: 0.9rem;
 }
 .content a {
-	word-break: break-word;
+  word-break: break-word;
 }
 .content > *:not(pre) {
-	padding: 0 1rem;
+  padding: 0 1rem;
 }
 .content pre {
-	background-color: #333;
-	color: #fff;
+  background-color: #333;
+  color: #fff;
 }
 
 .navbar {
-	position: sticky;
-	top: 0;
-	z-index: 999;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 
-	background-color: rgba(255, 255, 255, 0.9);
-	border-bottom: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #ccc;
 }
 
-.navbar, .navbar-brand {
-	min-height: auto;
+.navbar,
+.navbar-brand {
+  min-height: auto;
+}
+
+a[data-hash-link] {
+  display: none;
 }

@@ -179,3 +179,25 @@ tbody td::after {
   bottom: 0;
   border-bottom: 1px solid var(--color-fg-light);
 }
+
+h1:hover > a[data-hash-link],
+h2:hover > a[data-hash-link],
+h3:hover > a[data-hash-link],
+h4:hover > a[data-hash-link],
+h5:hover > a[data-hash-link],
+h6:hover > a[data-hash-link] {
+  opacity: 1;
+}
+
+a[data-hash-link] {
+  display: inline-block;
+  margin-left: -1em;
+  padding-right: 0.3em;
+
+  text-decoration: none;
+
+  opacity: 0;
+}
+a[data-hash-link]:hover {
+  text-decoration: underline;
+}
