@@ -8,3 +8,7 @@ smoothscroll.polyfill()
 sapper.start({
   target: document.querySelector('#sapper')
 })
+
+window.addEventListener('beforeinstallprompt', ev => {
+  ev.preventDefault()
+})
