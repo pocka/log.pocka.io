@@ -6,7 +6,8 @@
   <Head
     title="About"
     description="このブログやこれをかいている人についての説明"
-    type="profile">
+    type="profile"
+    path="/about/">
     <meta property="profile:first_name" content="Shota" />
     <meta property="profile:last_name" content="Fuji" />
     <meta property="profile:username" content="pocka" />

@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-  <Head title="Posts" description="記事一覧" />
+  <Head title="Posts" description="記事一覧" path="/posts/" />
 </svelte:head>
 
 <h1>All Posts</h1>

@@ -42,7 +42,10 @@ module.exports = {
       new webpack.DefinePlugin({
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
-        'process.env.GA_TRACKING_ID': JSON.stringify(process.env.GA_TRACKING_ID)
+        'process.env.GA_TRACKING_ID': JSON.stringify(
+          process.env.GA_TRACKING_ID || ''
+        ),
+        'process.env.SITE_ORIGIN': JSON.stringify(process.env.SITE_ORIGIN || '')
       })
     ].filter(Boolean),
     devtool: dev && 'inline-source-map'
@@ -75,6 +78,11 @@ module.exports = {
       ]
     },
     mode: process.env.NODE_ENV,
+    plugins: [
+      new webpack.EnvironmentPlugin({
+        SITE_ORIGIN: ''
+      })
+    ],
     performance: {
       hints: false // it doesn't matter if server.js is large
     }

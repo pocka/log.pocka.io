@@ -21,7 +21,8 @@
 <svelte:head>
   <Head
     title="Posts tagged by '{tag}'"
-    description="'{tag}'タグのついた記事一覧" />
+    description="'{tag}'タグのついた記事一覧"
+    path="/tags/{tag}/" />
 </svelte:head>
 
 <h1>Posts tagged by "{tag}"</h1>

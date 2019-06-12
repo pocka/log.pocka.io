@@ -51,7 +51,7 @@
 
   export let post
 
-  $: url = `https://log.pocka.io/posts/${post.name}/`
+  $: url = `${process.env.SITE_ORIGIN}/posts/${post.name}/`
   $: shareTitle = `${post.title} - log.pocka.io`
 </script>
 
@@ -87,10 +87,16 @@
 </style>
 
 <svelte:head>
-  <Head title={post.title} description={post.description} type="article">
+  <Head
+    title={post.title}
+    description={post.description}
+    type="article"
+    path="/posts/{post.name}/">
     <meta property="article:published_time" content={post.createdAt} />
     <meta property="article:modified_time" content={post.updatedAt} />
-    <meta property="article:author" content="https://log.pocka.io/about/" />
+    <meta
+      property="article:author"
+      content="{process.env.SITE_ORIGIN}/about/" />
     {#each post.tags as tag (tag)}
       <meta property="article:tag" content={tag} />
     {/each}
