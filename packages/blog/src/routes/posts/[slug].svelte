@@ -100,6 +100,7 @@
     {#each post.tags as tag (tag)}
       <meta property="article:tag" content={tag} />
     {/each}
+    <meta name="keywords" content={post.tags.join(',')} />
   </Head>
 </svelte:head>
 
@@ -107,7 +108,9 @@
 
 <h1>{post.title}</h1>
 <div class="meta">
-  <date class="updatedAt">{post.updatedAtFormatted}</date>
+  <time class="updatedAt" datetime={post.updatedAt}>
+     {post.updatedAtFormatted}
+  </time>
   <Tags tags={post.tags} />
 </div>
 
