@@ -5,64 +5,28 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/pocka/log.pocka.io.svg)]()
 [![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/pocka/log.pocka.io.svg)]()
 
-これは[log.pocka.io](https://log.pocka.io)のリポジトリです
-
 </div>
 
 ---
 
-## 記事の編集
+## For development
 
-- 各記事は`posts`ディレクトリ配下に Markdown 形式で保存します
-- Markdown の先頭部分に YAML 形式で記事のメタ情報を記述します
+### Requirements
 
-## 開発にあたって
+- nvm (optional, but recommended)
+- Yarn
 
-- 記事 JSON、記事リスト JSON、読み込まれるメインの JS ファイルをビルドコマンドで生成し、静的サイトを組み上げます
-- バージョン統一のために`nvm install`と`nvm use`コマンドを実行してから開発を行ってください
+### Commands
 
-### 開発ビルドモード
+| Command          | Description                                                  |
+| ---------------- | ------------------------------------------------------------ |
+| `yarn build`     | Builds posts and site, then copy bundled files into `/dist`. |
+| `yarn dev`       | Starts development server.                                   |
+| `yarn storybook` | Stars Storybook.                                             |
 
-```sh
-npx yarn dev
-# yarn dev
-```
+### Directories
 
-- `localhost:3000`に開発サーバを立てます
-  - ブラウザの URL バーに`localhost:3000`とうち移動すると開発モードのサイトに移動できます
-  - `src`ディレクトリ配下の JS ファイルに変更があると変更されたファイルのみをコンパイルし、できればその部分だけをリロードせずに置き換え、できなければブラウザをリロードします(HMR)
-- 終了したい場合は起動したコンソールで`Ctrl + C`を押します
-
-### まとめてビルド
-
-```sh
-npx yarn build
-# yarn build
-```
-
-- `npm run build:posts`と`npm run build:app`を実行します
-
-### 記事 JSON の生成
-
-```sh
-npx yarn build:posts
-# yarn build:posts
-```
-
-- `posts`ディレクトリの中にある記事の Markdown を変換し、`src/pages/posts`配下へ Vue のコンポーネントとして保存します
-- `posts`ディレクトリの中にある記事の Markdown を読み取り、その一覧を`src/assets/posts.json`として保存します
-
-### JS ファイルの生成
-
-```sh
-npx yarn build:app
-# yarn build:app
-```
-
-- `src`ディレクトリの中身をコンパイルし、`public`ディレクトリに出力します
-
-## Contributing
-
-内容・誤字脱字の指摘(Issue)や修正(PR)、その他 Issue/PR は大歓迎です!!
-
-PR や Issue を投げる練習なんかにもどうぞ
+- `images/` ... Image files which is used by posts.
+- `posts/` ... Post markdown files.
+- `packages/blog/` ... Source code for the web site.
+- `packages/posts/` ... Build scripts and compiled posts.
