@@ -10,7 +10,7 @@
     "clean": "rm -rf dist",
     "build": "npm run clean && npm run build:pages && npm run build:copy",
     "build:pages": "lerna run build",
-    "build:copy": "cp -r packages/blog/dist dist && cp -r packages/amp/dist dist/amp",
+    "build:copy": "cp -r packages/blog/dist dist",
     "deploy": "s3-deploy './dist/**' --cwd './dist/' --bucket $AWS_BUCKET_NAME --distId $AWS_CF_DIST_ID --invalidate '/*' --gzip --etag",
     "dev": "lerna run dev --parallel --stream",
     "storybook": "lerna run storybook --parallel --stream",

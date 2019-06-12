@@ -94,7 +94,6 @@
     {#each post.tags as tag (tag)}
       <meta property="article:tag" content={tag} />
     {/each}
-    <link rel="amphtml" href="https://log.pocka.io/amp/{post.name}.html" />
   </Head>
 </svelte:head>
 
