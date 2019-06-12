@@ -6,7 +6,7 @@
 
   export let type = 'website'
 
-  export let image = `${process.env.SITE_ORIGIN}/logo-512.png`
+  export let image = `${process.env.SITE_ORIGIN}/open-graph-image.png`
 
   export let path = '/'
 
