@@ -53,6 +53,7 @@
 
   $: url = `${process.env.SITE_ORIGIN}/posts/${post.name}/`
   $: shareTitle = `${post.title} - log.pocka.io`
+  $: publicTags = post.tags.slice(1)
 </script>
 
 <style>
@@ -97,10 +98,10 @@
     <meta
       property="article:author"
       content="{process.env.SITE_ORIGIN}/about/" />
-    {#each post.tags as tag (tag)}
+    {#each publicTags as tag (tag)}
       <meta property="article:tag" content={tag} />
     {/each}
-    <meta name="keywords" content={post.tags.join(',')} />
+    <meta name="keywords" content={publicTags.join(',')} />
   </Head>
 </svelte:head>
 
