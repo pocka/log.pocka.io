@@ -40,7 +40,7 @@
 
     if (!hash) return
 
-    const el = document.querySelector(hash)
+    const el = document.querySelector(decodeURIComponent(hash))
 
     if (!el) return
 
