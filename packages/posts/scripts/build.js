@@ -14,7 +14,9 @@ const build = async () => {
   const postsDir = path.resolve(buildDir, 'posts')
   const srcDir = path.resolve(__dirname, '../../../posts')
 
-  if (!(await fsp.access(postsDir))) {
+  try {
+    await fsp.access(postsDir)
+  } catch (e) {
     mkdirp.sync(postsDir)
   }
 
