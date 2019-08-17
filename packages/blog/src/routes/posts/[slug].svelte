@@ -12,9 +12,11 @@
 </script>
 
 <script>
+  import { differenceInYears } from 'date-fns'
   import { onMount } from 'svelte'
 
   import Head from '../../components/Head'
+  import Alert from '../../components/atoms/Alert'
   import BackToTop from '../../components/molecules/BackToTop'
   import Tags from '../../components/molecules/Tags'
 
@@ -50,6 +52,11 @@
   })
 
   export let post
+
+  const updatedAtSince = differenceInYears(new Date(), post.updatedAt) 
+
+  $: isOlderThan1Year = updatedAtSince >= 1
+  $: isOlderThan3Year = updatedAtSince >= 3
 
   $: url = `${process.env.SITE_ORIGIN}/posts/${post.name}/`
   $: shareTitle = `${post.title} - log.pocka.io`
@@ -113,6 +120,16 @@
   </time>
   <Tags tags={post.tags} />
 </div>
+
+{#if isOlderThan3Year}
+<Alert level="danger">
+この記事は最終更新から3年以上経過しています。内容が古くなっている可能性が高いため注意してください。
+</Alert>
+{:else if isOlderThan1Year}
+<Alert level="warning">
+この記事は最終更新から1年以上経過しています。内容が古くなっている可能性があります。
+</Alert>
+{/if}
 
 {@html post.__content}
 

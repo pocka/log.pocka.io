@@ -1,7 +1,10 @@
 <script>
+  import ExclamationCircle from './ExclamationCircle'
+  import ExclamationTriangle from './ExclamationTriangle'
   import Facebook from './Facebook'
   import GitHub from './GitHub'
   import Hatena from './Hatena'
+  import Info from './Info'
   import LogDot from './LogDot'
   import Twitter from './Twitter'
 
@@ -23,4 +26,7 @@
   <Facebook />
   <Hatena />
   <Twitter />
+  <ExclamationTriangle />
+  <ExclamationCircle />
+  <Info />
 </div>
