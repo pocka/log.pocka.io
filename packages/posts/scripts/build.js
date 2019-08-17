@@ -1,5 +1,6 @@
 const { createHash } = require('crypto')
 const { promises: fsp, ...fs } = require('fs')
+const mkdirp = require('mkdirp')
 const path = require('path')
 
 const md2json = require('./md2json')
@@ -12,6 +13,10 @@ const build = async () => {
   const buildDir = path.resolve(__dirname, '../build')
   const postsDir = path.resolve(buildDir, 'posts')
   const srcDir = path.resolve(__dirname, '../../../posts')
+
+  if (!(await fsp.access(postsDir))) {
+    mkdirp.sync(postsDir)
+  }
 
   const files = await fsp.readdir(srcDir)
 
@@ -45,6 +50,20 @@ const build = async () => {
   await Promise.all(
     list.map(info =>
       fsp.writeFile(path.resolve(postsDir, info.name + '.js'), jsonModule(info))
+    )
+  )
+
+  const builtDirFiles = await fsp.readdir(postsDir)
+
+  const expectedFiles = list.map(info => info.name + '.js')
+
+  const unexpectedNodes = builtDirFiles.filter(
+    file => !expectedFiles.includes(file)
+  )
+
+  await Promise.all(
+    unexpectedNodes.map(filename =>
+      fsp.unlink(path.resolve(postsDir, filename))
     )
   )
 }
