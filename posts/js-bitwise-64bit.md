@@ -27,7 +27,7 @@ ECMAScript では[64 ビットの整数でもビット演算時は 32 ビット�
 
 **2016/09/06 追記**
 Github にリポジトリを作っているので、そっちを見て下さい
-[pocka/bitwise64](https://github.com/pocka/bitwise64)</div>
+[pocka/bitwise64](https://github.com/pocka/bitwise64)
 
 64bit 演算を行うためのモジュールを作成した。
 
