@@ -3,7 +3,7 @@ name: my-react-component-best-practice
 title: pocka流Reactコンポーネントの書き方ベストプラクティス
 description: 自分がReactのコンポーネントを書く際に意識していることや個人的なベストプラクティスを共有するよ
 createdAt: 2019-05-30T14:00:00+09:00
-updatedAt: 2019-05-30T14:00:00+09:00
+updatedAt: 2019-08-18T23:00:00+09:00
 tags:
   - article
   - typescript
@@ -66,6 +66,8 @@ export const Foo: FC<Props & StyleProps> = ({ bar, ...rest }) => (
   <button {...rest}>{bar}</button>
 )
 ```
+
+ちなみに、プロジェクト毎に何度も書くのは面倒なので、[@react-comfy/props](https://github.com/pocka/react-comfy/tree/master/packages/props)というパッケージで公開しています。
 
 ## 適用例外
 
