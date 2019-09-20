@@ -63,7 +63,8 @@ pre {
 
 pre > code {
   all: unset;
-  font-family: Inconsolata, monospace;
+  /* NOTE: Prism.js's theme css overwrites font-family */
+  font-family: Inconsolata, monospace !important;
 }
 
 code {
@@ -73,7 +74,8 @@ code {
   background-color: var(--color-bg-accent);
   color: darkred;
   border-radius: calc(1rem / 4);
-  font-family: Inconsolata, monospace;
+  /* NOTE: Prism.js's theme css overwrites font-family */
+  font-family: Inconsolata, monospace !important;
 }
 
 a,

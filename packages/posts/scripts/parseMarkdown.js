@@ -1,4 +1,5 @@
-const { highlight, highlightAuto } = require('highlight.js')
+const prism = require('prismjs')
+const loadLanguages = require('prismjs/components/')
 const marked = require('marked')
 
 const mdRenderer = new marked.Renderer()
@@ -26,7 +27,30 @@ const options = {
   table: true,
   breaks: true,
   highlight(code, lang) {
-    return lang ? highlight(lang, code).value : highlightAuto(code).value
+    if (!lang) {
+      return code
+    }
+
+    // Because of Prism.js's poor API...
+    const $lang = (() => {
+      switch (lang) {
+        case 'sh':
+        case 'shell':
+          return 'bash'
+        case 'ts':
+          return 'typescript'
+        case 'js':
+          return 'javascript'
+        case 'html':
+          return 'markup'
+        default:
+          return lang
+      }
+    })()
+
+    loadLanguages([$lang])
+
+    return prism.highlight(code, prism.languages[$lang], $lang)
   },
   renderer: mdRenderer
 }

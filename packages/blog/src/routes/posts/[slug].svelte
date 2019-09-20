@@ -25,7 +25,7 @@
   import TwitterShare from '../../components/organisms/TwitterShare'
 
   if (process.browser) {
-    import('highlight.js/styles/monokai-sublime.css')
+    import('prismjs/themes/prism-okaidia.css')
   }
 
   onMount(() => {

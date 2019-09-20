@@ -32,7 +32,7 @@ PR を建てる前にリポジトリの設定をしておきましょう。
 PR のテンプレートを設定できる機能です(そのまま)。`.github/PULL_REQUEST_TEMPLATE.md`のように特定の場所にテンプレートファイル(Markdown)を作成すると、PR を建てる際にその内容が初期値として入力された状態になります。
 種類ごとにテンプレートを作成することができるので、バグ修正や機能追加、その他軽微な変更等で分けておくといいかもしれません。
 
-```hbs
+```
 .github/
   PULL_REQUEST_TEMPLATE/
     feature.md
@@ -88,7 +88,7 @@ DraftPR は`Ready for review`ボタンを押すまではマージできず、`CO
 
 PR がアップストリームブランチ(大体 master)にマージされたタイミングで、特定の Issue を自動的に Close する機能です。使い方は超絶簡単、特定の単語のあとに Issue への参照を書くだけです。
 
-```hbs
+```
 fix #6
 close #7
 resolve #8
