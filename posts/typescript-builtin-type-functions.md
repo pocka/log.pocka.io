@@ -3,14 +3,18 @@ name: typescript-builtin-type-functions
 title: TypeScript特有の組み込み型関数
 description: TypeScript特有のジェネリックな組み込み型関数の一覧と説明、及び使用例
 createdAt: '07/22/2018 15:00'
-updatedAt: 2019-05-30T11:30:00.000+0900
+updatedAt: 2019-09-20T14:30:00.000+0900
 tags:
   - article
   - typescript
 ---
-TypeScriptにはPromiseやSymbolといったJavascript特有のグローバルオブジェクト以外に、型を扱う上で便利になるような組み込みのジェネリックな型関数<sup>※1</sup>が存在します。これらは非常に便利で様々なプロジェクトで使われているのですが、公式にリストもなく、説明も主にリリースノート等にしかないため、使い方等を交えて説明を書いていきたいと思います。
 
-なお、各定義は[Microsoft/TypeScriptの`src/lib/es5.d.ts`にあります](https://github.com/microsoft/TypeScript/blob/cf7b2d4ae91c4f27ba9ae7137ddf9a407815e590/src/lib/es5.d.ts#L1401)。
+TypeScript には Promise や Symbol といった Javascript 特有のグローバルオブジェクト以外に、型を扱う上で便利になるような組み込みのジェネリックな型関数<sup>※1</sup>が存在します。これらは非常に便利で様々なプロジェクトで使われているので~すが、公式にリストもなく、説明も主にリリースノート等にしかないため、~使い方等を交えて説明を書いていきたいと思います。
+
+**EDIT**
+公式の[ドキュメントページ(英語)](https://www.typescriptlang.org/docs/handbook/utility-types.html)ができたようです。いくつか載っていないものもありますが、一先ずそちらを参照することをおすすめします。
+
+なお、各定義は[Microsoft/TypeScript の`src/lib/es5.d.ts`にあります](https://github.com/microsoft/TypeScript/blob/v3.6.3/lib/lib.es5.d.ts#L1424)。
 
 <small>※1 ... 型を受け取って新しい型を返す型。多分正しい呼び名ではない。</small>
 
@@ -23,7 +27,7 @@ TypeScriptにはPromiseやSymbolといったJavascript特有のグローバル�
 type Partial<T>
 ```
 
-型Tのすべてのプロパティを省略可能(つまり`| undefined`)にした新しい型を返すMapped Typeです。
+型 T のすべてのプロパティを省略可能(つまり`| undefined`)にした新しい型を返す Mapped Type です。
 
 ```ts
 interface Foo {
@@ -74,7 +78,7 @@ main({
 type Required<T>
 ```
 
-型Tの全てのプロパティを必須にした新しい型を返します。
+型 T の全てのプロパティを必須にした新しい型を返します。
 
 ```ts
 interface Foo {
@@ -99,7 +103,7 @@ type RequiredFoo = Required<Foo>
 type Readonly<T>
 ```
 
-型Tの全てのプロパティに`readonly`属性をつけた新しい型を返します。
+型 T の全てのプロパティに`readonly`属性をつけた新しい型を返します。
 
 ```ts
 interface Foo {
@@ -124,8 +128,8 @@ type ReadonlyFoo = Readonly<Foo>
 type Pick<T, K extends keyof T>
 ```
 
-型Tの中からKに当てはまるプロパティのみを抜き取った新しい型を返します。
-なお、Kには型Tに存在するキーを指定する必要があります。
+型 T の中から K に当てはまるプロパティのみを抜き取った新しい型を返します。
+なお、K には型 T に存在するキーを指定する必要があります。
 
 ```ts
 interface Foo {
@@ -142,19 +146,19 @@ type BarAndQux = Pick<Foo, 'bar' | 'qux'>
 // }
 ```
 
-react-redux等のHoCを作成/使用する際に多用します。
+react-redux 等の HoC を作成/使用する際に多用します。
 
 ## Omit
 
 - 利用可能バージョン: TypeScript3.5~
-- リリースノート: <https://devblogs.microsoft.com/typescript/announcing-typescript-3-5/>(TODO: TS公式サイトのwhat's newに差し替え)
+- リリースノート: <https://devblogs.microsoft.com/typescript/announcing-typescript-3-5/>(TODO: TS 公式サイトの what's new に差し替え)
 
 ```ts
 type Omit<T, K extends keyof any>
 ```
 
-型Tの中から、キー名がKに当てはまるプロパティを*除外した*新しい型を返します。
-なお、Pickとは異なりKにはTのキー名以外を指定することができます。
+型 T の中から、キー名が K に当てはまるプロパティを*除外した*新しい型を返します。
+なお、Pick とは異なり K には T のキー名以外を指定することができます。
 
 ```ts
 interface Foo {
@@ -180,7 +184,7 @@ type FooWithoutBar = Omit<Foo, 'bar'>
 type Record<K extends keyof any, T>
 ```
 
-型TなプロパティKを持つレコード型を作成します。
+型 T なプロパティ K を持つレコード型を作成します。
 
 ```ts
 interface Foo {
@@ -205,8 +209,8 @@ type StringFoo = Record<keyof Foo, string>
 type Exclude<T, U>
 ```
 
-型Tが型Uに代入可能であれば`never`、そうでなければ型Tを返すConditional Typeです。
-主にUnion Typesから特定の型を取り除く際に使われます。
+型 T が型 U に代入可能であれば`never`、そうでなければ型 T を返す Conditional Type です。
+主に Union Types から特定の型を取り除く際に使われます。
 
 ```ts
 type A = Exclude<string, number> // string
@@ -223,9 +227,9 @@ type C = Exclude<string | number | boolean, string | boolean> // number
 type Extract<T, U>
 ```
 
-型Tが型Uに代入可能であれば型T、そうでなければ`never`を返すConditional Typeです。
-Excludeの逆ですね。
-主にUnion Typesから特定の型を抽出する際に使われます。
+型 T が型 U に代入可能であれば型 T、そうでなければ`never`を返す Conditional Type です。
+Exclude の逆ですね。
+主に Union Types から特定の型を抽出する際に使われます。
 
 ```ts
 type A = Extract<string, number> // never
@@ -242,7 +246,7 @@ type C = Extract<string | number | boolean, string | boolean> // string | boolea
 type NonNullable<T>
 ```
 
-型Tから`null`と`undefined`を取り除いた型を返します。
+型 T から`null`と`undefined`を取り除いた型を返します。
 
 ```ts
 type A = NonNullable<string | null> // string
@@ -259,7 +263,7 @@ type C = NonNullable<string> // string
 type Parameters<T extends (...args: any[]) => any>
 ```
 
-関数型Tの引数の型をタプルとして抽出します。
+関数型 T の引数の型をタプルとして抽出します。
 
 ```ts
 function foo(arg1: string, arg2: number): void {}
@@ -280,7 +284,7 @@ type Bar = Parameters<typeof bar> // []
 type ConstructorParameters<T extends new (...args: any[]) => any>
 ```
 
-型Tのコンストラクタの引数の型をタプルとして抽出します。
+型 T のコンストラクタの引数の型をタプルとして抽出します。
 `Parameters`のコンストラクタ版です。
 
 ```ts
@@ -300,7 +304,7 @@ type Bar = ConstructorParameters<typeof Foo> // [string, boolean] | [string]
 type ReturnType<T extends (...args: any[]) => any>
 ```
 
-型Tの戻り値の型を返します。なお、Tには関数型のみ指定可能です。
+型 T の戻り値の型を返します。なお、T には関数型のみ指定可能です。
 
 ```ts
 const foo = () => 'foo'
@@ -319,7 +323,7 @@ type C = ReturnType<() => void> // void
 type InstanceType<T extends new (...args:any[]) => any>
 ```
 
-型Tのコンストラクタの返り値の型を返す型です。
+型 T のコンストラクタの返り値の型を返す型です。
 
 ```ts
 class Foo {}
@@ -340,11 +344,15 @@ type C = InstanceType<never> // any
 type ThisType<T>
 ```
 
-thisの型をTとすることができる特殊な型です。型関数ではないですが便利なので一応記載します。
+this の型を T とすることができる特殊な型です。型関数ではないですが便利なので一応記載します。
 
 ```ts
-interface Foo { bar: number }
-interface Baz { qux(): string }
+interface Foo {
+  bar: number
+}
+interface Baz {
+  qux(): string
+}
 
 const quux: ThisType<Foo> = {
   myMethod() {
@@ -359,11 +367,7 @@ const corge: Baz & ThisType<Foo> = {
 }
 ```
 
-Javascriptのライブラリを使う際にあると便利な型です。
-詳細はQiitaに記事を上げてくれている人がいるので、それを参照してください。
+Javascript のライブラリを使う際にあると便利な型です。
+詳細は Qiita に記事を上げてくれている人がいるので、それを参照してください。
 
 [TypeScript 2.3 RC 変更点@vvakame](https://qiita.com/vvakame/items/d926f0e1b02397dbd5df#this%E3%81%AE%E5%9E%8B%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%8C%E3%82%88%E3%82%8A%E6%9F%94%E8%BB%9F%E3%81%AB%E8%A1%8C%E3%82%8F%E3%82%8C%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F)
-
-
-
-
