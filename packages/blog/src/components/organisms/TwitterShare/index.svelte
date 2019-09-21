@@ -8,7 +8,7 @@
 
   $: queries = {
     url,
-    text: title,
+    text: title.replace(/\./g, '.\u200b'),
     via,
     related: via,
     hashtags: hashtags.join(',')
