@@ -204,6 +204,9 @@ a[data-hash-link] {
 a[data-hash-link]:hover {
   text-decoration: underline;
 }
+a[data-hash-link]:focus {
+  opacity: 1;
+}
 
 img {
   max-width: 100%;
