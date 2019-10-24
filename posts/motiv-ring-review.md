@@ -21,13 +21,21 @@ tags:
 
 Motiv Ring は装着者の心拍数/歩数/睡眠時間などを計測してくれる指輪型のウェアラブルデバイス。ウェアラブルデバイスというとやけに大きく不格好であったり、デバイス感溢れる見た目だったりするが、このデバイスは普通の指輪と同じようなサイズ/見た目になっているのが特徴。
 
-```
-TODO: 画像
-```
+<a href="/images/motiv-ring-review/ring.jpg" target="_blank">
+  <picture>
+    <source srcset="/images/motiv-ring-review/ring.webp" type="image/webp"/>
+    <img src="/images/motiv-ring-review/ring.jpg"/>
+  </picture>
+</a>
 
 # 見た目/装着感
 
 見た目としてはちょっと厚めな指輪、といった感じ。故障期間を除くと大体 9 ヶ月ほど使っているが、一度もウェアラブルデバイスと気づかれたことはない。
+
+<picture>
+  <source srcset="/images/motiv-ring-review/fit.webp" type="image/webp"/>
+  <img src="/images/motiv-ring-review/fit.jpg"/>
+</picture>
 
 つけ心地は非常に快適。非常に軽く、つけていることを忘れるレベル。
 
