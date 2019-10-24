@@ -70,7 +70,7 @@
     align-items: center;
   }
 
-  .meta > :not(:first-child) {
+  .meta > :global(:not(:first-child)) {
     font-size: 1em;
     margin-left: 2rem;
   }
@@ -85,12 +85,12 @@
     font-size: 1.5em;
   }
 
-  .shares > :not(:nth-child(0)) {
+  .shares > :global(:not(:nth-child(0))) {
     flex-basis: 2rem;
 
     text-align: center;
   }
-  .shares > :not(:first-child) {
+  .shares > :global(:not(:first-child)) {
     margin-left: 0.5em;
   }
 </style>
