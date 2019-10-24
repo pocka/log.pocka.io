@@ -2,7 +2,7 @@
 name: motiv-ring-review
 title: 「Motiv Ring」 レビュー
 createdAt: 2019-10-23T15:00:00.000+09:00
-updatedAt: 2019-10-23T15:00:00.000+09:00
+updatedAt: 2019-10-24T15:00:00.000+09:00
 tags:
   - article
   - review
