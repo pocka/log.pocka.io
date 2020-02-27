@@ -6,7 +6,7 @@ createdAt: 2020-02-27T18:00:00.000+09:00
 updatedAt: 2020-02-27T18:00:00.000+09:00
 tags:
   - blog
-  - vue
+  - vue.js
   - webpack
   - storybook
 ---
