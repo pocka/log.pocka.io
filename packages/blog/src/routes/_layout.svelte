@@ -12,11 +12,11 @@
       ga.l = +new Date()
       ga('create', process.env.GA_TRACKING_ID, 'auto')
       ga('send', 'pageview')
+    })
 
-      afterUpdate(() => {
-        ga('set', 'page', location.pathname)
-        ga('send', 'pageview')
-      })
+    afterUpdate(() => {
+      ga('set', 'page', location.pathname)
+      ga('send', 'pageview')
     })
   }
 </script>
