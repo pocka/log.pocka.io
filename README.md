@@ -71,3 +71,14 @@ Embed Youtube video.
 ```md
 <blog-youtube src="https://www.youtube.com/embed/dQw4w9WgXcQ" aspectratio="3:2"></blog-youtube>
 ```
+
+### Environments Variables
+
+For deploy.
+
+| Name                    | Required? |
+| ----------------------- | --------- |
+| `AWS_ACCESS_KEY_ID`     | Yes       |
+| `AWS_SECRET_ACCESS_KEY` | Yes       |
+| `AWS_BUCKET_NAME`       | Yes       |
+| `AWS_CF_DIST_ID`        | Yes       |
