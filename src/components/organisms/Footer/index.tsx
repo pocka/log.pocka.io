@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { RiGithubLine, RiTwitterLine } from "react-icons/ri";
+import { RiGithubLine, RiTwitterLine, RiRssLine } from "react-icons/ri";
+
+import { useLocale } from "@/hooks/useLocale";
 
 import pkg from "@/../package.json";
 
@@ -30,6 +32,7 @@ export interface FooterProps {
 }
 
 export const Footer = ({ className }: FooterProps) => {
+  const { locale } = useLocale();
   return (
     <Container className={className}>
       <span>&copy; 2020 {pkg.author.name}</span>
@@ -42,6 +45,11 @@ export const Footer = ({ className }: FooterProps) => {
         <li>
           <a href="https://twitter.com/pockaquel" title="@pockaquel on Twitter">
             <RiTwitterLine />
+          </a>
+        </li>
+        <li>
+          <a href={`/feed/${locale}.json`} title="RSS">
+            <RiRssLine />
           </a>
         </li>
       </Links>
