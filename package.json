@@ -51,7 +51,8 @@
     "build": "next build && next export -o dist",
     "postbuild": "node -r esm -r ts-node/register/transpile-only -r tsconfig-paths/register ./src/feed.ts",
     "deploy": "s3-deploy './dist/**' --cwd './dist/' --bucket $AWS_BUCKET_NAME --distId $AWS_CF_DIST_ID --invalidate '/*' --gzip --etag",
-    "dev": "next dev"
+    "dev": "next dev",
+    "test": "tsc"
   },
   "browserslist": [
     "last 2 Chrome versions",
