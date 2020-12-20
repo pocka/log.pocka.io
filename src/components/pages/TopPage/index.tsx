@@ -7,6 +7,8 @@ import { useI18n } from "@/hooks/useI18n";
 import { SiteHead } from "@/components/SiteHead";
 import { PostLink } from "@/components/organisms/PostLink";
 
+import pkg from "@/../package.json";
+
 import en from "./en.json";
 import ja from "./ja.json";
 
@@ -39,7 +41,7 @@ export const TopPage = ({ recentPosts }: TopPageProps) => {
     <>
       <SiteHead />
       <Main>
-        <h1>log.pocka.io</h1>
+        <h1>{pkg.name}</h1>
         <h2>{t.recentPosts}</h2>
         <PostLinkList>
           {recentPosts.map((post) => (

@@ -7,6 +7,8 @@ import { Hast, useHast } from "@/hooks/useHast";
 
 import { SiteHead } from "@/components/SiteHead";
 
+import pkg from "@/../package.json";
+
 const Main = styled.main`
   grid-column: 1 / -1;
 
@@ -28,7 +30,7 @@ export const AboutPage = ({ content, meta }: AboutPageProps) => {
   return (
     <>
       <Head>
-        <title>About || log.pocka.io</title>
+        <title>About || {pkg.name}</title>
       </Head>
       <SiteHead />
       <Main>

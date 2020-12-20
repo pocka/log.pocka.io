@@ -6,6 +6,8 @@ import { useI18n } from "@/hooks/useI18n";
 import { SiteHead } from "@/components/SiteHead";
 import { NotFoundAnim } from "@/components/organisms/NotFoundAnim";
 
+import pkg from "@/../package.json";
+
 import en from "./en.json";
 import ja from "./ja.json";
 
@@ -30,7 +32,7 @@ export const NotFoundPage = () => {
   return (
     <>
       <Head>
-        <title>404 || log.pocka.io</title>
+        <title>404 || {pkg.name}</title>
       </Head>
       <SiteHead />
       <Main>

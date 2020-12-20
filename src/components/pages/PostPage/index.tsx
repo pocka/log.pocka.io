@@ -11,6 +11,8 @@ import { useLocale } from "@/hooks/useLocale";
 
 import { SiteHead } from "@/components/SiteHead";
 
+import pkg from "@/../package.json";
+
 import {
   Alert,
   Header,
@@ -76,22 +78,24 @@ export const PostPage = ({
         )}
         <meta
           property="og:url"
-          content={"https://log.pocka.io" + pathFor(pathname, locale)}
+          content={pkg.homepage + pathFor(pathname, locale)}
         />
         <meta
           property="og:image"
-          content="https://log.pocka.io/open-graph-image.png"
+          content={pkg.homepage + "/open-graph-image.png"}
         />
         <meta property="article:published_time" content={meta.createdAt} />
         <meta property="article:modified_time" content={meta.updatedAt} />
         <meta
           property="article:author"
-          content={`https://log.pocka.io${pathFor("/about/", locale)}`}
+          content={pkg.homepage + pathFor("/about/", locale)}
         />
         {meta.tags.map((tag) => (
           <meta key={tag} property="article:tag" content={tag} />
         ))}
-        <title>{meta.title} || log.pocka.io</title>
+        <title>
+          {meta.title} || {pkg.name}
+        </title>
         {meta.description && (
           <meta name="description" content={meta.description} />
         )}

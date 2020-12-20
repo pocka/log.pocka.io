@@ -4,6 +4,8 @@ import { useEffect, FC } from "react";
 
 import { pathFor } from "@/utils/i18n";
 
+import pkg from "@/../package.json";
+
 export interface SiteHeadProps {
   locales?: string[];
 
@@ -39,17 +41,18 @@ export const SiteHead: FC<SiteHeadProps> = ({
       />
       <meta name="theme-color" content="#d93b85" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <title>log.pocka.io</title>
+      <title>{pkg.name}</title>
+      <meta name="description" content={pkg.description} />
       {ogp && (
         <>
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="log.pocka.io" />
-          <meta property="og:description" content="pocka's blog" />
+          <meta property="og:title" content={pkg.name} />
+          <meta property="og:description" content={pkg.description} />
           <meta
             property="og:image"
-            content="https://log.pocka.io/open-graph-image.png"
+            content={pkg.homepage + "/open-graph-image.png"}
           />
-          <meta property="og:url" content="https://log.pocka.io" />
+          <meta property="og:url" content={pkg.homepage} />
         </>
       )}
       {children}

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { RiGithubLine, RiTwitterLine } from "react-icons/ri";
 
+import pkg from "@/../package.json";
+
 const Container = styled.footer`
   display: flex;
   align-items: center;
@@ -30,7 +32,7 @@ export interface FooterProps {
 export const Footer = ({ className }: FooterProps) => {
   return (
     <Container className={className}>
-      <span>&copy; 2020 pocka (Shota Fuji)</span>
+      <span>&copy; 2020 {pkg.author.name}</span>
       <Links>
         <li>
           <a href="https://github.com/pocka" title="@pocka on GitHub">
