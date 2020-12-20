@@ -2,5 +2,8 @@ node_modules
 .tmp
 
 *.log
+package-lock.json
 
-/dist
+.next
+next-env.d.ts
+dist

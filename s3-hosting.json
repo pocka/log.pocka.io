@@ -1,0 +1,450 @@
+{
+  "IndexDocument": {
+    "Suffix": "index.html"
+  },
+  "ErrorDocument": {
+    "Key": "404/index.html"
+  },
+  "RoutingRules": [
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/js-network-resource-algebraic-data-type/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/js-network-resource-algebraic-data-type/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/using-json-for-select-value/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/using-json-for-select-value/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/vue-docgen-loader/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/vue-docgen-loader/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/typescript-promisetype/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/typescript-promisetype/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/npm-package-config/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/npm-package-config/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/cloud-development-irl/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/cloud-development-irl/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/motiv-ring-review/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/motiv-ring-review/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/react-context-api-tabindex/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/react-context-api-tabindex/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/typescript-builtin-type-functions/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/typescript-builtin-type-functions/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/preflight-invisible-in-chrome-76/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/preflight-invisible-in-chrome-76/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/my-react-component-best-practice/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/my-react-component-best-practice/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/cloud-development-overview/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/cloud-development-overview/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/building-spa-blog-with-nuxtjs/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/building-spa-blog-with-nuxtjs/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/whimsical-app/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/whimsical-app/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/github-modern-pull-request-workflow/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/github-modern-pull-request-workflow/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/introduce-storybook-addon-designs/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/introduce-storybook-addon-designs/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/react-typescript-inherit-props/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/react-typescript-inherit-props/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/firebase-local-functions-with-webpack-dev-server/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/firebase-local-functions-with-webpack-dev-server/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/nuxt-website-my-fav-config/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/nuxt-website-my-fav-config/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/nuxtjs-modern-mode/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/nuxtjs-modern-mode/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/vue-webpack-tutorial/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/vue-webpack-tutorial/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/webcomponents-getstarted-tips/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/webcomponents-getstarted-tips/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/js-read-then-write/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/js-read-then-write/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/easy-documentation-with-docsify/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/easy-documentation-with-docsify/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/hyperapp-with-typescript/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/hyperapp-with-typescript/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/container-component-pattern-in-vuex/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/container-component-pattern-in-vuex/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/nuxt-asyncdata-static-file-code-splitting/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/nuxt-asyncdata-static-file-code-splitting/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/fcitx-blink-weird-behaviour/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/fcitx-blink-weird-behaviour/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/try-wasm-using-parcel-and-rust/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/try-wasm-using-parcel-and-rust/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/postcss-autoprefixer-caniuse-error/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/postcss-autoprefixer-caniuse-error/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/how-to-oculus-rift-supersampling/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/how-to-oculus-rift-supersampling/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/js-bitwise-64bit/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/js-bitwise-64bit/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/structure-of-this-blog/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/structure-of-this-blog/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/mongoose-save-not-update/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/mongoose-save-not-update/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/azure-appservice-port-80/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/azure-appservice-port-80/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/chrome-devtool-full-size-screenshot-bug/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/chrome-devtool-full-size-screenshot-bug/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/localforage-webpack-import-error/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/localforage-webpack-import-error/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/js-error-on-googlebot/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/js-error-on-googlebot/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/game-review-eagle-flight/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/game-review-eagle-flight/"
+      }
+    },
+    {
+      "Condition": {
+        "KeyPrefixEquals": "posts/grunt-este-watch-4913/"
+      },
+      "Redirect": {
+        "HostName": "log.pocka.io",
+        "Protocol": "https",
+        "HttpRedirectCode": "301",
+        "ReplaceKeyPrefixWith": "ja/posts/grunt-este-watch-4913/"
+      }
+    }
+  ]
+}
