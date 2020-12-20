@@ -37,7 +37,7 @@ jobs:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
           AWS_CF_DIST_ID: ${{ secrets.AWS_CF_DIST_ID }}
 
-      - name: Configure S3 hostin
+      - name: Configure S3 hosting
         run: aws s3api put-bucket-website --bucket $AWS_BUCKET_NAME --website-configuration 'file://s3-hosting.json'
         env:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
