@@ -16,7 +16,7 @@
     "next": "^10.0.3",
     "preact": "^10.5.7",
     "prism-themes": "^1.5.0",
-    "prismjs": "^1.22.0",
+    "prismjs": "^1.23.0",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
     "react-icons": "^4.1.0",
