@@ -1,22 +1,25 @@
-import { createElement, ReactNode, useMemo } from "react";
+import {
+  ComponentType,
+  createElement,
+  Fragment,
+  ReactNode,
+  useMemo,
+} from "react";
 
-import unified from "unified";
+import { unified, Transformer } from "unified";
 import rehypeReact, { Options as RehypeReactOptions } from "rehype-react";
 
 import { Link } from "@/components/Link";
 
-export type Hast = Parameters<unified.Transformer>[0];
+export type Hast = Parameters<Transformer>[0];
 
-export type Components = RehypeReactOptions<typeof createElement>["components"];
+export type Components = Record<string, ComponentType<any>>;
 
 export function useHast(
   node?: Hast | null,
   components: Components = {},
   rehypeReactOptions: Partial<
-    Omit<
-      RehypeReactOptions<typeof createElement>,
-      "components" | "createElement"
-    >
+    Omit<RehypeReactOptions, "components" | "createElement">
   > = {}
 ): ReactNode {
   const processor = useMemo(() => {
@@ -48,6 +51,7 @@ export function useHast(
       return null;
     }
 
-    return processor.stringify(node);
+    // unified/rehype changed type defs and now it's almost impossible to defined correct type (?)
+    return processor.stringify(node as any);
   }, [node]);
 }

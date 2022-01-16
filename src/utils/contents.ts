@@ -4,7 +4,7 @@ import path from "path";
 import { isAfter } from "date-fns";
 import { loadFront } from "yaml-front-matter";
 
-import unified from "unified";
+import { unified, Transformer } from "unified";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
@@ -29,32 +29,34 @@ export async function loadPosts(locale: string): Promise<readonly Post[]> {
   const srcDir = path.resolve(process.cwd(), "./contents/posts", locale);
 
   const posts = await Promise.all(
-    (await fs.readdir(srcDir)).map<
-      Promise<Omit<Post, "updatedAt"> & { updatedAt: Date }>
-    >(async (filename) => {
-      const abspath = path.resolve(srcDir, filename);
+    (
+      await fs.readdir(srcDir)
+    ).map<Promise<Omit<Post, "updatedAt"> & { updatedAt: Date }>>(
+      async (filename) => {
+        const abspath = path.resolve(srcDir, filename);
 
-      const [content, stat] = await Promise.all([
-        fs.readFile(abspath),
-        fs.stat(abspath),
-      ]);
+        const [content, stat] = await Promise.all([
+          fs.readFile(abspath),
+          fs.stat(abspath),
+        ]);
 
-      const frontmatter = loadFront(content);
+        const frontmatter = loadFront(content);
 
-      const {
-        updatedAt = stat.birthtime.toISOString(),
-        createdAt = stat.mtime.toISOString(),
-      } = frontmatter;
+        const {
+          updatedAt = stat.birthtime.toISOString(),
+          createdAt = stat.mtime.toISOString(),
+        } = frontmatter;
 
-      return {
-        name: filename.replace(/\.md$/, ""),
-        title: frontmatter.title,
-        description: frontmatter.description || null,
-        createdAt: new Date(createdAt).toISOString(),
-        updatedAt: new Date(updatedAt),
-        tags: frontmatter.tags,
-      };
-    })
+        return {
+          name: filename.replace(/\.md$/, ""),
+          title: frontmatter.title,
+          description: frontmatter.description || null,
+          createdAt: new Date(createdAt).toISOString(),
+          updatedAt: new Date(updatedAt),
+          tags: frontmatter.tags,
+        };
+      }
+    )
   );
 
   return posts
@@ -65,7 +67,7 @@ export async function loadPosts(locale: string): Promise<readonly Post[]> {
     }));
 }
 
-type Node = Parameters<unified.Transformer>[0];
+type Node = Parameters<Transformer>[0];
 
 /**
  * @returns [Metadata, Body Node, ToC Node]

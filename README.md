@@ -14,23 +14,22 @@
 ### Run Server
 
 ```shell
-$ yarn dev -p 8080
+$ pnpm dev -- -p 8080
 
 # Specify host to bind
-$ yarn dev -H mydomain.example -p 8080
+$ pnpm dev -- -H mydomain.example -p 8080
 ```
 
 ### Requirements
 
-- nvm or ASDF (optional, but recommended)
-- Yarn
+- nvm / ASDF (optional, but recommended), or Node.js v16 (requires Corepack enabled)
 
 ### Commands
 
 | Command      | Description                |
 | ------------ | -------------------------- |
-| `yarn build` | Builds blog and feeds.     |
-| `yarn dev`   | Starts development server. |
+| `pnpm build` | Builds blog and feeds.     |
+| `pnpm dev`   | Starts development server. |
 
 ### Directories
 

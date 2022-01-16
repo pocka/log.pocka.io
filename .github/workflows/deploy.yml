@@ -14,16 +14,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14"
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
 
-      - name: Install Yarn
-        run: npm i -g yarn
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: "6.24.4"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          cache: "pnpm"
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
 
       - name: Install dependencies
-        run: yarn install --pure-lockfile
+        run: pnpm i --frozen-lockfile
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -33,10 +40,10 @@ jobs:
           aws-region: us-east-1
 
       - name: Build the site
-        run: yarn build
+        run: pnpm build
 
       - name: Deploy the site
-        run: yarn deploy
+        run: pnpm deploy
         env:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
           AWS_CF_DIST_ID: ${{ secrets.AWS_CF_DIST_ID }}

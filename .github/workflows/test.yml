@@ -12,19 +12,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14"
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
 
-      - name: Install Yarn
-        run: npm i -g yarn
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: "6.24.4"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          cache: "pnpm"
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
 
       - name: Install dependencies
-        run: yarn install --pure-lockfile
+        run: pnpm i --frozen-lockfile
 
       - name: Check types
-        run: yarn tsc
+        run: pnpm tsc
 
       - name: Check code styles
-        run: yarn prettier --check './src/**/*.{ts,tsx,css}'
+        run: pnpm prettier --check './src/**/*.{ts,tsx,css}'
