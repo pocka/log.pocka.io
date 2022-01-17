@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RiGithubLine, RiTwitterLine, RiRssLine } from "react-icons/ri";
+import { RiGithubLine, RiTwitterLine } from "react-icons/ri";
 
 import { useLocale } from "@/hooks/useLocale";
 
@@ -45,11 +45,6 @@ export const Footer = ({ className }: FooterProps) => {
         <li>
           <a href="https://twitter.com/pockaquel" title="@pockaquel on Twitter">
             <RiTwitterLine />
-          </a>
-        </li>
-        <li>
-          <a href={`/feed/${locale}.json`} title="RSS">
-            <RiRssLine />
           </a>
         </li>
       </Links>

@@ -40,22 +40,18 @@
     "@types/react": "^17.0.38",
     "@types/styled-components": "^5.1.20",
     "@types/yaml-front-matter": "^4.1.0",
-    "esm": "^3.2.25",
     "next-plugin-preact": "^3.0.6",
     "preact-render-to-string": "^5.1.19",
     "prettier": "^2.5.1",
     "rehype-stringify": "^9.0.2",
     "s3-deploy": "^1.4.0",
     "scheduler": "^0.20.2",
-    "ts-node": "^10.4.0",
-    "tsconfig-paths": "^3.12.0",
     "typescript": "4.4",
     "webpack": "^5.66.0"
   },
   "scripts": {
     "clean": "rm -rf public",
     "build": "next build && next export -o dist",
-    "postbuild": "node -r esm -r ts-node/register/transpile-only -r tsconfig-paths/register ./src/feed.ts",
     "deploy": "s3-deploy './dist/**' --cwd './dist/' --bucket $AWS_BUCKET_NAME --distId $AWS_CF_DIST_ID --invalidate '/*' --gzip --etag",
     "dev": "next dev",
     "test": "tsc"
