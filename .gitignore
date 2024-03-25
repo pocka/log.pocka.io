@@ -1,9 +1,0 @@
-node_modules
-.tmp
-
-*.log
-package-lock.json
-
-.next
-next-env.d.ts
-dist
