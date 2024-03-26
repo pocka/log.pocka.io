@@ -1,0 +1,12 @@
+{
+  "version": "3",
+  "remote": {
+    "https://deno.land/std@0.220.1/assert/assert_exists.ts": "24a7bf965e634f909242cd09fbaf38bde6b791128ece08e33ab08586a7cc55c9",
+    "https://deno.land/std@0.220.1/assert/assertion_error.ts": "9f689a101ee586c4ce92f52fa7ddd362e86434ffdf1f848e45987dc7689976b8",
+    "https://deno.land/std@0.220.1/cli/mod.ts": "3ac44ca5def1b8cc1089a748d4904de8aa80fd89aa16a5d0bebee9cdcbdadba1",
+    "https://deno.land/std@0.220.1/cli/parse_args.ts": "a9e4ae8dbd0a96ad974d2f645af8143433103a17161a73dd5c2a03517bf6429d",
+    "https://deno.land/std@0.220.1/cli/prompt_secret.ts": "f6c9416b261131ac0df7ec4c57d4dc3aac7566b8a840a2d4388f8b7424f57b22",
+    "https://deno.land/std@0.220.1/cli/spinner.ts": "cf873605771270b4324cc063b5031ab250d8efee8799e45e1a3bfdd333ff721d",
+    "https://deno.land/std@0.220.1/fmt/colors.ts": "d239d84620b921ea520125d778947881f62c50e78deef2657073840b8af9559a"
+  }
+}
